@@ -115,45 +115,34 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 
 **Stamp injection flags:**
 
-* Values are mapped to Python format() flags as so: " {0} {1} {2} {3}" etc.
-* A single item list or raw string value always maps to "{0}"
-* Order can be switched around if you like "{3} {1} {0} {2}"
-* Flags can be injected anywhere i.e. "My 3rd value: {3} is injected before my first: {0}"
-* Not all flags have to be used, and using more flags than values defined is still safe
-* Injecting a value multiple times within a stamp is fine "{0} {0} {0}"
-* For more info google the python format() function (v3.3+)
-
-
 ```json
-
 "mystamp": {
   "value": ["zero", "one", "two", "three"],
   "regex": "@mystamp.+",
   "stamp": "@mystamp   {0} {1} {2} {3}",
 },
 
-Various outputs of the above stamp with different injection flags:
+# Various outputs of the above stamp with different injection flags:
 
-# Normal
+# Normal: Each value is mapped to a Python format() flags as so:
 "stamp" : "@mystamp   {0} {1} {2} {3}",
 Output  :  @mystamp   zero one two three
 
-# Mixed order
-"stamp" : "@mystamp   {3} {1} {2} {0}",
-Output  :  @mystamp   three one two zero
+# Mixed order is allowed and flags can be injected anywhere:
+"stamp" : "@mystamp   {3} hello {1} {2} world {0}",
+Output  :  @mystamp   three hello one two world zero
 
-# Not all values/flags used
+# Not all flags have to be used
 "stamp" : "@mystamp   {0} {1}",
 Output  :  @mystamp   zero one
 
-# More flags used than defined values
-"stamp" : "@mystamp   {0} {1} {2} {3} {4}",
+# It's OK to define more flags used than values to allow for future expansion
+"stamp" : "@mystamp   {0} {1} {2} {3} {4} {5} {6} {7}",
 Output  :  @mystamp   zero one two three
 
-# Using a flag more than once
-"stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3}",
-Output  :  @mystamp   zero zero zero zero one two three
-
+# Using a flag more than once is OK. 8)
+"stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3} {0}",
+Output  :  @mystamp   zero zero zero zero one two three zero
 ```
 
 

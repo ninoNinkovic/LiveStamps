@@ -173,11 +173,12 @@ As an exercise, let's examine what happens if the "date" stamp was NOT defined. 
 @copyright   (c) TundraTech date
 ```
 
-However, the stamp would still be "live" because a regex was supplied. 
+However, the stamp would still be considered "live" because a regex was supplied. 
 
-Changing either value in the list would instantly update all existing stamps in the document, allowing you to enter a static date or change to a different company name if desired. 
+Because the stamp is still "live", changing either value in the list would instantly update all existing stamps matching the regex within the document, allowing you instantly update the document with a static date or change to a different company name if desired. 
 
-**However, changing the regex** would abandon all the the previously inserted stamps, rendering them permanent... Careful!**
+**Note:
+Changing the regex would abandon all previously inserted stamps of this type, rendering them as static/permanent... Careful!**
 
 
 

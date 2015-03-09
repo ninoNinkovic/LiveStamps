@@ -22,14 +22,14 @@
 ### INSTALLATION:
 ----
 
-####Package Control: 
+#####Package Control: 
 
   * Open Sublime Text 3
   * cmd+shift+p
   * Package Control: Install Package
   * Search for LiveStamps
 
-####Manual: 
+#####Manual: 
 
   * Open Sublime Text 3
   * Sublime Text Menu -> Preferences -> Browse Packages
@@ -54,12 +54,12 @@ You can see the available default stamps by right clicking and exploring the Liv
 **Anatomy of a LiveStamp:**
 
 ```
-  'value' : REQUIRED Literal stamp value. The plugin will try to determine "auto" stamps for you
-  'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
-  'regex' : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
-  'parts' : OPTIONAL List for multipart stamps. i.e. "parts": ["name", "email", "link"]
-  'format': OPTIONAL Python format() to apply to the stamp's value
-  'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
+'value' : REQUIRED Literal stamp value. The plugin will try to determine "auto" stamps for you
+'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
+'regex' : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
+'parts' : OPTIONAL List for multipart stamps. i.e. "parts": ["name", "email", "link"]
+'format': OPTIONAL Python format() to apply to the stamp's value
+'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 ```
 **WARNING**
 

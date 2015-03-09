@@ -180,25 +180,27 @@ To use the "copyright" stamp within "mystamp", set one of the "mystamp" the VALU
 Output: @mystamp   This stamp is (c) TundraTech 2015
 ```
 
-##Regex Patterns: Making a "LIVE" Stamp
+
+
+###Regex Patterns: Making a "LIVE" Stamp
 
 In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied.
 
-WARNING!
+**WARNING!**
 
 Regex patterns are powerful expressions!
     
-Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+Test your regex on a separate document before trying it on a master file! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
-To learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
+To test and learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
 
-**The default regex schema used by LiveStamps conforms with docblock tags and is fairly safe/easy to implement:**
+**Default Livestamps Regex Schema** 
 
 ```json
 "regex": "@mystamp.+",
 ```
 
-This will inject your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern you want such as:
+The above regex conforms nicely with docblock tags and is fairly safe/easy to implement. It injects your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern you want such as:
 
 ```json
 "regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
@@ -211,7 +213,7 @@ Which would match any items in the document with the pattern dd-mm-yyyy such as
 *02-03-1979
 
 
-** MAKE SURE YOU CHOOSE A SAFE REGEX PATTERN PARADIGM! GENERIC REGEX PATTERNS CAN BE RISKY. MUCH BETTER TO USE A FLAG MATCHING REGEX, LIKE THE DEFAULT ONE USED BY LIVESTAMPS**
+**MAKE SURE YOU CHOOSE A SAFE REGEX PATTERN PARADIGM! GENERIC REGEX PATTERNS CAN BE RISKY. MUCH BETTER TO USE A FLAG MATCHING REGEX, LIKE THE DEFAULT ONE USED BY LIVESTAMPS**
 
 
 

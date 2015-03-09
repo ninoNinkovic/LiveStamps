@@ -1,16 +1,6 @@
 # LiveStamps for Sublime Text 3
 ####A Sublime Text 3 Plugin to inject self updating metadata into any document.
 
-####Great For:  
-
-  * Inserting self updating metadata into docblock headers
-  * Adding predefined signatures or class header info
-  * Tracking file meta no matter where it is moved/renamed
-  * The date the document was last modified
-  * The user or person who last modified the file.
-  * Adding a checksum to the file
-  * Updating all your projects with a new email address or URL when it changes
-
 ####Features:  
 
   * Easy static/dynamic custom stamp creation with powerful regex matching

@@ -49,6 +49,8 @@ You can see the available default stamps by right clicking and exploring the Liv
 
 ## Creating Custom Stamps:
 
+Live stamps are defined with the LiveStamps.sublime settings file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
+
 **Anatomy of a LiveStamp:**
 
 ```

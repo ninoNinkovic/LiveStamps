@@ -8,7 +8,7 @@ A Sublime Text 3 Plugin to inject self updating metadata into any document.
  * Tracking file meta no matter where it is moved/renamed
  * The date the document was last modified
  * The user or person who last modified the file.
- * Updating projects with a new email address or URL
+ * Updating all your projects with a new email address or URL when it changes
 
 ####Features:  
 
@@ -20,12 +20,6 @@ A Sublime Text 3 Plugin to inject self updating metadata into any document.
  * timezone support, with DST
  * Python format() and strftime() format string support within stamps
 
-
-
-
-Stamps can be dynamic (update on save, or key binding) or static, single use values for injection to save time.
-
-####Package Control: 
 
 ### INSTALLATION:
 ----
@@ -45,13 +39,13 @@ Copy this repo to a LiveStamps folder in your ST3 Packages directory.
 ### USAGE:
 ----
 
-Just hit a key combo to inject a stamp, and it will automagically take care of itself! Each stamp has a "livestamp"  handled by regex for auto updating, and a raw value which can be injected for a static instance.
+Just hit a key combo to inject a stamp, and it will automagically take care of itself! Each stamp has a "livestamp"  handled by regex for auto updating, and a raw value which is static, useful for things liek the current filename, path, parent folder or time, etc.
 
-Defaults key combos are:
- * super + alt + letter -> inject stamp(s)
- * ctrl  + alt + letter -> inject raw value(s)
+####Defaults key combos are:
+ * super + alt + letter -> inject the stamp
+ * ctrl  + alt + letter -> inject the stamp's raw value
 
-You can see the available stamps by right clicking
+You can see the available default stamps by right clicking and exploring the LiveStamps context menu.
 
 
 

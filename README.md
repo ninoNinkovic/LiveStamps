@@ -1,7 +1,11 @@
 # LiveStamps for Sublime Text 3
 ####A Sublime Text 3 Plugin to inject self updating metadata into any document.
 
+
+
 ####Features:  
+
+
 
   * Insert self updating tags into docblock headers
   * Add predefined signatures or class header info
@@ -18,7 +22,11 @@
   * timezone support, with DST
   * Python format() and strftime() formatting support within stamps
   
+
+
 ####Intall via Package Control: 
+
+
 
 ```
   1. Open Sublime Text 3
@@ -27,7 +35,12 @@
   4. Search for LiveStamps
 ```
 
+
+
 ####Manual Install: 
+
+
+
 ```
   1. Open Sublime Text 3
   2. Sublime Text Menu -> Preferences -> Browse Packages
@@ -35,25 +48,36 @@
   4. Copy this repo to the folder.
 ```
 
+
+
 ## USAGE:
 
-Just hit a key combo, or select a stamp from the context menu! 
 
-Thats it! 
 
-Each "livestamp" is handled by regex for auto updating, and can also ouput it's raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
+Just hit a key combo, or select a stamp from the context menu...  Thats it! 
+
+Each "livestamp" is handled by regex and will automatically update every time the document is saved. Stamps can also ouput thier raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
+
+
 
 ####Defaults key combos are:
+
+
 
 ```
   super + alt + letter -> inject the stamp
   ctrl  + alt + letter -> inject the stamp's raw value
 ```
 
+
+
 You can see all the default stamps by right clicking and exploring the LiveStamps context menu.
 
 
+
 ## Creating Custom Stamps:
+
+
 
 Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
 
@@ -64,7 +88,10 @@ Regex patterns are powerful expressions!
 Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
 
+
 **Anatomy of a LiveStamp:**
+
+
 
 ```
 'value' : REQUIRED A list or literal string value. The plugin will try to determine "auto" stamps for you.
@@ -79,9 +106,14 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 ```
 
 
+
 ####Basic Static Example: 
 
+
+
 A stamp with a constant output.
+
+
 
 ```json
 "mystamp": {
@@ -92,13 +124,20 @@ A stamp with a constant output.
 Output: 
 
 An important value i use often while programming
+
 ```
 
+
+
 ####"Live" Stamp Example (with time formatting): 
+
+
 
 A live updating stamp to insert the current date.
 
 Note the "auto" value, Which tells LiveStamps to grab the current time. A constant Python time value could be entered as the value as well, allowing a static time inputs.
+
+
 
 ```json
 "date": {
@@ -113,11 +152,17 @@ Output:
 @date        08-03-2015
 ```
 
+
+
 ####Multi-part "Live" Stamp Example: 
+
+
 
 A live updating stamp made from other stamps.
 
 This stamp would update the date portion automatically on save. Note, for this to stamp to auto update the previous "date" stamp would have to be defined somewhere in the definitions. (order NOT important)
+
+
 
 ```json
 "copyright": {
@@ -131,11 +176,17 @@ Output:
 @copyright   (c) TundraTech 08-03-2015
 ```
 
+
+
 As an exercise, let's examine what happens if the "date" stamp was NOT defined. The output would be assumed to be two static values as so:
+
+
 
 ```
 @copyright   (c) TundraTech date
 ```
+
+
 
 However, the stamp would still be "live" because a regex was supplied. 
 

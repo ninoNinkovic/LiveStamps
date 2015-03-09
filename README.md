@@ -37,21 +37,29 @@
 
 ## USAGE:
 
-Just hit a key combo to inject a stamp, and it will automagically take care of itself! Each stamp has a "livestamp"  handled by regex for auto updating, and a raw value which is static, useful for things liek the current filename, path, parent folder or time, etc.
+Just hit a key combo to inject a stamp, and it will automagically take care of itself! 
+
+Each "livestamp" is handled by regex for auto updating, and also contains a raw value which is static, useful for things like the current filename, path, parent folder or time, etc.
 
 ####Defaults key combos are:
 ```
   super + alt + letter -> inject the stamp
   ctrl  + alt + letter -> inject the stamp's raw value
 ```
-You can see the available default stamps by right clicking and exploring the LiveStamps context menu.
+You can see the default stamps by right clicking and exploring the LiveStamps context menu.
 
 
 ## Creating Custom Stamps:
 
-Live stamps are defined within the LiveStamps.sublime-settings file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
+Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
 
-**Anatomy of a LiveStamp:**
+###WARNING
+
+Regex patterns are powerful expressions!
+    
+Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+
+**Anatomy of LiveStamp key definitions:**
 
 ```
 'value' : REQUIRED Literal stamp value. The plugin will try to determine "auto" stamps for you
@@ -62,18 +70,14 @@ Live stamps are defined within the LiveStamps.sublime-settings file in JSON form
 
 'parts' : OPTIONAL List for multipart stamps. i.e. "parts": ["name", "email", "link"]
 
-'format': OPTIONAL Python format() to apply to the stamp's value
-
 'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
+
+'format': OPTIONAL Python format() to apply to the stamp's value
 ```
 
-**WARNING**
-
-Regex patterns are powerful expressions!
-    
-Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
 ####Basic Static Example: 
+
 
 A stamp with a constant output
 
@@ -89,6 +93,7 @@ An important value i use often while programming
 ```
 
 ####Formatted Time LiveStamp Example: 
+
 
 A live updating stamp to insert the current date
 

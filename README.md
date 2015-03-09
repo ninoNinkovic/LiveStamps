@@ -93,7 +93,7 @@ An important value i use often while programming
 ```
 
 
-####Formatted Time LiveStamp Example: 
+####"Live" Stamp Example (with time formatting): 
 
 A live updating stamp to insert the current date.
 
@@ -113,7 +113,7 @@ Output:
 ```
 
 
-####Multi-part LiveStamp Example: 
+####Multi-part "Live" Stamp Example: 
 
 A live updating stamp made from other stamps.
 

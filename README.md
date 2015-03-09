@@ -57,14 +57,13 @@ You can see the available default stamps by right clicking and exploring the Liv
 
   LiveStamp key definitions:
 
-  id     : *REQUIRED* Unique identifier for the stamp, i.e. "name", "signature" etc.
-  
-  value  : *REQUIRED* Can be a static value or "auto". The plugin will try to determin auto stamps for you
-  stamp  : *REQUIRED* The format string for the stamp. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
-  regex  : *OPTIONAL* Python regex pattern for livestamps. If empty or excluded, the stamp is injected as a static value.
-  parts  : *OPTIONAL* A list to define a stamp from other stamps, or multiple values. i.e. "parts": ["name", "email", "link"]
-  format : *OPTIONAL* Python format() string argument to apply to the stamp's value
-  strft  : *OPTIONAL* Python strftime() string argument to apply to a time value i.e. "%d-%m-%Y"
+    id     : *REQUIRED* Unique identifier for the stamp, i.e. "name", "signature" etc.
+    value  : *REQUIRED* Can be a static value or "auto". The plugin will try to determin auto stamps for you
+    stamp  : *REQUIRED* The format string for the stamp. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
+    regex  : *OPTIONAL* Python regex pattern for livestamps. If empty or excluded, the stamp is injected as a static value.
+    parts  : *OPTIONAL* A list to define a stamp from other stamps, or multiple values. i.e. "parts": ["name", "email", "link"]
+    format : *OPTIONAL* Python format() string argument to apply to the stamp's value
+    strft  : *OPTIONAL* Python strftime() string argument to apply to a time value i.e. "%d-%m-%Y"
 
     **WARNING**
     

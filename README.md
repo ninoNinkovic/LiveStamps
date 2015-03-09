@@ -12,14 +12,13 @@ Create your own custom stamps! LiveStamps is handy for things like:
   
 Stamps can be dynamic (update on save, or key binding) or static, single use values for injection to save time.
 
-----
 ### INSTALLATION:
-
+----
 ####Package Control: 
  * Open Sublime Text 3
  * cmd+shift+p
  * Package Control: Install Package
- * Search for TimeStamps
+ * Search for LiveStamps
 
 ####Manual: 
 Copy this repo to a LiveStamps folder in your ST3 Packages directory. 

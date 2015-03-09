@@ -75,8 +75,11 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
   "value": "An important value i use often while while programming",
   "stamp": "{0}",
 },
+
+Output: 
+
+An important value i use often while while programming
 ```
-Output: An important value i use often while while programming
 
 **Formatted Time LiveStamp Example: A A live updating stamp to insert the current date**
 
@@ -90,7 +93,9 @@ Note the "auto" value, Which tells LiveStamps to grab the current time. A consta
   "stamp": "@date        {0}",
 },
 
-*Output: @date        08-03-2015*
+Output: 
+
+@date        08-03-2015
 ```
 **Multi-part LiveStamp Example: A live updating stamp made from other stamps**
 
@@ -109,9 +114,11 @@ Changing the regex however, would abandon all the the previous stamps. Careful!
   "regex": "@copyright.+",
   "stamp": "@copyright   {0} {1}",
 },
-```
-*Output: @copyright   (c) TundraTech 08-03-2015*
 
+Output:
+
+@copyright   (c) TundraTech 08-03-2015*
+```
 
 
 

@@ -47,7 +47,16 @@ Just hit a key combo to inject a stamp, and it will automagically take care of i
 
 You can see the available default stamps by right clicking and exploring the LiveStamps context menu.
 
+----
+###STAMPING OPTIONS : Set 1 to enable, 0 to disable
 
+     AUTONONE = 0  If true, completely disables ALL auto stamp-on-saves
+     AUTOTIME = 1  Disable auto time stamping
+     AUTODATE = 1  Disable auto date stamping
+     AUTOSIGG = 1  Disable auto signature stamping
+     AUTOHASH = 1  Disable auto hashtag stamping
+
+----
 
 
 

@@ -23,18 +23,20 @@
 
 ####Package Control: 
 
-  * Open Sublime Text 3
-  * cmd+shift+p
-  * Package Control: Install Package
-  * Search for LiveStamps
+```
+  1. Open Sublime Text 3
+  2. cmd+shift+p
+  3. Package Control: Install Package
+  4. Search for LiveStamps
+```
 
 ####Manual: 
-
-  * Open Sublime Text 3
-  * Sublime Text Menu -> Preferences -> Browse Packages
-  * Create folder called LiveStamps
-  * Copy this repo to the folder.
-
+```
+  1. Open Sublime Text 3
+  2. Sublime Text Menu -> Preferences -> Browse Packages
+  3. Create folder called LiveStamps
+  4. Copy this repo to the folder.
+```
 
 ### USAGE:
 

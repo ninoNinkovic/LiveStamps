@@ -106,32 +106,22 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 'format': OPTIONAL Python format() to apply to the stamp's value
 ```
 
-####Format string usage:
-
-The "stamp" key defines the layout of a stamp using python format() flags.
-
-**For stamps with a single value:**
-```json
-"{0}"
-```
-
-For stamps with a mutiple values:
-
-
-"{0} {1} {2}"
-
+** Format string usage:
 
 ```json
 "mystamp": {
-  "value": ["(c) TundraTech", "date"],
-  "regex": "@copyright.+",
-  "stamp": "@copyright   {0} {1}",
+  "value": ["zero", "one", "two", "three"],
+  "regex": "@mystamp.+",
+  "stamp": "@mystamp   {0} {1} {2} {3}",
 },
 
 Output:
 
-@copyright   (c) TundraTech 08-03-2015
+@mystamp   zero one two three
 ```
+
+
+##Stamp Examples
 
 ####Basic Static Stamp: 
 

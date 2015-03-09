@@ -84,7 +84,7 @@ super+shift+p > type LiveStamps > select a stamp option
 
 Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
 
-**WARNING**
+**WARNING!**
 
 Regex patterns are powerful expressions!
     
@@ -95,7 +95,7 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 ####Anatomy of a LiveStamp:
 
 ```
-'value' : REQUIRED List or literal string value for the stamp. "auto" sets plugin to handle internally
+'value' : REQUIRED List or literal string value. Setting as "auto" tries to find the value for you
 
 'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
 
@@ -108,13 +108,9 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 
 
 
-####Basic Static Example: 
-
-
+####Basic Static Stamp: 
 
 A stamp with a constant output.
-
-
 
 ```json
 "mystamp": {
@@ -132,13 +128,9 @@ An important value i use often while programming
 
 ####"Live" Stamp Example (with time formatting): 
 
-
-
 A live updating stamp to insert the current date.
 
 Note the "auto" value, Which tells LiveStamps to grab the current time. A constant Python time value could be entered as the value as well, allowing a static time inputs.
-
-
 
 ```json
 "date": {
@@ -157,13 +149,11 @@ Output:
 
 ####Multi-part "Live" Stamp Example: 
 
+A live updating stamp with multiple values made from other stamps.
 
+This stamp would maintain the date portion automatically for you on save. Note, for this to stamp to auto update the previous "date" stamp example would have to be defined somewhere in the definitions
 
-A live updating stamp made from other stamps.
-
-This stamp would update the date portion automatically on save. Note, for this to stamp to auto update the previous "date" stamp would have to be defined somewhere in the definitions. (order NOT important)
-
-
+Note: the order of definitions is **NOT** important
 
 ```json
 "copyright": {
@@ -177,23 +167,17 @@ Output:
 @copyright   (c) TundraTech 08-03-2015
 ```
 
-
-
 As an exercise, let's examine what happens if the "date" stamp was NOT defined. The output would be assumed to be two static values as so:
-
-
 
 ```
 @copyright   (c) TundraTech date
 ```
 
-
-
 However, the stamp would still be "live" because a regex was supplied. 
 
 Changing either value in the list would instantly update all existing stamps in the document, allowing you to enter a static date or change to a different company name if desired. 
 
-**Changing the regex however, would abandon all the the previous stamps, rendering them permanent... Careful!**
+**However, changing the regex** would abandon all the the previously inserted stamps, rendering them permanent... Careful!**
 
 
 

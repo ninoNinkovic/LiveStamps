@@ -42,19 +42,33 @@
 ## USAGE:
 Just hit a key combo, or select a stamp from the context menu...  Thats it! 
 
-**Default shortcuts for all stamps:**
+Each "livestamp" is handled by regex and will automatically update every time the document is saved. Stamps can also ouput thier raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
+
+**Default shortcuts to inject all available stamps:**
 
 ```
- super+alt+a
- Right-click > LiveStamps > all
+super + alt + a (output all stamps)
+ctrl  + alt + a (output all stamp values)
+Right-click > LiveStamps > all
  ```
 Each "livestamp" is handled by regex and will automatically update every time the document is saved. Stamps can also ouput thier raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
 
-####Defaults key combos are:
+####Default shortcuts:
 
 ```
-  super + alt + letter -> inject the stamp
-  ctrl  + alt + letter -> inject the stamp's raw value
+
+super + alt + letter -> inject a stamp
+ctrl  + alt + letter -> inject a stamp's raw value
+Right-click > LiveStamps > stamp > stamptype
+Right-click > LiveStamps > value > stampvalue
+
+Example: inject all available stamps.
+  
+super + alt + a                        (output all stamps via keyboard)
+ctrl  + alt + a                        (output all stamp values via keyboard)
+Right-click > LiveStamps > stamp > all (output all stamps via context menu)
+Right-click > LiveStamps > value > all (output all stamp values via context menu)
+
 ```
 You can see all the default stamps by right clicking and exploring the LiveStamps context menu.
 

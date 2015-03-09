@@ -120,7 +120,7 @@ A live updating stamp made from other stamps.
 This stamp would update date portion automatically. Note, for this to stamp to auto update the previous "date" stamp would have to be defined. If the "date" stamp was NOT defined" the output would be:
 
 ```
-@copyright   (c) TundraTech date*
+@copyright   (c) TundraTech date
 ```
 
 However, the stamp would still be "live" because a regex was supplied. A change to any of its values would still cause an auto update, allowing you to enter a static date if desired, instantly updating all existing stamps in a document automatically.

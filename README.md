@@ -14,10 +14,17 @@ Stamps can be dynamic (update on save, or key binding) or static, single use val
 
 ## INSTALLATION :
 
-1. Easiest way is to use package control inside Sublime Text 
+###Package Control: 
+
+Open  package control inside Sublime Text 
   * cmd+shift+p
   * Package Control: Install Package
   * Search for TimeStamps
- 
-2. Copy this repo to a LiveStamps folder in your ST3 Packages directory. 
-  * Package directory can be found at
+
+###Manual: 
+
+Copy this repo to a LiveStamps folder in your ST3 Packages directory. 
+ * Open sublime Text
+ * Sublime Text Menu -> Preferences -> Browse Packages
+ * Create folder called LiveStamps
+ * Copy this repo to the folder.

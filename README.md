@@ -3,6 +3,13 @@
 
 ####Features:  
 
+  * Insert self updating metadata into docblock headers
+  * Add predefined signatures or class header info
+  * Track file meta no matter where it is moved/renamed
+  * Track date the document was last modified
+  * Track user or person who last modified the file.
+  * Add a checksum to the file
+  * Update all your projects with a new email address or URL when it changes
   * Easy static/dynamic custom stamp creation with powerful regex matching
   * Multipart stamps, or stamps made from other stamps. Great for a siggy!
   * (any or all of) Background highlighting, outlining, and guttermarking of livestamps 
@@ -10,7 +17,7 @@
   * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
   * timezone support, with DST
   * Python format() and strftime() formatting support
-
+  
 ### INSTALLATION:
 ----
 
@@ -46,7 +53,7 @@ You can see the available default stamps by right clicking and exploring the Liv
 
 **Key Definitions**
 
-    'value' : *REQUIRED* Any string value for the stamp. The plugin will try to determine "auto" stamps for you
+    'value' : *REQUIRED* Literal stamp value. The plugin will try to determine "auto" stamps for you
     'stamp' : *REQUIRED* Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
     'regex' : *OPTIONAL* Python regex pattern. If empty/excluded, the stamp is assumed static.
     'parts' : *OPTIONAL* List for multipart stamps. i.e. "parts": ["name", "email", "link"]

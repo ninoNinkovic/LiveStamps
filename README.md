@@ -113,19 +113,16 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 [format] : OPTIONAL For advanced users, a Python format() argument to apply to each stamp value
 ```
 
-**Stamp Values: string literals or a list of string literals.**
+**Stamp Values:**
 
-Both of the following examples are valid and provide the exact same output. 
+Values can be string literals or a list of string literals. Both of the following examples are valid and provide the exact same output. 
 
 ```json
-"mystamp": {
+"mystamp1": {
   "value": "zero",
   "stamp": "{0} one",
 },
-
-Output: zero one
-
-"mystamp": {
+"mystamp2": {
   "value": ["zero", "one"],
   "stamp": "{0} {1}",
 },
@@ -135,7 +132,7 @@ Output: zero one
 
 **Using other stamps as values:**
 
-Other stamps can be used as values. The plugin tries to match any defined value with an existing key in the stamp dictionary before injection. In the following example to use the "copyright" stamp within "mystamp", set one of the values as "copyright". 
+The plugin tries to match any value that you define with an existing key in the stamp dictionary before injection. In the following example to use the "copyright" stamp within "mystamp", set one of the values as "copyright". 
 
 ```json
 "copyright": {
@@ -149,7 +146,10 @@ Other stamps can be used as values. The plugin tries to match any defined value 
 
 Output: @mystamp   This stamp is (c) TundraTech 2015
 
-Note: if you need to use the word "copyright" in a stamp, but you also have a "copyright" stamp defined, it is totally fine. Instead of defining "copyright" as a value simply add it it to the injection string literally:
+Note: 
+if you need to use the word "copyright" in a stamp, but you also have a "copyright" 
+stamp defined, it is totally fine. Instead of defining "copyright" as a value simply add 
+it to the injection string literally:
 
 "mystamp": {
   "value": ["This stamp is"],
@@ -157,8 +157,6 @@ Note: if you need to use the word "copyright" in a stamp, but you also have a "c
 },
 
 Output: @mystamp   This stamp is copyright
-
-Easy!
 ```
 
 **Stamp injection flags:**

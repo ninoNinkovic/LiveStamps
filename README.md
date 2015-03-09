@@ -18,6 +18,7 @@
   * timezone support, with DST
   * Python format() and strftime() formatting support
   
+----
 ### INSTALLATION:
 ----
 

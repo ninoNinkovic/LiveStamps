@@ -19,8 +19,7 @@
   * Python format() and strftime() formatting support
   
 
-## INSTALLATION:
-
+### INSTALLATION:
 
 ####Package Control: 
 
@@ -37,30 +36,35 @@
   * Copy this repo to the folder.
 
 
-## USAGE:
-
+### USAGE:
 
 Just hit a key combo to inject a stamp, and it will automagically take care of itself! Each stamp has a "livestamp"  handled by regex for auto updating, and a raw value which is static, useful for things liek the current filename, path, parent folder or time, etc.
 
 ####Defaults key combos are:
- * super + alt + letter -> inject the stamp
- * ctrl  + alt + letter -> inject the stamp's raw value
-
+```
+  super + alt + letter -> inject the stamp
+  ctrl  + alt + letter -> inject the stamp's raw value
+```
 You can see the available default stamps by right clicking and exploring the LiveStamps context menu.
 
 
 ## Creating Custom Stamps:
 
-Live stamps are defined with the LiveStamps.sublime-settings file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
+Live stamps are defined within the LiveStamps.sublime-settings file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
 
 **Anatomy of a LiveStamp:**
 
 ```
 'value' : REQUIRED Literal stamp value. The plugin will try to determine "auto" stamps for you
+
 'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
+
 'regex' : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
+
 'parts' : OPTIONAL List for multipart stamps. i.e. "parts": ["name", "email", "link"]
+
 'format': OPTIONAL Python format() to apply to the stamp's value
+
 'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 ```
 

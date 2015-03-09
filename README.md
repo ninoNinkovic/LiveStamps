@@ -1,5 +1,5 @@
 # LiveStamps for Sublime Text 3
-###A Sublime Text 3 Plugin to inject self updating metadata into any document.
+####A Sublime Text 3 Plugin to inject self updating metadata into any document.
 
 ####Features:  
 
@@ -21,6 +21,7 @@
 
 ## INSTALLATION:
 
+
 ####Package Control: 
 
   * Open Sublime Text 3
@@ -38,6 +39,7 @@
 
 ## USAGE:
 
+
 Just hit a key combo to inject a stamp, and it will automagically take care of itself! Each stamp has a "livestamp"  handled by regex for auto updating, and a raw value which is static, useful for things liek the current filename, path, parent folder or time, etc.
 
 ####Defaults key combos are:
@@ -49,7 +51,7 @@ You can see the available default stamps by right clicking and exploring the Liv
 
 ## Creating Custom Stamps:
 
-Live stamps are defined with the LiveStamps.sublime settings file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
+Live stamps are defined with the LiveStamps.sublime-settings file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
 
 **Anatomy of a LiveStamp:**
 
@@ -61,6 +63,7 @@ Live stamps are defined with the LiveStamps.sublime settings file in JSON format
 'format': OPTIONAL Python format() to apply to the stamp's value
 'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 ```
+
 **WARNING**
 
 Regex patterns are powerful expressions!

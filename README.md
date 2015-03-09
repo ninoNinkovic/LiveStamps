@@ -42,35 +42,40 @@
 ## USAGE:
 Just hit a key combo, or select a stamp from the context menu...  Thats it! 
 
-Each "livestamp" is handled by regex and will automatically update every time the document is saved. Stamps can also ouput thier raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
+You can see all the default stamps by right clicking and exploring the LiveStamps context menu. Each "livestamp" is handled by regex and will automatically update every time the document is saved (default auto update is set to true). Stamps can also ouput their raw value as static data. Useful for things like the current filename, path, parent folder or time, etc.
 
-**Default shortcuts to inject all available stamps:**
-
-```
-super + alt + a (output all stamps)
-ctrl  + alt + a (output all stamp values)
-Right-click > LiveStamps > all
- ```
-Each "livestamp" is handled by regex and will automatically update every time the document is saved. Stamps can also ouput thier raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
-
-####Default shortcuts:
+####Using keyboard:
 
 ```
-
+General Example:
 super + alt + letter -> inject a stamp
 ctrl  + alt + letter -> inject a stamp's raw value
-Right-click > LiveStamps > stamp > stamptype
-Right-click > LiveStamps > value > stampvalue
 
-Example: inject all available stamps.
-  
-super + alt + a                        (output all stamps via keyboard)
-ctrl  + alt + a                        (output all stamp values via keyboard)
-Right-click > LiveStamps > stamp > all (output all stamps via context menu)
-Right-click > LiveStamps > value > all (output all stamp values via context menu)
+Example: inject all defined stamps.
+
+super + alt + a                        
+ctrl  + alt + a      
+```
+
+####Using menu:
 
 ```
-You can see all the default stamps by right clicking and exploring the LiveStamps context menu.
+General:
+Right-click > LiveStamps > stamp > stamptype
+Right-click > LiveStamps > value > stampvalue
+Tools       > LiveStamps > stamp > stamptype
+Tools       > LiveStamps > value > stampvalue
+
+Example: inject all available stamps.
+
+Right-click > LiveStamps > stamp > all
+Right-click > LiveStamps > value > all
+```
+
+#### Using Command Pallete:
+```
+super+shift+p > type LiveStamps > select a stamp option
+```
 
 
 

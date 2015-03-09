@@ -166,7 +166,7 @@ Output: zero one
 
 The plugin tries to match any value that you define with an existing key in the stamp dictionary before injection: 
 ```json
-To use the "copyright" stamp within "mystamp", set one of the "mystamp" the VALUES as "copyright". 
+To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyright". 
 
 "copyright": {
   "value": "(c) TundraTech 2015",
@@ -180,11 +180,19 @@ To use the "copyright" stamp within "mystamp", set one of the "mystamp" the VALU
 Output: @mystamp   This stamp is (c) TundraTech 2015
 ```
 
+**Regex Patterns**
 
+In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied. LiveStamps uses a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement:
 
-*Regex Patterns*
+```json
+"regex": "@mystamp.+",
+```
 
-In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied.
+This regex would inject your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy the pattern would be:
+
+```json
+"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
+```
 
 **WARNING!**
 
@@ -194,28 +202,6 @@ Test your regex on a separate document before trying it on a master file! An exp
 
 To test and learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
 
-**Default LiveStamps Regex Schema:** 
-
-```json
-"regex": "@mystamp.+",
-```
-
-The default regex pattern conforms nicely with docblock tags and is fairly safe/easy to implement. It injects your stamp values to anything that appears after "@mystamp" until the end of the line. 
-
-Of course advanced users may use any regex pattern they desire such as:
-
-```json
-"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
-```
-
-Which would match any dates in the document with the pattern dd-mm-yyyy such as:
-
-* 18-02-2015
-* 25-12-1999
-* 02-03-1979
-
-
-**BE CAREFUL! GENERIC REGEX PATTERNS CAN BE RISKY. MUCH SAFER TO USE A FLAG MATCHING PARADIGM, LIKE THE DEFAULT ONE USED BY LIVESTAMPS**
 
 
 

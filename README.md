@@ -87,7 +87,7 @@ super+shift+p > type LiveStamps > select a stamp option
   5. Modify stamp definitions in the "stamps" array at the bottom.
   6. If you make a mistake just copy from Settings - Default again.
 
-Livestamps are defined as a small python dictionary with the minimum following keys:
+**Livestamps are defined as a small python dictionary with the minimum following keys:**
 
 ```json
 "mystamp": {
@@ -98,9 +98,7 @@ Livestamps are defined as a small python dictionary with the minimum following k
 Output: An important value i use often while programming
 ```
 
-####Anatomy of a LiveStamp:
-
-Livestamps are defined as a small python dictionary with the following keys:
+###Anatomy of a LiveStamp:
 
 ```
 # Required Keys:
@@ -115,9 +113,9 @@ Livestamps are defined as a small python dictionary with the following keys:
 [format] : For advanced users, a Python format() argument to apply to each stamp value
 ```
 
-Each value that is defined gets mapped to a Python format() flag contained within the "stamp" key. The following example shows how you can get various outputs from the same stamp just by using changing the injection flags.
+####Injection flags:
 
-**Injection flag examples:**
+Each value defined gets mapped to a Python format() flag contained within the "stamp" key. The following example shows how you can get various outputs from the same stamp just by using changing the injection flags:
 
 ```json
 # Various outputs of "mystamp" using different injection flags:

@@ -47,30 +47,30 @@ You can see all the default stamps by right clicking and exploring the LiveStamp
 
 ####Using keyboard:
 
-```
-General Example:
+```json
+General Usage:
 super + alt + letter -> inject a stamp
 ctrl  + alt + letter -> inject a stamp's raw value
 
-Example: inject all defined stamps.
-
-super + alt + a                        
-ctrl  + alt + a      
+Example: All stamps
+To view all stamps: super + alt + a     
+To view all values: ctrl  + alt + a      
 ```
 
-####Using menu:
+####Using Menus:
 
 ```
-General:
-Right-click > LiveStamps > stamp > stamptype
-Right-click > LiveStamps > value > stampvalue
-Tools       > LiveStamps > stamp > stamptype
-Tools       > LiveStamps > value > stampvalue
+Context Menu:
+Right-click -> LiveStamps -> stamp -> stamptype
+Right-click -> LiveStamps -> value -> stampvalue
 
-Example: inject all available stamps.
+Tools Menu:
+Tools       -> LiveStamps -> stamp -> stamptype
+Tools       -> LiveStamps -> value -> stampvalue
 
-Right-click > LiveStamps > stamp > all
-Right-click > LiveStamps > value > all
+Example: Inject Time stamp
+Right-click -> LiveStamps -> Stamp -> Time
+Right-click -> LiveStamps -> Value -> Time
 ```
 
 #### Using Command Pallete:
@@ -83,12 +83,16 @@ super+shift+p > type LiveStamps > select a stamp option
 
 Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples.
 
-To view the default examples:
+**To view the default stamps or define your own:**
 
 ```
   1. Open Sublime Text 3
-  2. Sublime Text Menu -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
-  3. Scroll down the file and have a look at the stamp definitions
+  2. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
+  3. Copy everything to clipboard.
+  4. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - User
+  5. Paste and save.
+  6. Modify Settings - User as desired, if you make a mistake just copy from Settings - Default again.
+  &. Stamp definitions are in the JSON "stamps" array at the bottom.
 ```
 
 **WARNING!**

@@ -182,7 +182,7 @@ Output: @mystamp   This stamp is (c) TundraTech 2015
 
 
 
-###Regex Patterns: Making a "LIVE" Stamp
+*Regex Patterns*
 
 In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied.
 
@@ -194,26 +194,28 @@ Test your regex on a separate document before trying it on a master file! An exp
 
 To test and learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
 
-**Default Livestamps Regex Schema** 
+**Default LiveStamps Regex Schema:** 
 
 ```json
 "regex": "@mystamp.+",
 ```
 
-The above regex conforms nicely with docblock tags and is fairly safe/easy to implement. It injects your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern you want such as:
+The default regex pattern conforms nicely with docblock tags and is fairly safe/easy to implement. It injects your stamp values to anything that appears after "@mystamp" until the end of the line. 
+
+Of course advanced users may use any regex pattern they desire such as:
 
 ```json
 "regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
 ```
 
-Which would match any items in the document with the pattern dd-mm-yyyy such as
+Which would match any dates in the document with the pattern dd-mm-yyyy such as:
 
-*18-02-2015
-*25-12-1999
-*02-03-1979
+* 18-02-2015
+* 25-12-1999
+* 02-03-1979
 
 
-**MAKE SURE YOU CHOOSE A SAFE REGEX PATTERN PARADIGM! GENERIC REGEX PATTERNS CAN BE RISKY. MUCH BETTER TO USE A FLAG MATCHING REGEX, LIKE THE DEFAULT ONE USED BY LIVESTAMPS**
+**BE CAREFUL! GENERIC REGEX PATTERNS CAN BE RISKY. MUCH SAFER TO USE A FLAG MATCHING PARADIGM, LIKE THE DEFAULT ONE USED BY LIVESTAMPS**
 
 
 

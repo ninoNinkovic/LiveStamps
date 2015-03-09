@@ -72,43 +72,45 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 
 ```json
 "mystamp": {
-        "value": "An important value i use often while while programming",
-        "stamp": "{0}",
-    },
-    Output: An important value i use often while while programming
+  "value": "An important value i use often while while programming",
+  "stamp": "{0}",
+},
 ```
+Output: An important value i use often while while programming
 
 **Formatted Time LiveStamp Example: A A live updating stamp to insert the current date**
 
 Note the "auto" value, Which tells LiveStamps to grab the current time. A constant Python time value could be entered as the value as well, allowing a static time inputs.
 
-    "date": {
-        "value": "auto",
-        "strft": "%d-%m-%Y",
-        "regex": "@date.+",
-        "stamp": "@date        {0}",
-    },
-    
-    Output: @date        08-03-2015
+```json
+"date": {
+   value": "auto",
+  "strft": "%d-%m-%Y",
+  "regex": "@date.+",
+  "stamp": "@date        {0}",
+},
+ ```
+*Output: @date        08-03-2015*
 
 **Multi-part LiveStamp Example: A live updating stamp made from other stamps**
 
 This stamp would update date portion automatically. Note, for this to stamp to auto update the previous "date" stamp would have to be defined. If the "date" stamp was NOT defined" the output would be:
 
-    @copyright   (c) TundraTech date
+*@copyright   (c) TundraTech date*
 
 However, the stamp would still be "live" because a regex was supplied. A change to any of its values would still cause an auto update, allowing you to enter a static date if desired, instantly updating all existing stamps in a document automatically.
 
 Changing the regex however, would abandon all the the previous stamps. Careful!
 
-    "copyright": {
-    	"value": "(c) TundraTech",
-    	"parts": ["copyright", "date"],
-    	"regex": "@copyright.+",
-    	"stamp": "@copyright   {0} {1}",
-    },
-
-    Output: @copyright   (c) TundraTech 08-03-2015
+```json
+"copyright": {
+  "value": "(c) TundraTech",
+  "parts": ["copyright", "date"],
+  "regex": "@copyright.+",
+  "stamp": "@copyright   {0} {1}",
+},
+```
+*Output: @copyright   (c) TundraTech 08-03-2015*
 
 
 

@@ -62,11 +62,11 @@ You can see the available default stamps by right clicking and exploring the Liv
     'strft' : *OPTIONAL* Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 
 **WARNING**
-    
+
 Regex patterns are powerful expressions!
     
 Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
-
+---
 
 **Basic Static Example: A stamp with a a constant output**
 
@@ -80,7 +80,7 @@ Output:
 
 An important value i use often while while programming
 ```
-
+---
 **Formatted Time LiveStamp Example: A A live updating stamp to insert the current date**
 
 Note the "auto" value, Which tells LiveStamps to grab the current time. A constant Python time value could be entered as the value as well, allowing a static time inputs.
@@ -97,12 +97,16 @@ Output:
 
 @date        08-03-2015
 ```
+---
 **Multi-part LiveStamp Example: A live updating stamp made from other stamps**
 
 This stamp would update date portion automatically. Note, for this to stamp to auto update the previous "date" stamp would have to be defined. If the "date" stamp was NOT defined" the output would be:
 
-*@copyright   (c) TundraTech date*
+```
+output if "date" stamp not defined
 
+@copyright   (c) TundraTech date*
+```
 However, the stamp would still be "live" because a regex was supplied. A change to any of its values would still cause an auto update, allowing you to enter a static date if desired, instantly updating all existing stamps in a document automatically.
 
 Changing the regex however, would abandon all the the previous stamps. Careful!

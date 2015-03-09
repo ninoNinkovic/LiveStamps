@@ -92,13 +92,10 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 
 
 
-**Anatomy of a LiveStamp:**
-
-
+####Anatomy of a LiveStamp:
 
 ```
-'value' : REQUIRED List or literal string value for the stamp."auto" tells LiveStamps to try and find 
-          the value for you. (when possible)
+'value' : REQUIRED List or literal string value for the stamp. "auto" sets plugin to handle internally
 
 'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
 

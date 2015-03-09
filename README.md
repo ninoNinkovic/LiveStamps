@@ -41,11 +41,9 @@
 
 ## USAGE:
 
-**Just hit a key combo, or select a stamp from the context menu...  Easy!**
+Each "livestamp" is handled by regex and will update whenever the document is saved by default. Stamps can also output their raw value as static data which is useful for things like the current filename, path, parent folder or time, etc.
 
-You can see all the default stamps by right clicking and exploring the LiveStamps context menu. Each "livestamp" is handled by regex and will update whenever the document is saved (by default auto_update is set to true). Stamps can also ouput their raw value as static data which is useful for things like the current filename, path, parent folder or time, etc.
-
-####Using keyboard:
+####Keyboard:
 
 ```json
 General Usage:
@@ -57,7 +55,7 @@ To view all stamps: super + alt + a
 To view all values: ctrl  + alt + a      
 ```
 
-####Using Menus:
+####Menus:
 
 ```
 Context Menu:
@@ -115,9 +113,9 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 [format] : OPTIONAL For advanced users, a Python format() argument to apply to each stamp value
 ```
 
-**Stamp Values:**
+**Stamp Values: string literals or a list of string literals.**
 
-Stamp values can be string literals or a list of string literals. Both of the following examples are valid and provide the exact same output. 
+Both of the following examples are valid and provide the exact same output. 
 
 ```json
 "mystamp": {

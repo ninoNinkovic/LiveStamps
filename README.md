@@ -117,7 +117,7 @@ Output:
 
 A live updating stamp made from other stamps.
 
-This stamp would update the date portion automatically on save. Note, for this to stamp to auto update the previous "date" stamp would have to be defined somewhere in the definitions. (order is NOT important). 
+This stamp would update the date portion automatically on save. Note, for this to stamp to auto update the previous "date" stamp would have to be defined somewhere in the definitions. (order NOT important)
 
 ```json
 "copyright": {
@@ -132,7 +132,9 @@ Output:
 @copyright   (c) TundraTech 08-03-2015
 ```
 
-As an exercise, let's examine what happens if the "date" stamp is NOT defined. Simple, the output would be assumed to be two static values as so:
+As an exercise, let's examine what happens if the "date" stamp is NOT defined.
+
+Simple, the output would be assumed to be two static values as so:
 
 ```
 @copyright   (c) TundraTech date
@@ -140,7 +142,7 @@ As an exercise, let's examine what happens if the "date" stamp is NOT defined. S
 
 However, the stamp would still be "live" because a regex was supplied. 
 
-A change to any of its values would still cause an auto update, allowing you to enter a static date if desired, instantly updating all existing stamps in a document automatically. **Changing the regex however, would abandon all the the previous stamps. Careful!**
+A change to any of its values would still cause an auto update, allowing you to enter a static date if desired. Changing either value would instantly update all existing stamps in the document. **Changing the regex however, would abandon all the the previous stamps. Careful!**
 
 
 

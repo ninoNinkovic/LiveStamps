@@ -18,10 +18,7 @@
   * timezone support, with DST
   * Python format() and strftime() formatting support
   
-
-### INSTALLATION:
-
-####Package Control: 
+####Intall via Package Control: 
 
 ```
   1. Open Sublime Text 3
@@ -30,7 +27,7 @@
   4. Search for LiveStamps
 ```
 
-####Manual: 
+####Manual Install: 
 ```
   1. Open Sublime Text 3
   2. Sublime Text Menu -> Preferences -> Browse Packages

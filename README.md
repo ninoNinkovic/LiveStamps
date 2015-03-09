@@ -56,6 +56,15 @@
 
 Just hit a key combo, or select a stamp from the context menu...  Thats it! 
 
+```
+Default shortcut for all stamps:
+  super+alt+a
+  OR
+  Right-click > LiveStamps > all
+ 
+  ctrl+alt+a
+```
+
 Each "livestamp" is handled by regex and will automatically update every time the document is saved. Stamps can also ouput thier raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
 
 
@@ -67,6 +76,7 @@ Each "livestamp" is handled by regex and will automatically update every time th
 ```
   super + alt + letter -> inject the stamp
   ctrl  + alt + letter -> inject the stamp's raw value
+  
 ```
 
 

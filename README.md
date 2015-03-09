@@ -3,7 +3,7 @@
 
 ####Features:  
 
-  * Insert self updating metadata into docblock headers
+  * Insert self updating tags into docblock headers
   * Add predefined signatures or class header info
   * Track file meta no matter where it is moved/renamed
   * Track date the document was last modified
@@ -12,11 +12,11 @@
   * Update all your projects with a new email address or URL when it changes
   * Easy static/dynamic custom stamp creation with powerful regex matching
   * Multipart stamps, or stamps made from other stamps. Great for a siggy!
-  * (any or all of) Background highlighting, outlining, and guttermarking of livestamps 
-  * Inject stamps or values via keyboard shortcut, Sublime Command, tools menu, context menu, or sidebar menu
+  * Optional background highlighting, outlining, or guttermarking of livestamps 
+  * Inject stamps via keyboard, command palette, tools, context, or sidebar menus
   * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
   * timezone support, with DST
-  * Python format() and strftime() formatting support
+  * Python format() and strftime() formatting support within stamps
   
 ####Intall via Package Control: 
 
@@ -37,16 +37,20 @@
 
 ## USAGE:
 
-Just hit a key combo to inject a stamp, and it will automagically take care of itself! 
+Just hit a key combo, or select a stamp from the context menu! 
 
-Each "livestamp" is handled by regex for auto updating, and also contains a raw value which is static, useful for things like the current filename, path, parent folder or time, etc.
+Thats it! 
+
+Each "livestamp" is handled by regex for auto updating, and can also ouput it's raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
 
 ####Defaults key combos are:
+
 ```
   super + alt + letter -> inject the stamp
   ctrl  + alt + letter -> inject the stamp's raw value
 ```
-You can see the default stamps by right clicking and exploring the LiveStamps context menu.
+
+You can see all the default stamps by right clicking and exploring the LiveStamps context menu.
 
 
 ## Creating Custom Stamps:
@@ -57,7 +61,7 @@ Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON fo
 
 Regex patterns are powerful expressions!
     
-Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
 
 **Anatomy of a LiveStamp:**
@@ -90,7 +94,6 @@ Output:
 An important value i use often while programming
 ```
 
-
 ####"Live" Stamp Example (with time formatting): 
 
 A live updating stamp to insert the current date.
@@ -110,7 +113,6 @@ Output:
 @date        08-03-2015
 ```
 
-
 ####Multi-part "Live" Stamp Example: 
 
 A live updating stamp made from other stamps.
@@ -129,9 +131,7 @@ Output:
 @copyright   (c) TundraTech 08-03-2015
 ```
 
-As an exercise, let's examine what happens if the "date" stamp is NOT defined.
-
-Simple, the output would be assumed to be two static values as so:
+As an exercise, let's examine what happens if the "date" stamp was NOT defined. The output would be assumed to be two static values as so:
 
 ```
 @copyright   (c) TundraTech date
@@ -139,9 +139,9 @@ Simple, the output would be assumed to be two static values as so:
 
 However, the stamp would still be "live" because a regex was supplied. 
 
-Changing either value in the parts list would instantly update all existing stamps in the document, allowing you to enter a static date or different company name if desired. 
+Changing either value in the list would instantly update all existing stamps in the document, allowing you to enter a static date or change to a different company name if desired. 
 
-**Changing the regex however, would abandon all the the previous stamps. Careful!**
+**Changing the regex however, would abandon all the the previous stamps, rendering them permanent... Careful!**
 
 
 

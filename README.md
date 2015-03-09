@@ -66,10 +66,11 @@ You can see the available default stamps by right clicking and exploring the Liv
   format : *OPTIONAL* Python format() string argument to apply to the stamp's value
   strft  : *OPTIONAL* Python strftime() string argument to apply to a time value i.e. "%d-%m-%Y"
 
-    WARNING**
+    **WARNING**
+    
     Regex patterns are powerful expressions!
     
-    Test your stamp regex online at a site like www.regexr.com first!!!
+    Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!!
     
     An expression that accidentally matches valid code, will instantly
     replace it. A mistyped pattern that is too "loose" could replace a

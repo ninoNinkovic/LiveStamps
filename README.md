@@ -52,13 +52,13 @@ You can see the available default stamps by right clicking and exploring the Liv
 
 ### Creating Custom Stamps:
 
-----------------------------------------------------------------------------------------------------
- LiveStamp definitions
+ Anatomy of a LiveStamp
 ----------------------------------------------------------------------------------------------------
 
   LiveStamp key definitions:
 
   id     : *REQUIRED* Unique identifier for the stamp, i.e. "name", "signature" etc.
+  
   value  : *REQUIRED* Can be a static value or "auto". The plugin will try to determin auto stamps for you
   stamp  : *REQUIRED* The format string for the stamp. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
   regex  : *OPTIONAL* Python regex pattern for livestamps. If empty or excluded, the stamp is injected as a static value.

@@ -12,13 +12,13 @@ A Sublime Text 3 Plugin to inject self updating metadata into any document.
 
 ####Features:  
 
- * Easy static/dynamic custom stamp creation with powerful regex matching
- * Multipart stamps, or stamps made from other stamps. Great for a siggy!
- * (any or all of) Background highlighting, outlining, and guttermarking of livestamps 
- * Inject stamps or values via keyboard shortcut, Sublime Command, tools menu, context menu, or sidebar menu
- * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
- * timezone support, with DST
- * Python format() and strftime() format string support within stamps
+    * Easy static/dynamic custom stamp creation with powerful regex matching
+    * Multipart stamps, or stamps made from other stamps. Great for a siggy!
+    * (any or all of) Background highlighting, outlining, and guttermarking of livestamps 
+    * Inject stamps or values via keyboard shortcut, Sublime Command, tools menu, context menu, or sidebar menu
+    * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
+    * timezone support, with DST
+    * Python format() and strftime() format string support within stamps
 
 
 ### INSTALLATION:
@@ -50,9 +50,8 @@ You can see the available default stamps by right clicking and exploring the Liv
 ----
 ###STAMPING OPTIONS : Set 1 to enable, 0 to disable
 
-     AUTONONE = 0  If true, completely disables ALL auto stamp-on-saves
-     AUTOTIME = 1  Disable auto time stamping
-     AUTODATE = 1  Disable auto date stamping
+    AUTONONE = 0  If true, completely disables ALL auto stamp-on-saves
+    AUTOTIME = 1  Disable auto time stampinAUTODATE = 1  Disable auto date stamping
      AUTOSIGG = 1  Disable auto signature stamping
      AUTOHASH = 1  Disable auto hashtag stamping
 

@@ -70,53 +70,48 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
     'strft' : *OPTIONAL* Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 
 
+    Basic Static Example:
+	
+    A basic stamp with a constant output that doesnt auto update.
+
+      "mystamp": {
+         "value": "An important value i use often while while programming",
+          "stamp": "{0}",
+      },
+
+    Output: An important value i use often while while programming
 
 
-	Basic Static Example:
-  ===================================================================================
+    Formatted Time LiveStamp Example:
 
- 	A basic stamp with a constant output that doesnt auto update.
+    A stamp which would auto update the current date every day. Note the "auto" value,
+    Which tells LiveStamps to grab the current time. A constant Python time value could
+    be entered here as well, allowing static time inputs...though I can't see a good
+    reason for that lol.
 
-  	"mystamp": {
-		  "value": "An important value i use often while while programming",
-		  "stamp": "{0}",
-  	},
+    "date": {
+        "value": "auto",
+        strft": "%d-%m-%Y",
+        "regex": "@date.+",
+        "stamp": "@date        {0}",
+    },
 
-	Output: An important value i use often while while programming
-
-
-	Formatted Time LiveStamp Example:
-  ===================================================================================
-
-  A stamp which would auto update the current date every day. Note the "auto" value,
-  Which tells LiveStamps to grab the current time. A constant Python time value could
-  be entered here as well, allowing static time inputs...though I can't see a good
-  reason for that lol.
-
-  	"date": {
-  		"value": "auto",
-  		"strft": "%d-%m-%Y",
-  		"regex": "@date.+",
-  		"stamp": "@date        {0}",
-  	},
-
-   Output: @date        08-03-2015
+    Output: @date        08-03-2015
 
 
-	Multi-part LiveStamp Example:
-  ===================================================================================
+    Multi-part LiveStamp Example:
 
-  A stamp with a "live" output that would update the year value automatically.
-  Note, for this to stamp to auto update the previous "date" stamp would have to be
-  defined. If the "date" stamp was NOT defined" the output would be:
+    A stamp with a "live" output that would update the year value automatically.
+    Note, for this to stamp to auto update the previous "date" stamp would have to be
+    defined. If the "date" stamp was NOT defined" the output would be:
 
-  	@copyright   (c) TundraTech date
+      @copyright   (c) TundraTech date
 
-  However, the stamp would still be "live" because a regex was supplied. A change to
-  any of its values would still cause an auto update, allowing you to enter a static
-  date if desired, instantly updating all existing stamps in a document automatically.
+    However, the stamp would still be "live" because a regex was supplied. A change to
+    any of its values would still cause an auto update, allowing you to enter a static
+    date if desired, instantly updating all existing stamps in a document automatically.
 
-  Changing the regex however, would abandon all the the previous stamps. Careful!
+    Changing the regex however, would abandon all the the previous stamps. Careful!
 
     "copyright": {
     	"value": "(c) TundraTech",
@@ -125,7 +120,7 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
     	"stamp": "@copyright   {0} {1}",
     },
 
-	Output: @copyright   (c) TundraTech 08-03-2015
+    Output: @copyright   (c) TundraTech 08-03-2015
 
 --------------------------------------------------------------------------------------
 

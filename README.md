@@ -174,12 +174,12 @@ The plugin tries to match any value that you define with an existing key in the 
 },
 
 Output: @mystamp   This stamp is (c) TundraTech 2015
+```
+**Note:**
 
-Note: 
-if you need to use the word "copyright" in a stamp, but you also have a "copyright" 
-stamp defined, it is totally fine. Instead of defining "copyright" as a value simply add 
-it to the injection string literally:
+if you need to use the word "copyright" in a stamp, but you also have a "copyright" stamp defined, it is totally fine. Instead of defining "copyright" as a value simply add it to the injection string literally:
 
+```
 "mystamp": {
   "value": ["This stamp is"],
   "stamp": "@mystamp   {0} copyright",

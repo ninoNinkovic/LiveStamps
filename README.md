@@ -106,6 +106,42 @@ Livestamps are defined as a small python dictionary with the following keys:
 [format] : For advanced users, a Python format() argument to apply to each stamp value
 ```
 
+**Stamp injection flags:**
+
+Each defined value is mapped to a Python format() flag and can be used anywhere within the stamp output. Have a look at some injection flag fun below. The example shows how you can get various outputs from the same stamp just by using different injection flags.
+
+```json
+
+# Various outputs of "mystamp" using different injection flags:
+
+"mystamp": {
+  "value": ["zero", "one", "two", "three"],
+  "regex": "@mystamp.+",
+  "stamp": "@mystamp   {0} {1} {2} {3}",
+},
+
+# Normal Output: Each value is mapped to a Python format() flag:
+"stamp" : "@mystamp   {0} {1} {2} {3}",
+Output  :  @mystamp   zero one two three
+
+# Mixed order is allowed and flags can be injected anywhere:
+"stamp" : "@mystamp   {3} hello {1} {2} world {0}",
+Output  :  @mystamp   three hello one two world zero
+
+# Not all flags have to be used
+"stamp" : "@mystamp   {0} {1}",
+Output  :  @mystamp   zero one
+
+# It's OK to define more flags used than values to allow for future expansion
+"stamp" : "@mystamp   {0} {1} {2} {3} {4} {5} {6} {7}",
+Output  :  @mystamp   zero one two three
+
+# Using a flag more than once is OK. 8)
+"stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3} {0}",
+Output  :  @mystamp   zero zero zero zero one two three zero
+```
+
+
 **Stamp Values:**
 
 Values can be string literals or a list of string literals. Both of the following examples are valid and provide the exact same output. 
@@ -152,40 +188,6 @@ it to the injection string literally:
 Output: @mystamp   This stamp is copyright
 ```
 
-**Stamp injection flags:**
-
-Each defined value is mapped to a Python format() flag and can be used anywhere within the stamp output. Have a look at some injection flag fun below. The example shows how you can get various outputs from the same stamp just by using different injection flags.
-
-```json
-
-# Various outputs of "mystamp" using different injection flags:
-
-"mystamp": {
-  "value": ["zero", "one", "two", "three"],
-  "regex": "@mystamp.+",
-  "stamp": "@mystamp   {0} {1} {2} {3}",
-},
-
-# Normal Output: Each value is mapped to a Python format() flag:
-"stamp" : "@mystamp   {0} {1} {2} {3}",
-Output  :  @mystamp   zero one two three
-
-# Mixed order is allowed and flags can be injected anywhere:
-"stamp" : "@mystamp   {3} hello {1} {2} world {0}",
-Output  :  @mystamp   three hello one two world zero
-
-# Not all flags have to be used
-"stamp" : "@mystamp   {0} {1}",
-Output  :  @mystamp   zero one
-
-# It's OK to define more flags used than values to allow for future expansion
-"stamp" : "@mystamp   {0} {1} {2} {3} {4} {5} {6} {7}",
-Output  :  @mystamp   zero one two three
-
-# Using a flag more than once is OK. 8)
-"stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3} {0}",
-Output  :  @mystamp   zero zero zero zero one two three zero
-```
 
 *Regex patterns:**
 

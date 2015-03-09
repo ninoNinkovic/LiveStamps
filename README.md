@@ -20,7 +20,6 @@
   
 
 ## INSTALLATION:
-----
 
 ####Package Control: 
 
@@ -37,8 +36,7 @@
   * Copy this repo to the folder.
 
 
-### USAGE:
-----
+## USAGE:
 
 Just hit a key combo to inject a stamp, and it will automagically take care of itself! Each stamp has a "livestamp"  handled by regex for auto updating, and a raw value which is static, useful for things liek the current filename, path, parent folder or time, etc.
 
@@ -49,8 +47,8 @@ Just hit a key combo to inject a stamp, and it will automagically take care of i
 You can see the available default stamps by right clicking and exploring the LiveStamps context menu.
 
 
-### Creating Custom Stamps:
----
+## Creating Custom Stamps:
+
 **Anatomy of a LiveStamp:**
 
 ```

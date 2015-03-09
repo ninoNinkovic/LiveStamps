@@ -94,24 +94,23 @@ super+shift+p > type LiveStamps > select a stamp option
 Livestamps are defined as a small python dictionary with the following keys:
 
 ```
-[value]  : A string literal, or list. Setting as "auto" tries to find the value for you
+# Required Keys:
 
+[value]  : A string literal, or list. Setting as "auto" tries to find the value for you
 [stamp]  : Output string. Value(s) are inserted at defined injection marker(s). See below.
 
+# Optional Keys:
+
 [regex]  : Python regex pattern. If empty/excluded, the stamp is assumed static.
-
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
-
 [format] : For advanced users, a Python format() argument to apply to each stamp value
 ```
 
+Each value that is defined gets mapped to a Python format() flag contained within the "stamp" key. The following example shows how you can get various outputs from the same stamp just by using changing the injection flags.
 
-**Stamp injection flags:**
-
-Each defined value is mapped to a Python format() flag and can be used anywhere within the stamp output. Have a look at some injection flag fun below. The example shows how you can get various outputs from the same stamp just by using different injection flags.
+**Injection flag examples:**
 
 ```json
-
 # Various outputs of "mystamp" using different injection flags:
 
 "mystamp": {
@@ -136,9 +135,13 @@ Output  :  @mystamp   zero one
 "stamp" : "@mystamp   {0} {1} {2} {3} {4} {5} {6} {7}",
 Output  :  @mystamp   zero one two three
 
-# Using a flag more than once is OK. 8)
+# Using a flag more than once is OK.
 "stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3} {0}",
 Output  :  @mystamp   zero zero zero zero one two three zero
+
+# Using no flags is also OK.
+"stamp" : "@mystamp   ",
+Output  :  @mystamp   
 ```
 
 
@@ -161,9 +164,10 @@ Output: zero one
 
 **Using other stamps as values:**
 
-The plugin tries to match any value that you define with an existing key in the stamp dictionary before injection. In the following example to use the "copyright" stamp within "mystamp", set one of the values as "copyright". 
-
+The plugin tries to match any value that you define with an existing key in the stamp dictionary before injection: 
 ```json
+To use the "copyright" stamp within "mystamp", set one of the "mystamp" the VALUES as "copyright". 
+
 "copyright": {
   "value": "(c) TundraTech 2015",
   "stamp": "{0}",
@@ -175,29 +179,12 @@ The plugin tries to match any value that you define with an existing key in the 
 
 Output: @mystamp   This stamp is (c) TundraTech 2015
 ```
-**Note:**
-
-if you need to use the word "copyright" in a stamp, but you also have a "copyright" stamp defined, it is totally fine. Instead of defining "copyright" as a value simply add it to the injection string literally:
-
-```json
-"copyright": {
-  "value": "(c) TundraTech 2015",
-  "stamp": "{0}",
-},
-"mystamp": {
-  "value": ["This stamp is"],
-  "stamp": "@mystamp   {0} copyright",
-},
-
-Output: @mystamp   This stamp is copyright
-```
-
 
 ##Regex Patterns: Making a "LIVE" Stamp
 
 In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied.
 
-**WARNING!**
+WARNING!
 
 Regex patterns are powerful expressions!
     

@@ -40,9 +40,10 @@
 
 
 ## USAGE:
+
 Just hit a key combo, or select a stamp from the context menu...  Thats it! 
 
-You can see all the default stamps by right clicking and exploring the LiveStamps context menu. Each "livestamp" is handled by regex and will automatically update every time the document is saved (default auto update is set to true). Stamps can also ouput their raw value as static data. Useful for things like the current filename, path, parent folder or time, etc.
+You can see all the default stamps by right clicking and exploring the LiveStamps context menu. Each "livestamp" is handled by regex and will update whenever the document is saved (by default auto_update is set to true). Stamps can also ouput their raw value as static data which is useful for things like the current filename, path, parent folder or time, etc.
 
 ####Using keyboard:
 
@@ -96,7 +97,7 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 
 
 ```
-'value' : REQUIRED A list or literal string value. The plugin will try to determine "auto" stamps for you.
+'value' : REQUIRED List or literal string value. The special value "auto" is handled by LiveStamps internally
 
 'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
 

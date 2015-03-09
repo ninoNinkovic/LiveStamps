@@ -95,10 +95,12 @@ Livestamps are defined as a small python dictionary with the following keys:
 
 ```
 # Required Keys
-[value]  : Literal string, or list. Setting as "auto" tries to find the value for you
-[stamp]  : Injection flag string. Value(s) are inserted at defined tag marker(s)
+
+[value]  : A string literal, or list. Setting as "auto" tries to find the value for you
+[stamp]  : Output string. Value(s) are inserted at defined injection marker(s). See below.
 
 # Optional Keys
+
 [regex]  : Python regex pattern. If empty/excluded, the stamp is assumed static.
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 [format] : For advanced users, a Python format() argument to apply to each stamp value

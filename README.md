@@ -177,9 +177,9 @@ However, the stamp would still be considered "live" because a regex was supplied
 
 Because the stamp is still "live", changing either value in the list would instantly update all existing stamps matching the regex within the document, allowing you instantly update the document with a static date or change to a different company name if desired. 
 
-**Note:
+**Note:**
 
-Changing the regex would abandon all previously inserted "copyright" stamps, rendering them as static/permanent... Careful!**
+**Changing the regex would abandon all previously inserted "copyright" stamps, rendering them as static/permanent... Careful!**
 
 
 

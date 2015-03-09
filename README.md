@@ -63,13 +63,11 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 **Anatomy of a LiveStamp:**
 
 ```
-'value' : REQUIRED Literal stamp value. The plugin will try to determine "auto" stamps for you
+'value' : REQUIRED A list or literal string value. The plugin will try to determine "auto" stamps for you.
 
 'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
 
 'regex' : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
-
-'parts' : OPTIONAL List for multipart stamps. i.e. "parts": ["name", "email", "link"]
 
 'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 
@@ -121,8 +119,7 @@ This stamp would update the date portion automatically on save. Note, for this t
 
 ```json
 "copyright": {
-  "value": "(c) TundraTech",
-  "parts": ["copyright", "date"],
+  "value": ["(c) TundraTech", "date"],
   "regex": "@copyright.+",
   "stamp": "@copyright   {0} {1}",
 },

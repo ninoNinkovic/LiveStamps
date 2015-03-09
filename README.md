@@ -97,7 +97,7 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 
 
 ```
-'value' : REQUIRED List or literal string value. The special value "auto" is handled by LiveStamps internally
+'value' : REQUIRED List or literal string value, "auto" tells LiveStamps to try and find the value for you
 
 'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
 

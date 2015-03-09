@@ -189,38 +189,41 @@ Output: @mystamp   This stamp is copyright
 ```
 
 
-*Regex patterns:**
+**Regex Patterns:**
 
-In order to make a stamp 'live' so that is automatically updated whenever the document is saved, a regex pattern must be supplied. The default regex pattern schema defined by LiveStamps conforms with docblock tags and is fairly safe/easy to implement:
-
-```json
-
-"regex": "@mystamp.+",
-
-This will inject your stamp values to anything that appears after "@mystamp" until the end of the line.
-
-Example
-
-Of course feel free to use any regex pattern you want such as:
-
-"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
-
-which would update any date in the document matching the pattern xx-xx-xxxx such as
-
-18-02-2015
-25-12-1999
-02-03-1979
-
-
-```
-
-To learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
+In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied.
 
 **WARNING!**
 
 Regex patterns are powerful expressions!
     
 Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+
+To learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
+
+**The default regex schema used by LiveStamps conforms with docblock tags and is fairly safe/easy to implement:**
+
+```json
+"regex": "@mystamp.+",
+```
+
+This will inject your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern you want such as:
+
+```json
+"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
+```
+
+Which would match any items in the document with the pattern dd-mm-yyyy such as
+
+*18-02-2015
+*25-12-1999
+*02-03-1979
+
+
+** MAKE SURE YOU CHOOSE A SAFE REGEX PATTERN PARADIGM! GENERIC REGEX PATTERNS CAN BE RISKY. MUCH BETTER TO USE A FLAG MATCHING REGEX, LIKE THE DEFAULT ONE USED BY LIVESTAMPS**
+
+
+
 
 ```json
 ```

@@ -49,10 +49,10 @@ Just hit a key combo to inject a stamp, and it will automagically take care of i
 You can see the available default stamps by right clicking and exploring the LiveStamps context menu.
 
 
-### Creating Custom Stamps: Anatomy of a LiveStamp
----
+### Creating Custom Stamps:
 
-**Key Definitions**
+
+**Anatomy of a LiveStamps**
 
     'value' : *REQUIRED* Literal stamp value. The plugin will try to determine "auto" stamps for you
     'stamp' : *REQUIRED* Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
@@ -66,10 +66,10 @@ You can see the available default stamps by right clicking and exploring the Liv
 Regex patterns are powerful expressions!
     
 Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+
 ---
-
 **Basic Static Example: A stamp with a a constant output**
-
+---
 ```json
 "mystamp": {
   "value": "An important value i use often while while programming",
@@ -82,7 +82,7 @@ An important value i use often while while programming
 ```
 ---
 **Formatted Time LiveStamp Example: A A live updating stamp to insert the current date**
-
+---
 Note the "auto" value, Which tells LiveStamps to grab the current time. A constant Python time value could be entered as the value as well, allowing a static time inputs.
 
 ```json
@@ -99,7 +99,7 @@ Output:
 ```
 ---
 **Multi-part LiveStamp Example: A live updating stamp made from other stamps**
-
+---
 This stamp would update date portion automatically. Note, for this to stamp to auto update the previous "date" stamp would have to be defined. If the "date" stamp was NOT defined" the output would be:
 
 ```

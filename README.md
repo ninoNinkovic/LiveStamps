@@ -179,7 +179,11 @@ Output: @mystamp   This stamp is (c) TundraTech 2015
 
 if you need to use the word "copyright" in a stamp, but you also have a "copyright" stamp defined, it is totally fine. Instead of defining "copyright" as a value simply add it to the injection string literally:
 
-```
+```json
+"copyright": {
+  "value": "(c) TundraTech 2015",
+  "stamp": "{0}",
+},
 "mystamp": {
   "value": ["This stamp is"],
   "stamp": "@mystamp   {0} copyright",
@@ -189,7 +193,7 @@ Output: @mystamp   This stamp is copyright
 ```
 
 
-**Regex Patterns:**
+##Regex Patterns: Making a "LIVE" Stamp
 
 In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied.
 

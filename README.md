@@ -84,14 +84,14 @@ Note the "auto" value, Which tells LiveStamps to grab the current time. A consta
 
 ```json
 "date": {
-   value": "auto",
+  "value": "auto",
   "strft": "%d-%m-%Y",
   "regex": "@date.+",
   "stamp": "@date        {0}",
 },
- ```
-*Output: @date        08-03-2015*
 
+*Output: @date        08-03-2015*
+```
 **Multi-part LiveStamp Example: A live updating stamp made from other stamps**
 
 This stamp would update date portion automatically. Note, for this to stamp to auto update the previous "date" stamp would have to be defined. If the "date" stamp was NOT defined" the output would be:

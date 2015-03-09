@@ -70,13 +70,13 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 
 **Basic Static Example: A stamp with a a constant output**
 
-    "mystamp": {
+```json
+"mystamp": {
         "value": "An important value i use often while while programming",
         "stamp": "{0}",
     },
-
     Output: An important value i use often while while programming
-
+```
 
 **Formatted Time LiveStamp Example: A A live updating stamp to insert the current date**
 

@@ -21,16 +21,14 @@ Keep in mind this plugin is using regex to find and replace the "stamps" so defi
 
 
 ####Package Control: 
-
-Open  package control inside Sublime Text 
-  * cmd+shift+p
-  * Package Control: Install Package
-  * Search for TimeStamps
+ * Open Sublime Text 3
+ * cmd+shift+p
+ * Package Control: Install Package
+ * Search for TimeStamps
 
 ####Manual: 
-
 Copy this repo to a LiveStamps folder in your ST3 Packages directory. 
- * Open sublime Text
+ * Open Sublime Text 3
  * Sublime Text Menu -> Preferences -> Browse Packages
  * Create folder called LiveStamps
  * Copy this repo to the folder.

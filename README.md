@@ -1,11 +1,8 @@
 # LiveStamps for Sublime Text 3
+
 ####A Sublime Text 3 Plugin to inject self updating metadata into any document.
 
-
-
 ####Features:  
-
-
 
   * Insert self updating tags into docblock headers
   * Add predefined signatures or class header info
@@ -22,11 +19,7 @@
   * timezone support, with DST
   * Python format() and strftime() formatting support within stamps
   
-
-
 ####Intall via Package Control: 
-
-
 
 ```
   1. Open Sublime Text 3
@@ -35,11 +28,7 @@
   4. Search for LiveStamps
 ```
 
-
-
 ####Manual Install: 
-
-
 
 ```
   1. Open Sublime Text 3
@@ -51,9 +40,6 @@
 
 
 ## USAGE:
-
-
-
 Just hit a key combo, or select a stamp from the context menu...  Thats it! 
 
 **Default shortcuts for all stamps:**
@@ -62,30 +48,19 @@ Just hit a key combo, or select a stamp from the context menu...  Thats it!
  super+alt+a
  Right-click > LiveStamps > all
  ```
-
 Each "livestamp" is handled by regex and will automatically update every time the document is saved. Stamps can also ouput thier raw value which is static. Useful for things like the current filename, path, parent folder or time, etc.
 
-
-
 ####Defaults key combos are:
-
-
 
 ```
   super + alt + letter -> inject the stamp
   ctrl  + alt + letter -> inject the stamp's raw value
-  
 ```
-
-
-
 You can see all the default stamps by right clicking and exploring the LiveStamps context menu.
 
 
 
 ## Creating Custom Stamps:
-
-
 
 Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
 

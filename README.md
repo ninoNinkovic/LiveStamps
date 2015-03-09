@@ -15,11 +15,6 @@ Stamps can be dynamic (update on save, or key binding) or static, single use val
 ----
 ### INSTALLATION:
 
-Just hit a key combo to inject, after that stamps are auto updated on save !
-
-Keep in mind this plugin is using regex to find and replace the "stamps" so define them here but leave them alone once injected in the document. Changing a stamp format or layout manually once a stamp is in the document will cause the regex to fail ...or worse... insert incorrectly.
-
-
 ####Package Control: 
  * Open Sublime Text 3
  * cmd+shift+p
@@ -36,6 +31,14 @@ Copy this repo to a LiveStamps folder in your ST3 Packages directory.
 ----
 ### USAGE:
 
-Just hit a key combo to inject, after that stamps are auto updated on save !
+Just hit a key combo to inject a stamp, and it will automagically take care of itself! Each stamp has a "livestamp"  handled by regex for auto updating, and a raw value which can be injected for a static instance.
 
-Keep in mind this plugin is using regex to find and replace the "stamps" so define them here but leave them alone once injected in the document. Changing a stamp format or layout manually once a stamp is in the document will cause the regex to fail ...or worse... insert incorrectly.
+Defaults are:
+ * super+alt+letter -> inject stamp(s)
+ * ctrl+alt+letter  -> inject stamps raw value(s)
+
+
+
+
+
+

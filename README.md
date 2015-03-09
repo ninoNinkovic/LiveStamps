@@ -79,7 +79,6 @@ super+shift+p > type LiveStamps > select a stamp option
 
 ## Creating Custom Stamps:
 
-
   1. Open Sublime Text 3
   2. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
   3. Copy everything to clipboard.
@@ -88,6 +87,16 @@ super+shift+p > type LiveStamps > select a stamp option
   5. Modify stamp definitions in the "stamps" array at the bottom.
   6. If you make a mistake just copy from Settings - Default again.
 
+Livestamps are defined as a small python dictionary with the minimum following keys:
+
+```json
+"mystamp": {
+  "value": "An important value i use often while programming",
+  "stamp": "{0}",
+},
+
+Output: An important value i use often while programming
+```
 
 ####Anatomy of a LiveStamp:
 
@@ -144,7 +153,6 @@ Output  :  @mystamp   zero zero zero zero one two three zero
 Output  :  @mystamp   
 ```
 
-
 **Stamp Values:**
 
 Values can be string literals or a list of string literals. Both of the following examples are valid and provide the exact same output. 
@@ -200,53 +208,15 @@ Regex patterns are powerful expressions!
     
 Test your regex on a separate document before trying it on a master file! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
-To test and learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
+Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
 
 
 
+####Time formatting: 
 
+Time is formatted according to the Python strftime() function. If a stamp us defined with a "strft" key, this formatting is automatically applied to each value. Learn about available flags at [www.strftime.org](http://strftime.org "Strftime")
 
-```json
-```
-
-**Time formatting:**
-
-Time is formatted according to the Python strftime() function. If a stamp us defined with a "strft" key, this formatting is automatically applied to each value.
-```json
-```
-
-
-
-
-
-
-
-## Stamp examples
-
-####Basic Stamp (static data): 
-
-A stamp with a constant output.
-
-```json
-"mystamp": {
-  "value": "An important value i use often while programming",
-  "stamp": "{0}",
-},
-
-Output: 
-
-An important value i use often while programming
-
-```
-
-
-
-
-####"Live" Stamp Example (with time formatting): 
-
-A live updating stamp to insert the current date.
-
-Note the "auto" value, Which tells LiveStamps to grab the current time. A constant Python time value could be entered as the value as well, allowing a static time inputs.
+Note the "auto" value, Which tells LiveStamps to grab the current time.
 
 ```json
 "date": {
@@ -256,10 +226,30 @@ Note the "auto" value, Which tells LiveStamps to grab the current time. A consta
   "stamp": "@date        {0}",
 },
 
-Output: 
+Output: @date        08-03-2015
 
-@date        08-03-2015
+"time": {
+  "value": "auto",
+  "strft": "%c",
+  "regex": "@modified.+",
+  "stamp": "@modified    {0}",
+},
+
+Output: @modified        Fri Mar  6 18:21:57 2015
 ```
+
+
+
+
+
+## Stamp examples
+
+
+
+
+
+
+
 
 
 

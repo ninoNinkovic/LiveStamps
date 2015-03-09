@@ -53,14 +53,14 @@ You can see the default stamps by right clicking and exploring the LiveStamps co
 
 Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
 
-####WARNING
+**WARNING**
 
 Regex patterns are powerful expressions!
     
 Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
 
-####Anatomy of LiveStamp key definitions:
+**Anatomy of a LiveStamp:**
 
 ```
 'value' : REQUIRED Literal stamp value. The plugin will try to determine "auto" stamps for you

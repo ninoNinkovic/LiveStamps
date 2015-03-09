@@ -52,24 +52,24 @@ You can see the available default stamps by right clicking and exploring the Liv
 
 ### Creating Custom Stamps:
 
- Anatomy of a LiveStamp
-----------------------------------------------------------------------------------------------------
-
-    id    : *REQUIRED* Unique identifier for the stamp, i.e. "name", "signature" etc.
-    value : *REQUIRED* Any string value for the stamp. The plugin will try to determine "auto" stamps for you
-    stamp : *REQUIRED* Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
-    regex : *OPTIONAL* Python regex pattern. If empty/excluded, the stamp is assumed static.
-    parts : *OPTIONAL* List for multipart stamps. i.e. "parts": ["name", "email", "link"]
-    format: *OPTIONAL* Python format() to apply to the stamp's value
-    strft : *OPTIONAL* Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
-
 **WARNING**
     
 Regex patterns are powerful expressions!
     
-Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!!
-    
-An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing a hardlock or data loss...
+Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. A mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+
+ Anatomy of LiveStamp Keys
+----------------------------------------------------------------------------------------------------
+
+    'id'    : *REQUIRED* Unique identifier for the stamp, i.e. "name", "signature" etc.
+    'value' : *REQUIRED* Any string value for the stamp. The plugin will try to determine "auto" stamps for you
+    'stamp' : *REQUIRED* Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
+    'regex' : *OPTIONAL* Python regex pattern. If empty/excluded, the stamp is assumed static.
+    'parts' : *OPTIONAL* List for multipart stamps. i.e. "parts": ["name", "email", "link"]
+    'format': *OPTIONAL* Python format() to apply to the stamp's value
+    'strft' : *OPTIONAL* Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
+
+
 
 
 	Basic Static Example:

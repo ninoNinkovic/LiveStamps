@@ -9,7 +9,7 @@
   * Inject stamps or values via keyboard shortcut, Sublime Command, tools menu, context menu, or sidebar menu
   * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
   * timezone support, with DST
-  * Python format() and strftime() format string support within stamps
+  * Python format() and strftime() formatting support
 
 ### INSTALLATION:
 ----
@@ -28,6 +28,7 @@
   * Create folder called LiveStamps
   * Copy this repo to the folder.
 
+
 ### USAGE:
 ----
 
@@ -44,6 +45,7 @@ You can see the available default stamps by right clicking and exploring the Liv
 ---
 
 **Key Definitions**
+
     'value' : *REQUIRED* Any string value for the stamp. The plugin will try to determine "auto" stamps for you
     'stamp' : *REQUIRED* Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
     'regex' : *OPTIONAL* Python regex pattern. If empty/excluded, the stamp is assumed static.

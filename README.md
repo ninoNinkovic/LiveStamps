@@ -99,34 +99,61 @@ Regex patterns are powerful expressions!
     
 Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
-
-
 ####Anatomy of a LiveStamp:
 
 ```
 'value' : REQUIRED List or literal string value. Setting as "auto" tries to find the value for you
 
-'stamp' : REQUIRED Format string. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
+'stamp' : REQUIRED Injection flag string. Value(s) are inserted at defined tag marker(s)
 
 'regex' : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
 
 'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 
-'format': OPTIONAL Python format() to apply to the stamp's value
+'format': OPTIONAL For advanced users, a Python format() string to apply to each stamp value
 ```
 
-** Format string usage:
+**Stamp injection flags:**
+
+* Values are mapped to Python format() flags as so: " {0} {1} {2} {3}" etc.
+* A single item list or raw string value always maps to "{0}"
+* Order can be switched around if you like "{3} {1} {0} {2}"
+* Flags can be injected anywhere i.e. "My 3rd value: {3} is injected before my first: {0}"
+* Not all flags have to be used, and using more flags than values defined is still safe
+* Injecting a value multiple times within a stamp is fine "{0} {0} {0}"
+* For more info google the python format() function (v3.3+)
+
 
 ```json
+
 "mystamp": {
   "value": ["zero", "one", "two", "three"],
   "regex": "@mystamp.+",
   "stamp": "@mystamp   {0} {1} {2} {3}",
 },
 
-Output:
+Various outputs of the above stamp with different injection flags:
 
-@mystamp   zero one two three
+# Normal
+"stamp" : "@mystamp   {0} {1} {2} {3}",
+Output  :  @mystamp   zero one two three
+
+# Mixed order
+"stamp" : "@mystamp   {3} {1} {2} {0}",
+Output  :  @mystamp   three one two zero
+
+# Not all values/flags used
+"stamp" : "@mystamp   {0} {1}",
+Output  :  @mystamp   zero one
+
+# More flags used than defined values
+"stamp" : "@mystamp   {0} {1} {2} {3} {4}",
+Output  :  @mystamp   zero one two three
+
+# Using a flag more than once
+"stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3}",
+Output  :  @mystamp   zero zero zero zero one two three
+
 ```
 
 

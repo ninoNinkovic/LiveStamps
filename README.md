@@ -93,24 +93,19 @@ Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON fo
   &. Stamp definitions are in the JSON "stamps" array at the bottom.
 ```
 
-**WARNING!**
-
-Regex patterns are powerful expressions!
-    
-Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
-
 ####Anatomy of a LiveStamp:
 
+Livestamps are defined as a small python dictionary with the following keys:
+
 ```
-[value]  : REQUIRED literal string, or list. Setting as "auto" tries to find the value for you
+# Required Keys
+[value]  : Literal string, or list. Setting as "auto" tries to find the value for you
+[stamp]  : Injection flag string. Value(s) are inserted at defined tag marker(s)
 
-[stamp]  : REQUIRED Injection flag string. Value(s) are inserted at defined tag marker(s)
-
-[regex]  : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
-
-[strft]  : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
-
-[format] : OPTIONAL For advanced users, a Python format() argument to apply to each stamp value
+# Optional Keys
+[regex]  : Python regex pattern. If empty/excluded, the stamp is assumed static.
+[strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
+[format] : For advanced users, a Python format() argument to apply to each stamp value
 ```
 
 **Stamp Values:**
@@ -194,6 +189,54 @@ Output  :  @mystamp   zero one two three
 Output  :  @mystamp   zero zero zero zero one two three zero
 ```
 
+*Regex patterns:**
+
+In order to make a stamp 'live' so that is automatically updated whenever the document is saved, a regex pattern must be supplied. The default regex pattern schema defined by LiveStamps conforms with docblock tags and is fairly safe/easy to implement:
+
+```json
+
+"regex": "@mystamp.+",
+
+This will inject your stamp values to anything that appears after "@mystamp" until the end of the line.
+
+Example
+
+Of course feel free to use any regex pattern you want such as:
+
+"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
+
+which would update any date in the document matching the pattern xx-xx-xxxx such as
+
+18-02-2015
+25-12-1999
+02-03-1979
+
+
+```
+
+To learn more about REGEX patterns visit [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101") to learn more.
+
+**WARNING!**
+
+Regex patterns are powerful expressions!
+    
+Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.com "Regexr") first!!! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+
+```json
+```
+
+**Time formatting:**
+
+Time is formatted according to the Python strftime() function. If a stamp us defined with a "strft" key, this formatting is automatically applied to each value.
+```json
+```
+
+
+
+
+
+
+
 ## Stamp examples
 
 ####Basic Stamp (static data): 
@@ -211,6 +254,7 @@ Output:
 An important value i use often while programming
 
 ```
+
 
 
 

@@ -12,16 +12,22 @@ Create your own custom stamps! LiveStamps is handy for things like:
   
 Stamps can be dynamic (update on save, or key binding) or static, single use values for injection to save time.
 
-## INSTALLATION :
+----
+### INSTALLATION:
 
-###Package Control: 
+Just hit a key combo to inject, after that stamps are auto updated on save !
+
+Keep in mind this plugin is using regex to find and replace the "stamps" so define them here but leave them alone once injected in the document. Changing a stamp format or layout manually once a stamp is in the document will cause the regex to fail ...or worse... insert incorrectly.
+
+
+####Package Control: 
 
 Open  package control inside Sublime Text 
   * cmd+shift+p
   * Package Control: Install Package
   * Search for TimeStamps
 
-###Manual: 
+####Manual: 
 
 Copy this repo to a LiveStamps folder in your ST3 Packages directory. 
  * Open sublime Text

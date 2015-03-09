@@ -41,7 +41,7 @@
 
 ## USAGE:
 
-Just hit a key combo, or select a stamp from the context menu...  Thats it! 
+**Just hit a key combo, or select a stamp from the context menu...  Easy!**
 
 You can see all the default stamps by right clicking and exploring the LiveStamps context menu. Each "livestamp" is handled by regex and will update whenever the document is saved (by default auto_update is set to true). Stamps can also ouput their raw value as static data which is useful for things like the current filename, path, parent folder or time, etc.
 

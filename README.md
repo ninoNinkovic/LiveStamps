@@ -79,10 +79,6 @@ super+shift+p > type LiveStamps > select a stamp option
 
 ## Creating Custom Stamps:
 
-Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples.
-
-**To view the default stamps or define your own:**
-
 ```
   1. Open Sublime Text 3
   2. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default

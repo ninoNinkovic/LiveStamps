@@ -82,7 +82,16 @@ super+shift+p > type LiveStamps > select a stamp option
 
 ## Creating Custom Stamps:
 
-Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples, but here are the details if you really want to get into it 8)
+Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples.
+
+To view more examples:
+
+```
+  1. Open Sublime Text 3
+  2. Sublime Text Menu -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
+  3. Scroll down the file and have a look at the stamp definitions
+```
+
 
 **WARNING!**
 
@@ -121,9 +130,7 @@ Output:
 ```
 
 
-##Stamp Examples
-
-####Basic Static Stamp: 
+####Basic Stamp (static data): 
 
 A stamp with a constant output.
 
@@ -162,7 +169,7 @@ Output:
 
 
 
-####Multi-part "Live" Stamp Example: 
+####Multi-part LiveStamp : 
 
 A multi-value live updating stamp which uses another LiveStamp as one of the components.
 

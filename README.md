@@ -1,5 +1,5 @@
 # LiveStamps for Sublime Text 3
-####A Sublime Text 3 Plugin to inject self updating metadata into any document.
+###A Sublime Text 3 Plugin to inject self updating metadata into any document.
 
 ####Features:  
 
@@ -19,17 +19,17 @@
   * Python format() and strftime() formatting support
   
 
-### INSTALLATION:
+## INSTALLATION:
 ----
 
-#####Package Control: 
+####Package Control: 
 
   * Open Sublime Text 3
   * cmd+shift+p
   * Package Control: Install Package
   * Search for LiveStamps
 
-#####Manual: 
+####Manual: 
 
   * Open Sublime Text 3
   * Sublime Text Menu -> Preferences -> Browse Packages

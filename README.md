@@ -74,24 +74,22 @@ Right-click > LiveStamps > value > all
 ```
 
 #### Using Command Pallete:
+
 ```
 super+shift+p > type LiveStamps > select a stamp option
 ```
-
-
 
 ## Creating Custom Stamps:
 
 Live stamps are defined within the *LiveStamps.sublime-settings* file in JSON format. The best way to learn is by browsing/modifying the default stamp examples.
 
-To view more examples:
+To view the default examples:
 
 ```
   1. Open Sublime Text 3
   2. Sublime Text Menu -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
   3. Scroll down the file and have a look at the stamp definitions
 ```
-
 
 **WARNING!**
 
@@ -102,29 +100,80 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 ####Anatomy of a LiveStamp:
 
 ```
-'value' : REQUIRED List or literal string value. Setting as "auto" tries to find the value for you
+[value]  : REQUIRED literal string, or list. Setting as "auto" tries to find the value for you
 
-'stamp' : REQUIRED Injection flag string. Value(s) are inserted at defined tag marker(s)
+[stamp]  : REQUIRED Injection flag string. Value(s) are inserted at defined tag marker(s)
 
-'regex' : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
+[regex]  : OPTIONAL Python regex pattern. If empty/excluded, the stamp is assumed static.
 
-'strft' : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
+[strft]  : OPTIONAL Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 
-'format': OPTIONAL For advanced users, a Python format() string to apply to each stamp value
+[format] : OPTIONAL For advanced users, a Python format() argument to apply to each stamp value
+```
+
+**Stamp Values:**
+
+Stamp values can be string literals or a list of string literals. Both of the following examples are valid and provide the exact same output. 
+
+```json
+"mystamp": {
+  "value": "zero",
+  "stamp": "{0} one",
+},
+
+Output: zero one
+
+"mystamp": {
+  "value": ["zero", "one"],
+  "stamp": "{0} {1}",
+},
+
+Output: zero one
+```
+
+**Using other stamps as values:**
+
+Other stamps can be used as values. The plugin tries to match any defined value with an existing key in the stamp dictionary before injection. In the following example to use the "copyright" stamp within "mystamp", set one of the values as "copyright". 
+
+```json
+"copyright": {
+  "value": "(c) TundraTech 2015",
+  "stamp": "{0}",
+},
+"mystamp": {
+  "value": ["This stamp is", "copyright"],
+  "stamp": "@mystamp   {0} {1}",
+},
+
+Output: @mystamp   This stamp is (c) TundraTech 2015
+
+Note: if you need to use the word "copyright" in a stamp, but you also have a "copyright" stamp defined, it is totally fine. Instead of defining "copyright" as a value simply add it it to the injection string literally:
+
+"mystamp": {
+  "value": ["This stamp is"],
+  "stamp": "@mystamp   {0} copyright",
+},
+
+Output: @mystamp   This stamp is copyright
+
+Easy!
 ```
 
 **Stamp injection flags:**
 
+Each defined value is mapped to a Python format() flag and can be used anywhere within the stamp output. Have a look at some injection flag fun below. The example shows how you can get various outputs from the same stamp just by using different injection flags.
+
 ```json
+
+# Various outputs of "mystamp" using different injection flags:
+
 "mystamp": {
   "value": ["zero", "one", "two", "three"],
   "regex": "@mystamp.+",
   "stamp": "@mystamp   {0} {1} {2} {3}",
 },
 
-# Various outputs of the above stamp with different injection flags:
-
-# Normal: Each value is mapped to a Python format() flags as so:
+# Normal Output: Each value is mapped to a Python format() flag:
 "stamp" : "@mystamp   {0} {1} {2} {3}",
 Output  :  @mystamp   zero one two three
 
@@ -145,6 +194,7 @@ Output  :  @mystamp   zero one two three
 Output  :  @mystamp   zero zero zero zero one two three zero
 ```
 
+## Stamp examples
 
 ####Basic Stamp (static data): 
 

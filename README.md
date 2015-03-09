@@ -106,7 +106,32 @@ Test your stamp regex online at a site like [www.regexr.com](https://www.regexr.
 'format': OPTIONAL Python format() to apply to the stamp's value
 ```
 
+####Format string usage:
 
+The "stamp" key defines the layout of a stamp using python format() flags.
+
+**For stamps with a single value:**
+```json
+"{0}"
+```
+
+For stamps with a mutiple values:
+
+
+"{0} {1} {2}"
+
+
+```json
+"mystamp": {
+  "value": ["(c) TundraTech", "date"],
+  "regex": "@copyright.+",
+  "stamp": "@copyright   {0} {1}",
+},
+
+Output:
+
+@copyright   (c) TundraTech 08-03-2015
+```
 
 ####Basic Static Stamp: 
 
@@ -149,11 +174,11 @@ Output:
 
 ####Multi-part "Live" Stamp Example: 
 
-A live updating stamp with multiple values made from other stamps.
+A multi-value live updating stamp which uses another LiveStamp as one of the components.
 
-This stamp would maintain the date portion automatically for you on save. Note, for this to stamp to auto update the previous "date" stamp example would have to be defined somewhere in the definitions
+This stamp would maintain the date portion automatically for you on save. Note, for this to stamp to auto update the previous "date" example would also have to be defined.
 
-Note: the order of definitions is **NOT** important
+Note: the order of definitions is **NOT** important, you can define parts before or after a multipart stamp.
 
 ```json
 "copyright": {
@@ -175,7 +200,7 @@ As an exercise, let's examine what happens if the "date" stamp was NOT defined. 
 
 However, the stamp would still be considered "live" because a regex was supplied. 
 
-Because the stamp is still "live", changing either value in the list would instantly update all existing stamps matching the regex within the document, allowing you instantly update the document with a static date or change to a different company name if desired. 
+Because the stamp is still "live", changing either value in the list would instantly update all existing stamps matching the regex within the document, allowing you to make a document-wide change to a static date or a different company name if desired. 
 
 **Note:**
 

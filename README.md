@@ -142,7 +142,9 @@ Simple, the output would be assumed to be two static values as so:
 
 However, the stamp would still be "live" because a regex was supplied. 
 
-A change to any of its values would still cause an auto update, allowing you to enter a static date if desired. Changing either value would instantly update all existing stamps in the document. **Changing the regex however, would abandon all the the previous stamps. Careful!**
+Changing either value in the parts list would instantly update all existing stamps in the document, allowing you to enter a static date or different company name if desired. 
+
+**Changing the regex however, would abandon all the the previous stamps. Careful!**
 
 
 

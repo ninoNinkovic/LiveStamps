@@ -87,7 +87,9 @@ super+shift+p > type LiveStamps > select a stamp option
   5. Modify stamp definitions in the "stamps" array at the bottom.
   6. If you make a mistake just copy from Settings - Default again.
 
-**Livestamps are defined as a small python dictionary with the minimum following keys:**
+###Anatomy of a LiveStamp:
+
+**LiveStamps are defined as a small python dictionary with the minimum following keys:**
 
 ```json
 "mystamp": {
@@ -98,16 +100,14 @@ super+shift+p > type LiveStamps > select a stamp option
 Output: An important value i use often while programming
 ```
 
-###Anatomy of a LiveStamp:
-
+**Required Keys:**
 ```
-# Required Keys:
-
 [value]  : A string literal, or list. Setting as "auto" tries to find the value for you
 [stamp]  : Output string. Value(s) are inserted at defined injection marker(s). See below.
-
-# Optional Keys:
-
+111
+```
+**Optional Keys:**
+```
 [regex]  : Python regex pattern. If empty/excluded, the stamp is assumed static.
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 [format] : For advanced users, a Python format() argument to apply to each stamp value
@@ -151,7 +151,7 @@ Output  :  @mystamp   zero zero zero zero one two three zero
 Output  :  @mystamp   
 ```
 
-**Stamp Values:**
+####Stamp Values:
 
 Values can be string literals or a list of string literals. Both of the following examples are valid and provide the exact same output. 
 
@@ -186,7 +186,7 @@ To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyrig
 Output: @mystamp   This stamp is (c) TundraTech 2015
 ```
 
-**Regex Patterns**
+####Regex Patterns
 
 In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied. LiveStamps uses a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement:
 
@@ -207,7 +207,6 @@ Regex patterns are powerful expressions!
 Test your regex on a separate document before trying it on a master file! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
 
 Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
-
 
 
 ####Time formatting: 
@@ -237,53 +236,32 @@ Output: @modified        Fri Mar  6 18:21:57 2015
 ```
 
 
+####Advanced formatting: 
 
+Valeus may also be foratted according to the Python strftime() function. If a stamp is defined with a "format" key, the corresponding format flag is applied to each value. Learn about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
 
-
-## Stamp examples
-
-
-
-
-
-
-
-
-
-
-####Multi-part LiveStamp : 
-
-A multi-value live updating stamp which uses another LiveStamp as one of the components.
-
-This stamp would maintain the date portion automatically for you on save. Note, for this to stamp to auto update the previous "date" example would also have to be defined.
-
-Note: the order of definitions is **NOT** important, you can define parts before or after a multipart stamp.
+Note the "auto" value, Which tells LiveStamps to grab the current time.
 
 ```json
-"copyright": {
-  "value": ["(c) TundraTech", "date"],
-  "regex": "@copyright.+",
-  "stamp": "@copyright   {0} {1}",
+"date": {
+  "value": "auto",
+  "format": "%d-%m-%Y",
+  "regex": "@date.+",
+  "stamp": "@date        {0}",
 },
 
-Output:
+Output: @date        08-03-2015
 
-@copyright   (c) TundraTech 08-03-2015
+"time": {
+  "value": "auto",
+  "strft": "%c",
+  "regex": "@modified.+",
+  "stamp": "@modified    {0}",
+},
+
+Output: @modified        Fri Mar  6 18:21:57 2015
 ```
 
-As an exercise, let's examine what happens if the "date" stamp was NOT defined. The output would be assumed to be two static values as so:
-
-```
-@copyright   (c) TundraTech date
-```
-
-However, the stamp would still be considered "live" because a regex was supplied. 
-
-Because the stamp is still "live", changing either value in the list would instantly update all existing stamps matching the regex within the document, allowing you to make a document-wide change to a static date or a different company name if desired. 
-
-**Note:**
-
-**Changing the regex would abandon all previously inserted "copyright" stamps, rendering them as static/permanent... Careful!**
 
 
 

@@ -103,18 +103,17 @@ Output: LiveStamps rule!
 **Required Keys:**
 ```
 [value]  : A string literal, or list. Setting as "auto" tries to find the value for you
-
 ```
 **Optional Keys:**
 ```
-[stamp]  : Formatting string. This is cool and recommended. See injection flags below. 
+[stamp]  : Formatting string. This key is cool and recommended. See injection flags below. 
 [regex]  : Python regex pattern. If empty/excluded, the stamp will be static.
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 ```
 
 ####Stamp Values:
 
-Can be a single value, or list of values:
+**Values can be defined as single, or list of values:**
 
 ```json
 "mystamp1": {
@@ -138,7 +137,7 @@ Output: zero 1 two 3
 
 **Magic Values**
 
-LiveStamps can also pull in some auto defined values for handy usage. More are planned in the future but for now the following are available:
+**LiveStamps can also pull in some auto defined values for handy usage:**
 
 ```
 "user"        : Gets current user
@@ -150,9 +149,12 @@ LiveStamps can also pull in some auto defined values for handy usage. More are p
 "parent_name" : Gets name of parent folder
 "parent_path" : Gets path of parent folder
 ```
+
+More are planned in the future!
+
 **Using Other Stamps as Values:**
 
-The plugin tries to match any value with an existing key in the stamp dictionary before injection. To use the "copyright" stamp within "mystamp", set any "mystamp" VALUE as "copyright". 
+The plugin tries to match any value with an existing key in the stamp dictionary before injection. *To use the "copyright" stamp within "mystamp", set any "mystamp" VALUE as "copyright".*
 
 ```json
 "copyright": {
@@ -165,20 +167,44 @@ The plugin tries to match any value with an existing key in the stamp dictionary
 Output: @mystamp   This stamp is (c) TundraTech 2015
 ```
 
-####Cool stuff: Injection flags:
+####Injection flags:
 
-If a "stamp" key is defined, each value gets mapped to a corresponding Python format() flag.
+Injection flags allow for POWERFUL formatting, and complex stamp designs, but for now we start with easy stuff 8).
+If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
+
+**Injection flags are simple markers defined as so:**
+
+```
+'stamp': "{0} {1} {2} {3}"
+```
+
+**Injecting values into a stamp. The following stamps all provide the exact same output:**
 
 ```
 "mystamp": {
+  "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
+},
+"mystamp": {
+  "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
+  "stamp": "{0}",
+},
+"mystamp": {
   "value": "LiveStamps rule!",
   "stamp": "Have you heard? {0} Thanks TundraTech!",
+},
+"mystamp": {
+  "value": ["Have you heard?, "LiveStamps rule!",],
+  "stamp": "{0} {1} Thanks TundraTech!",
+},
+"mystamp": {
+  "value": ["Have you heard?, "LiveStamps rule!", "Thanks TundraTech!"],
+  "stamp": "{0} {1} {2}",
 },
 
 Output: Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
 
-The following stamps are both valid and provide the exact same output:
+**The following stamps are both valid and provide the exact same output:**
 
 ```
 "mystamp1": {

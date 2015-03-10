@@ -48,12 +48,10 @@ LiveStamps will update automatically on save, but can also output the raw value 
 
 ```json
 # General Usage:
-
 super + alt + letter -> inject a stamp
 ctrl  + alt + letter -> inject a stamp's raw value
 
 # Example: All stamps
-
 To view all stamps: super + alt + a     
 To view all values: ctrl  + alt + a      
 ```
@@ -62,17 +60,14 @@ To view all values: ctrl  + alt + a
 
 ```
 # Context Menu:
-
 Right-click -> LiveStamps -> stamp -> stamptype
 Right-click -> LiveStamps -> value -> stampvalue
 
 # Tools Menu:
-
-Tools       -> LiveStamps -> stamp -> stamptype
-Tools       -> LiveStamps -> value -> stampvalue
+Tools -> LiveStamps -> stamp -> stamptype
+Tools -> LiveStamps -> value -> stampvalue
 
 # Example: Time stamp
-
 Right-click -> LiveStamps -> Stamp -> Time
 Right-click -> LiveStamps -> Value -> Time
 ```
@@ -85,34 +80,35 @@ super+shift+p -> type in LiveStamps -> select an option
 
 ## Creating Custom Stamps:
 
-  1. Open Sublime Text 3 -> Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
+  1. Open Sublime Text 3
+  2. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
   3. Copy everything to clipboard.
   4. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - User
   5. Paste and save.
-  5. Modify stamp definitions in the "stamps" array at the bottom.
-  6. If you make a mistake just copy from Settings - Default again.
+  6. Modify stamp definitions in the "stamps" array at the bottom.
+  7. If you make a mistake just copy from Settings - Default again.
 
 ###Anatomy of a LiveStamp:
 
-**LiveStamps are defined as a small python dictionary with the minimum following keys:**
+**LiveStamps are defined as a small python dictionaries with the minimum following keys:**
 
 ```json
 "mystamp": {
-  "value": "An important value i use often while programming",
-  "stamp": "{0}",
+  "value": "LiveStamps rule!",
 },
 
-Output: An important value i use often while programming
+Output: LiveStamps rule!
 ```
 
 **Required Keys:**
 ```
 [value]  : A string literal, or list. Setting as "auto" tries to find the value for you
-[stamp]  : Output string. Value(s) are inserted at defined injection marker(s). See below.
+
 ```
 **Optional Keys:**
 ```
-[regex]  : Python regex pattern. If empty/excluded, the stamp is assumed static.
+[stamp]  : Formatting string. This is cool and recommended. See injection flags below. 
+[regex]  : Python regex pattern. If empty/excluded, the stamp will be static.
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 ```
 
@@ -151,16 +147,27 @@ To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyrig
 Output: @mystamp   This stamp is (c) TundraTech 2015
 ```
 
-####Basic Injection flags:
+####Basic Injection Flag Usage:
 
-Each value defined gets mapped to a Python format() flag contained within the "stamp" key.The following example shows how you can get various outputs from the same stamp just by using modifying the injection flags:
+If a "stamp" key is defined, each value defined gets mapped to a corresponding Python format() flag.
+```
+"mystamp": {
+  "value": "LiveStamps rule!",
+  "stamp": "Have you heard? {0} Thanks TundraTech!",
+},
+
+Output: Have you heard? LiveStamps rule! Thanks TundraTech!
+```
+
+####Multiple Injection Flags:
+
+The following example shows how you can get various outputs from the same stamp just by using modifying the injection flags:
 
 ```json
 # Various outputs of "mystamp" using different injection flags:
 
 "mystamp": {
   "value": ["zero", "one", "two", "three"],
-  "regex": "@mystamp.+",
   "stamp": "@mystamp   {0} {1} {2} {3}",
 },
 

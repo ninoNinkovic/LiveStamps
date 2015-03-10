@@ -136,6 +136,20 @@ Output: zero
 Output: zero 1 two 3
 ```
 
+**Magic Values**
+
+LiveStamps can also pull in some auto defined values for handy usage. More are planned in the future but for now the following are available:
+
+```
+"user"        : Gets current user
+"checksum"    : Gets md5 hash of the current file
+"extension"   : Gets current file extension
+"base_name"   : Gets current basename
+"file_name"   : Gets current filename
+"file_path"   : Gets current filepath
+"parent_name" : Gets name of parent folder
+"parent_path" : Gets path of parent folder
+```
 **Using Other Stamps as Values:**
 
 The plugin tries to match any value with an existing key in the stamp dictionary before injection. To use the "copyright" stamp within "mystamp", set any "mystamp" VALUE as "copyright". 

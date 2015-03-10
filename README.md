@@ -130,18 +130,17 @@ Output: zero
 Output: zero
 
 "mystamp3": {
-  "value": ["zero", "one"],
+  "value": ["zero", 1, "two", 3],
 },
 
-Output: zero one
+Output: zero 1 two 3
 ```
 
 **Using Other Stamps as Values:**
 
-The plugin tries to match any value that you define with an existing key in the stamp dictionary before injection: 
-```json
-To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyright". 
+The plugin tries to match any value with an existing key in the stamp dictionary before injection. To use the "copyright" stamp within "mystamp", set any "mystamp" VALUE as "copyright". 
 
+```json
 "copyright": {
   "value": "(c) TundraTech 2015",
 },
@@ -152,9 +151,10 @@ To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyrig
 Output: @mystamp   This stamp is (c) TundraTech 2015
 ```
 
-####Basic Injection Flag Usage:
+####Cool stuff: Injection flags:
 
 If a "stamp" key is defined, each value gets mapped to a corresponding Python format() flag.
+
 ```
 "mystamp": {
   "value": "LiveStamps rule!",
@@ -162,9 +162,11 @@ If a "stamp" key is defined, each value gets mapped to a corresponding Python fo
 },
 
 Output: Have you heard? LiveStamps rule! Thanks TundraTech!
+```
 
-# The following stamps are valid and provide the exact same output:
+The following stamps are both valid and provide the exact same output:
 
+```
 "mystamp1": {
   "value": "zero",
   "stamp": "{0} one",
@@ -179,7 +181,7 @@ Output: zero one
 
 ####Multiple Injection Flags:
 
-The following example shows how you can get various outputs from the same stamp just by using modifying the injection flags:
+The following shows various outputs from the same stamp just by modifying the injection flags:
 
 ```json
 # Various outputs of "mystamp" using different injection flags:
@@ -216,7 +218,7 @@ Output  :  @mystamp
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined actually gets mapped as a Python format() string. This allows for POWERFUL formatting. Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
+Because each value defined actually gets passed through the Python format() function it allows for POWERFUL formatting.
 
 The following would format convert the number 87 to different bases, decimal, hex, octal, binary
 
@@ -228,9 +230,11 @@ The following would format convert the number 87 to different bases, decimal, he
 },
 		
 Output: @bases         87 - 57 - 127 - 1010111
+```
 
-# Getting even trickier: PHP sprintf() like formatting to get nice alignment.
+Getting even trickier: PHP sprintf() like formatting to get nice alignment AND converting bases.
 
+```
 "formatted_bases": {
   "value": [87, "\nDecimal","\nHex", "\nOctal", "\nBinary"],
 	 "stamp": "{1:<10}: {0:d} {2:<10}: {0:x} {3:<10}: {0:o} {4:<10}: {0:b}",
@@ -245,8 +249,9 @@ Binary   : 1010111
 
 ```
 
-**As you can see the potential for LiveStamps to expand your expression goes far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.**
+**As you can see the potential for LiveStamps to expand your expression goes far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.** 
 
+Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
 
 ####Time formatting: 
 

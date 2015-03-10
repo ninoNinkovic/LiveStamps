@@ -47,11 +47,13 @@ LiveStamps will update automatically on save, but can also output the raw value 
 ####Keyboard:
 
 ```json
-General Usage:
+# General Usage:
+
 super + alt + letter -> inject a stamp
 ctrl  + alt + letter -> inject a stamp's raw value
 
-Example: All stamps
+# Example: All stamps
+
 To view all stamps: super + alt + a     
 To view all values: ctrl  + alt + a      
 ```
@@ -59,15 +61,18 @@ To view all values: ctrl  + alt + a
 ####Menus:
 
 ```
-Context Menu:
+# Context Menu:
+
 Right-click -> LiveStamps -> stamp -> stamptype
 Right-click -> LiveStamps -> value -> stampvalue
 
-Tools Menu:
+# Tools Menu:
+
 Tools       -> LiveStamps -> stamp -> stamptype
 Tools       -> LiveStamps -> value -> stampvalue
 
-Example: Inject Time stamp
+# Example: Time stamp
+
 Right-click -> LiveStamps -> Stamp -> Time
 Right-click -> LiveStamps -> Value -> Time
 ```
@@ -75,13 +80,12 @@ Right-click -> LiveStamps -> Value -> Time
 #### Using Command Pallete:
 
 ```
-super+shift+p > type LiveStamps > select a stamp option
+super+shift+p -> type in LiveStamps -> select an option
 ```
 
 ## Creating Custom Stamps:
 
-  1. Open Sublime Text 3
-  2. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
+  1. Open Sublime Text 3 -> Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
   3. Copy everything to clipboard.
   4. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - User
   5. Paste and save.

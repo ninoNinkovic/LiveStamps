@@ -42,7 +42,7 @@
 
 ## USAGE:
 
-Each "livestamp" is handled by regex and will update whenever the document is saved by default. Stamps can also output their raw value as static data which is useful for things like the current filename, path, parent folder or time, etc.
+LiveStamps will update automatically on save, but can also output the raw value as static data which is useful for things like the current time, filename, path, parent folder etc.
 
 ####Keyboard:
 

@@ -218,9 +218,11 @@ Output  :  @mystamp
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined actually gets passed through the Python format() function it allows for POWERFUL formatting.
+Because each value defined actually gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.
 
-The following would format convert the number 87 to different bases, decimal, hex, octal, binary
+Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
+
+The following would convert the number 87 to different bases, decimal, hex, octal, binary:
 
 ```json
 "bases": {
@@ -232,7 +234,7 @@ The following would format convert the number 87 to different bases, decimal, he
 Output: @bases         87 - 57 - 127 - 1010111
 ```
 
-Getting even trickier: PHP sprintf() like formatting to get nice alignment AND converting bases.
+**Getting even trickier: PHP sprintf() formatting to get nice alignment AND converting bases.**
 
 ```
 "formatted_bases": {
@@ -248,10 +250,6 @@ Octal    : 127
 Binary   : 1010111
 
 ```
-
-**As you can see the potential for LiveStamps to expand your expression goes far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.** 
-
-Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
 
 ####Time formatting: 
 

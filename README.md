@@ -218,11 +218,9 @@ Output  :  @mystamp
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined actually gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.
+Because each value defined actually gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
 
-Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
-
-The following would convert the number 87 to different bases, decimal, hex, octal, binary:
+**Convert the number 87 to different bases, decimal, hex, octal, binary:**
 
 ```json
 "bases": {

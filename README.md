@@ -114,16 +114,23 @@ Output: LiveStamps rule!
 
 ####Stamp Values:
 
-Values can be string literals or a list of string literals. Both of the following stamps are valid and provide the exact same output:
+Can be a single value, or list of values:
 
 ```json
 "mystamp1": {
   "value": "zero",
-  "stamp": "{0} one",
 },
+
+Output: zero
+
 "mystamp2": {
+  "value": ["zero"],
+},
+
+Output: zero
+
+"mystamp3": {
   "value": ["zero", "one"],
-  "stamp": "{0} {1}",
 },
 
 Output: zero one
@@ -137,11 +144,9 @@ To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyrig
 
 "copyright": {
   "value": "(c) TundraTech 2015",
-  "stamp": "{0}",
 },
 "mystamp": {
   "value": ["This stamp is", "copyright"],
-  "stamp": "@mystamp   {0} {1}",
 },
 
 Output: @mystamp   This stamp is (c) TundraTech 2015
@@ -149,7 +154,7 @@ Output: @mystamp   This stamp is (c) TundraTech 2015
 
 ####Basic Injection Flag Usage:
 
-If a "stamp" key is defined, each value defined gets mapped to a corresponding Python format() flag.
+If a "stamp" key is defined, each value gets mapped to a corresponding Python format() flag.
 ```
 "mystamp": {
   "value": "LiveStamps rule!",
@@ -157,6 +162,19 @@ If a "stamp" key is defined, each value defined gets mapped to a corresponding P
 },
 
 Output: Have you heard? LiveStamps rule! Thanks TundraTech!
+
+# The following stamps are valid and provide the exact same output:
+
+"mystamp1": {
+  "value": "zero",
+  "stamp": "{0} one",
+},
+"mystamp2": {
+  "value": ["zero", "one"],
+  "stamp": "{0} {1}",
+},
+
+Output: zero one
 ```
 
 ####Multiple Injection Flags:

@@ -104,18 +104,51 @@ Output: An important value i use often while programming
 ```
 [value]  : A string literal, or list. Setting as "auto" tries to find the value for you
 [stamp]  : Output string. Value(s) are inserted at defined injection marker(s). See below.
-111
 ```
 **Optional Keys:**
 ```
 [regex]  : Python regex pattern. If empty/excluded, the stamp is assumed static.
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
-[format] : For advanced users, a Python format() argument to apply to each stamp value
 ```
 
-####Injection flags:
+####Stamp Values:
 
-Each value defined gets mapped to a Python format() flag contained within the "stamp" key. The following example shows how you can get various outputs from the same stamp just by using changing the injection flags:
+Values can be string literals or a list of string literals. Both of the following stamps are valid and provide the exact same output:
+
+```json
+"mystamp1": {
+  "value": "zero",
+  "stamp": "{0} one",
+},
+"mystamp2": {
+  "value": ["zero", "one"],
+  "stamp": "{0} {1}",
+},
+
+Output: zero one
+```
+
+**Using Other Stamps as Values:**
+
+The plugin tries to match any value that you define with an existing key in the stamp dictionary before injection: 
+```json
+To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyright". 
+
+"copyright": {
+  "value": "(c) TundraTech 2015",
+  "stamp": "{0}",
+},
+"mystamp": {
+  "value": ["This stamp is", "copyright"],
+  "stamp": "@mystamp   {0} {1}",
+},
+
+Output: @mystamp   This stamp is (c) TundraTech 2015
+```
+
+####Basic Injection flags:
+
+Each value defined gets mapped to a Python format() flag contained within the "stamp" key.The following example shows how you can get various outputs from the same stamp just by using modifying the injection flags:
 
 ```json
 # Various outputs of "mystamp" using different injection flags:
@@ -151,39 +184,64 @@ Output  :  @mystamp   zero zero zero zero one two three zero
 Output  :  @mystamp   
 ```
 
-####Stamp Values:
+####Advanced Formatting With Injection Flags: 
 
-Values can be string literals or a list of string literals. Both of the following examples are valid and provide the exact same output. 
+Because each value defined actually gets mapped as a Python format() string. This allows for POWERFUL formatting. Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
+
+The following would format convert the number 87 to different bases, decimal, hex, octal, binary
 
 ```json
-"mystamp1": {
-  "value": "zero",
-  "stamp": "{0} one",
+"bases": {
+  "value": 87,
+  "regex": "@bases.+",
+  "stamp": "@bases       {0:d} - {0:x} - {0:o} - {0:b}",
 },
-"mystamp2": {
-  "value": ["zero", "one"],
-  "stamp": "{0} {1}",
-},
+		
+Output: @bases         87 - 57 - 127 - 1010111
 
-Output: zero one
+# Getting even trickier: PHP sprintf() like formatting to get nice alignment.
+
+"formatted_bases": {
+  "value": [87, "\nDecimal","\nHex", "\nOctal", "\nBinary"],
+	 "stamp": "{1:<10}: {0:d} {2:<10}: {0:x} {3:<10}: {0:o} {4:<10}: {0:b}",
+	},
+	
+Output:
+
+Decimal  : 87 
+Hex      : 57 
+Octal    : 127 
+Binary   : 1010111
+
 ```
 
-**Using other stamps as values:**
+**As you can see the potential for LiveStamps to expand your expression goes far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.**
 
-The plugin tries to match any value that you define with an existing key in the stamp dictionary before injection: 
+
+####Time formatting: 
+
+Time is formatted according to the Python strftime() function and as such requires a special stamp key. Learn about available flags at [www.strftime.org](http://strftime.org "Strftime")
+
+Note the "auto" value, Which tells LiveStamps to grab the current time.
+
 ```json
-To use the "copyright" stamp within "mystamp", set a "mystamp" VALUE as "copyright". 
-
-"copyright": {
-  "value": "(c) TundraTech 2015",
-  "stamp": "{0}",
-},
-"mystamp": {
-  "value": ["This stamp is", "copyright"],
-  "stamp": "@mystamp   {0} {1}",
+"date": {
+  "value": "auto",
+  "strft": "%d-%m-%Y",
+  "regex": "@date.+",
+  "stamp": "@date        {0}",
 },
 
-Output: @mystamp   This stamp is (c) TundraTech 2015
+Output: @date        08-03-2015
+
+"time": {
+  "value": "auto",
+  "strft": "%c",
+  "regex": "@modified.+",
+  "stamp": "@modified    {0}",
+},
+
+Output: @modified        Fri Mar  6 18:21:57 2015
 ```
 
 ####Regex Patterns
@@ -209,58 +267,6 @@ Test your regex on a separate document before trying it on a master file! An exp
 Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
 
 
-####Time formatting: 
-
-Time is formatted according to the Python strftime() function. If a stamp us defined with a "strft" key, this formatting is automatically applied to each value. Learn about available flags at [www.strftime.org](http://strftime.org "Strftime")
-
-Note the "auto" value, Which tells LiveStamps to grab the current time.
-
-```json
-"date": {
-  "value": "auto",
-  "strft": "%d-%m-%Y",
-  "regex": "@date.+",
-  "stamp": "@date        {0}",
-},
-
-Output: @date        08-03-2015
-
-"time": {
-  "value": "auto",
-  "strft": "%c",
-  "regex": "@modified.+",
-  "stamp": "@modified    {0}",
-},
-
-Output: @modified        Fri Mar  6 18:21:57 2015
-```
-
-
-####Advanced formatting: 
-
-Valeus may also be foratted according to the Python strftime() function. If a stamp is defined with a "format" key, the corresponding format flag is applied to each value. Learn about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
-
-Note the "auto" value, Which tells LiveStamps to grab the current time.
-
-```json
-"date": {
-  "value": "auto",
-  "format": "%d-%m-%Y",
-  "regex": "@date.+",
-  "stamp": "@date        {0}",
-},
-
-Output: @date        08-03-2015
-
-"time": {
-  "value": "auto",
-  "strft": "%c",
-  "regex": "@modified.+",
-  "stamp": "@modified    {0}",
-},
-
-Output: @modified        Fri Mar  6 18:21:57 2015
-```
 
 
 

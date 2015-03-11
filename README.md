@@ -135,9 +135,7 @@ Output: zero
 Output: zero 1 two 3
 ```
 
-**Magic Values**
-
-**LiveStamps can also pull in some auto defined values for handy usage:**
+**LiveStamps can also pull in some magic values for handy usage:**
 
 ```
 "user"        : Gets current user
@@ -148,13 +146,15 @@ Output: zero 1 two 3
 "file_path"   : Gets current filepath
 "parent_name" : Gets name of parent folder
 "parent_path" : Gets path of parent folder
-```
 
 More are planned in the future!
+```
 
 **Using Other Stamps as Values:**
 
-The plugin tries to match any value with an existing key in the stamp dictionary before injection. *To use the "copyright" stamp within "mystamp", set any "mystamp" VALUE as "copyright".*
+Simply set any VALUE as the name of another stamp and PRESTO! The plugin tries to match any value with an existing key in the stamp dictionary before injection. This is great for signatures or other complex stamps.
+
+**Using the "copyright" stamp within "mystamp":**
 
 ```json
 "copyright": {
@@ -164,12 +164,12 @@ The plugin tries to match any value with an existing key in the stamp dictionary
   "value": ["This stamp is", "copyright"],
 },
 
-Output: @mystamp   This stamp is (c) TundraTech 2015
+Output: This stamp is (c) TundraTech 2015
 ```
 
 ####Injection flags:
 
-Injection flags allow for POWERFUL formatting, and complex stamp designs, but for now we start with easy stuff 8).
+Injection flags allow for POWERFUL formatting and complex stamp designs, but for now we start with easy stuff 8).
 If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
 
 **Injection flags are simple markers defined as so:**
@@ -181,47 +181,26 @@ If a "stamp" key is defined, each value gets mapped to the corresponding injecti
 **Injecting values into a stamp. The following stamps all provide the exact same output:**
 
 ```
+# No injection
 "mystamp": {
   "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
 },
+
+# Complete injection
 "mystamp": {
   "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
   "stamp": "{0}",
 },
+
+# Partial injection
 "mystamp": {
   "value": "LiveStamps rule!",
   "stamp": "Have you heard? {0} Thanks TundraTech!",
 },
-"mystamp": {
-  "value": ["Have you heard?, "LiveStamps rule!",],
-  "stamp": "{0} {1} Thanks TundraTech!",
-},
-"mystamp": {
-  "value": ["Have you heard?, "LiveStamps rule!", "Thanks TundraTech!"],
-  "stamp": "{0} {1} {2}",
-},
 
 Output: Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
-
-**The following stamps are both valid and provide the exact same output:**
-
-```
-"mystamp1": {
-  "value": "zero",
-  "stamp": "{0} one",
-},
-"mystamp2": {
-  "value": ["zero", "one"],
-  "stamp": "{0} {1}",
-},
-
-Output: zero one
-```
-
-####Multiple Injection Flags:
-
-The following shows various outputs from the same stamp just by modifying the injection flags:
+**Multiple Injection Flags:**
 
 ```json
 # Various outputs of "mystamp" using different injection flags:
@@ -258,7 +237,9 @@ Output  :  @mystamp
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined actually gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
+Because each value defined actually gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.
+
+Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
 
 **Convert the number 87 to different bases, decimal, hex, octal, binary:**
 
@@ -272,7 +253,7 @@ Because each value defined actually gets passed through the Python format() func
 Output: @bases         87 - 57 - 127 - 1010111
 ```
 
-**Getting even trickier: PHP sprintf() formatting to get nice alignment AND converting bases.**
+**Getting even trickier: Getting nice alignment AND converting bases.**
 
 ```
 "formatted_bases": {
@@ -293,7 +274,7 @@ Binary   : 1010111
 
 Time is formatted according to the Python strftime() function and as such requires a special stamp key. Learn about available flags at [www.strftime.org](http://strftime.org "Strftime")
 
-Note the "auto" value, Which tells LiveStamps to grab the current time.
+Note the "auto" value, Which tells LiveStamps to grab the current time. 
 
 ```json
 "date": {
@@ -314,6 +295,23 @@ Output: @date        08-03-2015
 
 Output: @modified        Fri Mar  6 18:21:57 2015
 ```
+
+**Adding Time Offsets*:*
+
+```json
+"plus_ten_hours": {
+  "value": "hours=10",
+  "strft": "%c",
+  "regex": "@date.+",
+  "stamp": "@date        {0}",
+},
+
+"ten_minutes_thirty_seconds_ago": {
+  "value": "[minutes=-10, seconds=-30]",
+  "strft": "%c",
+  "regex": "@date.+",
+  "stamp": "@date        {0}",
+},
 
 ####Regex Patterns
 

@@ -1,341 +1,417 @@
-[
-{
-	"id"       : "tools",
-	"children" :
-	[
-	{
-		"caption"   : "LiveStamps",
-		"id"        : "livestamps-tools-menu",
-		"children"  :
-		[
-		{
-			"caption"   : "Insert Stamp",
-			"children"  :
+
 			[
 			{
-				"caption" : "All",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "all"},
-			},
-			{
-				"caption" : "Name",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "name"},
-			},
-			{
-				"caption" : "User",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "user"},
-			},
-			{
-				"caption" : "Mail",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "mail"},
-			},
-			{
-				"caption" : "Time",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "time"},
-			},
-			{
-				"caption" : "Date",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "date"},
-			},
-			{
-				"caption" : "Checksum",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "checksum"},
-			},
-			{
-				"caption" : "Link",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "link"},
-			},
-			{
-				"caption" : "Version",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "version"},
-			},
-			{
-				"caption" : "License",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "license"},
-			},
-			{
-				"caption" : "Copyright",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "copyright"},
-			},
-			{
-				"caption" : "Signature",
-				"command" : "insert_stamp",
-				"args"    : {"kind": "signature"},
-			},
-			{
-				"caption"   : "File",
-				"children"  :
-				[
-				{
-					"caption" : "Name",
-					"command" : "insert_stamp",
-					"args"    : {"kind": "file_name"},
-				},
-				{
-					"caption" : "Path",
-					"command" : "insert_stamp",
-					"args"    : {"kind": "file_path"},
-				},
-				{
-					"caption" : "Basename",
-					"command" : "insert_stamp",
-					"args"    : {"kind": "base_name"},
-				},
-				{
-					"caption" : "Extension",
-					"command" : "insert_stamp",
-					"args"    : {"kind": "extension"},
-				},
-				]
-			},
-			{
-				"caption"   : "Parent",
-				"children"  :
-				[
-				{
-					"caption" : "Name",
-					"command" : "insert_stamp",
-					"args"    : {"kind": "parent_name"},
-				},
-				{
-					"caption" : "Path",
-					"command" : "insert_stamp",
-					"args"    : {"kind": "parent_path"},
-				},
-				]
-			},
-			]
-		},
-		{
-			"caption"   : "Insert Value",
-			"children"  :
-			[
-			{
-				"caption" : "All",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "all"},
-			},
-			{
-				"caption" : "Name",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "name"},
-			},
-			{
-				"caption" : "User",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "user"},
-			},
-			{
-				"caption" : "Mail",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "mail"},
-			},
-			{
-				"caption" : "Time",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "time"},
-			},
-			{
-				"caption" : "Date",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "date"},
-			},
-			{
-				"caption" : "Checksum",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "checksum"},
-			},
-			{
-				"caption" : "Link",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "link"},
-			},
-			{
-				"caption" : "Version",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "version"},
-			},
-			{
-				"caption" : "License",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "license"},
-			},
-			{
-				"caption" : "Copyright",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "copyright"},
-			},
-			{
-				"caption" : "Signature",
-				"command" : "insert_stamp",
-				"args"    : {"stamptype": "value", "kind": "signature"},
-			},
-			{
-				"caption"   : "File",
-				"children"  :
-				[
-				{
-					"caption" : "Name",
-					"command" : "insert_stamp",
-					"args"    : {"stamptype": "value", "kind": "file_name"},
-				},
-				{
-					"caption" : "Path",
-					"command" : "insert_stamp",
-					"args"    : {"stamptype": "value", "kind": "file_path"},
-				},
-				{
-					"caption" : "Basename",
-					"command" : "insert_stamp",
-					"args"    : {"stamptype": "value", "kind": "base_name"},
-				},
-				{
-					"caption" : "Extension",
-					"command" : "insert_stamp",
-					"args"    : {"stamptype": "value", "kind": "extension"},
-				},
-				]
-			},
-			{
-				"caption"   : "Parent",
-				"children"  :
-				[
-				{
-					"caption" : "Name",
-					"command" : "insert_stamp",
-					"args"    : {"stamptype": "value", "kind": "parent_name"},
-				},
-				{
-					"caption" : "Path",
-					"command" : "insert_stamp",
-					"args"    : {"stamptype": "value", "kind": "parent_path"},
-				},
-				]
-			},
-			]
-		},
-		{
-			"caption"   : "Highlighting",
-			"children"  :
-			[
-			{
-				"caption" : "ON/OFF",
-				"command" : "live_stamps_toggle",
-				"args"    : {"mode": "highlighter"},
-			},
-			{
-				"caption" : "Outline",
-				"command" : "live_stamps_toggle",
-				"args"    : {"mode": "outline"},
-			},
-			{
-				"caption" : "Markers",
-				"command" : "live_stamps_toggle",
-				"args"    : {"mode": "markers"},
-			},
-			{
-				"caption" : "Background",
-				"command" : "live_stamps_toggle",
-				"args"    : {"mode": "shading"},
-			},
-			]
-		},
-		{
-			"caption" : "-",
-		},
-		{
-			"caption" : "Update Now",
-			"command" : "update_stamps",
-		},
-		{
-			"caption" : "Update On Save",
-			"command" : "live_stamps_toggle",
-			"args"    : {"mode": "auto_update"},
-		},
-		]
-	}
-	]
-},
-{
-	"id"       : "preferences",
-	"children" :
-	[
-	{
-		"caption"  : "Package Settings",
-		"mnemonic" : "P",
-		"id"       : "package-settings",
-		"children" :
-		[
-		{
-			"caption"  : "LiveStamps",
-			"id"       : "livestamps-preferences-menu",
+			"id"       : "tools",
 			"children" :
 			[
 			{
-				"caption" : "Time Zones",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/LiveStamps/TimeZones.sublime-settings"}
+				"caption"   : "LiveStamps",
+				"id"        : "livestamps-tools-menu",
+				"children"  :
+				[
+				{
+					"caption"   : "Insert Stamp",
+					"children"  :
+					[
+					{
+						"caption" : "All Stamps",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "all"},
+					},
+					{
+						"caption" : "Base Name",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "base_name"},
+					},
+					{
+						"caption" : "Bases",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "bases"},
+					},
+					{
+						"caption" : "Checksum",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "checksum"},
+					},
+					{
+						"caption" : "Copyright",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "copyright"},
+					},
+					{
+						"caption" : "Date",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "date"},
+					},
+					{
+						"caption" : "Day",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "day"},
+					},
+					{
+						"caption" : "Email",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "email"},
+					},
+					{
+						"caption" : "Extension",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "extension"},
+					},
+					{
+						"caption" : "File Name",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "file_name"},
+					},
+					{
+						"caption" : "File Path",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "file_path"},
+					},
+					{
+						"caption" : "License",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "license"},
+					},
+					{
+						"caption" : "Link",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "link"},
+					},
+					{
+						"caption" : "Modified",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "modified"},
+					},
+					{
+						"caption" : "Month",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "month"},
+					},
+					{
+						"caption" : "Name",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "name"},
+					},
+					{
+						"caption" : "Parent Name",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "parent_name"},
+					},
+					{
+						"caption" : "Parent Path",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "parent_path"},
+					},
+					{
+						"caption" : "Plus Ten Hours",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "plus_ten_hours"},
+					},
+					{
+						"caption" : "Quote",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "quote"},
+					},
+					{
+						"caption" : "Signature",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "signature"},
+					},
+					{
+						"caption" : "Time",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "time"},
+					},
+					{
+						"caption" : "User",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "user"},
+					},
+					{
+						"caption" : "Version",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "version"},
+					},
+					{
+						"caption" : "Year",
+						"command" : "insert_stamp",
+						"args"    : {"kind": "year"},
+					},
+					]
+				},
+				{
+					"caption"   : "Insert Value",
+					"children"  :
+					[
+					{
+						"caption" : "All Values",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "all"},
+					},
+					{
+						"caption" : "Base Name",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "base_name"},
+					},
+					{
+						"caption" : "Bases",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "bases"},
+					},
+					{
+						"caption" : "Checksum",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "checksum"},
+					},
+					{
+						"caption" : "Copyright",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "copyright"},
+					},
+					{
+						"caption" : "Date",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "date"},
+					},
+					{
+						"caption" : "Day",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "day"},
+					},
+					{
+						"caption" : "Email",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "email"},
+					},
+					{
+						"caption" : "Extension",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "extension"},
+					},
+					{
+						"caption" : "File Name",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "file_name"},
+					},
+					{
+						"caption" : "File Path",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "file_path"},
+					},
+					{
+						"caption" : "License",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "license"},
+					},
+					{
+						"caption" : "Link",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "link"},
+					},
+					{
+						"caption" : "Modified",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "modified"},
+					},
+					{
+						"caption" : "Month",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "month"},
+					},
+					{
+						"caption" : "Name",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "name"},
+					},
+					{
+						"caption" : "Parent Name",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "parent_name"},
+					},
+					{
+						"caption" : "Parent Path",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "parent_path"},
+					},
+					{
+						"caption" : "Plus Ten Hours",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "plus_ten_hours"},
+					},
+					{
+						"caption" : "Quote",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "quote"},
+					},
+					{
+						"caption" : "Signature",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "signature"},
+					},
+					{
+						"caption" : "Time",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "time"},
+					},
+					{
+						"caption" : "User",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "user"},
+					},
+					{
+						"caption" : "Version",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "version"},
+					},
+					{
+						"caption" : "Year",
+						"command" : "insert_stamp",
+						"args"    : {"stamptype": "value", "kind": "year"},
+					},
+					]
+				},
+				{
+					"caption"   : "Highlighting",
+					"children"  :
+					[
+					{
+						"caption" : "ON/OFF",
+						"command" : "live_stamps_toggle",
+						"args"    : {"mode": "highlighter"},
+					},
+					{
+						"caption" : "Outline",
+						"command" : "live_stamps_toggle",
+						"args"    : {"mode": "outline"},
+					},
+					{
+						"caption" : "Markers",
+						"command" : "live_stamps_toggle",
+						"args"    : {"mode": "markers"},
+					},
+					{
+						"caption" : "Background",
+						"command" : "live_stamps_toggle",
+						"args"    : {"mode": "shading"},
+					},
+					]
+				},
+					{
+						"caption" : "-"
+					},
+					{
+						"caption" : "Update Now",
+						"command" : "update_stamps",
+					},
+					{
+						"caption" : "Update On Save",
+						"command" : "live_stamps_toggle",
+						"args"    : {"mode": "auto_update"},
+					},
+				]
+			}
+			]
 			},
 			{
-				"caption" : "-"
-			},
+			"id"       : "preferences",
+			"children" :
+			[
 			{
-				"caption" : "Settings – Default",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/LiveStamps/LiveStamps.sublime-settings"}
-			},
-			{
-				"caption" : "Settings – User",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/User/LiveStamps.sublime-settings"}
-			},
-			{
-				"caption" : "-"
-			},
-			{
-				"caption" : "Key Bindings – Default",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/LiveStamps/Default (Windows).sublime-keymap", "platform":"Windows"}
-			},
-			{
-				"caption" : "Key Bindings – Default",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/LiveStamps/Default (OSX).sublime-keymap", "platform":"OSX"},
-			},
-			{
-				"caption" : "Key Bindings – Default",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/LiveStamps/Default (Linux).sublime-keymap", "platform":"Linux"},
-			},
-			{
-				"caption" : "Key Bindings – User",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/User/Default (Windows).sublime-keymap",  "platform":"Windows"},
-			},
-			{
-				"caption" : "Key Bindings – User",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/User/Default (OSX).sublime-keymap", "platform":"OSX"},
-			},
-			{
-				"caption" : "Key Bindings – User",
-				"command" : "open_file",
-				"args"    : {"file":"${packages}/User/Default (Linux).sublime-keymap", "platform":"Linux"},
-			},
+				"caption"  : "Package Settings",
+				"mnemonic" : "P",
+				"id"       : "package-settings",
+				"children" :
+				[
+				{
+					"caption"  : "LiveStamps",
+					"id"       : "livestamps-preferences-menu",
+					"children" :
+					[
+				{
+					"caption"   : "Menu Gen",
+					"children"  :
+					[
+					{
+						"caption" : "Context Menu",
+						"command" : "live_stamps_menu_gen",
+						"args"    : {"menutype": "context"},
+					},
+					{
+						"caption" : "Toolbar Menu",
+						"command" : "live_stamps_menu_gen",
+						"args"    : {"menutype": "toolbar"},
+					},
+					{
+						"caption" : "Sidebar Menu",
+						"command" : "live_stamps_menu_gen",
+						"args"    : {"menutype": "sidebar"},
+					},
+					{
+						"caption" : "Command Menu",
+						"command" : "live_stamps_menu_gen",
+						"args"    : {"menutype": "command"},
+					},
+					]
+				},
+					{
+						"caption" : "-"
+					},
+					{
+						"caption" : "Time Zones",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/LiveStamps/TimeZones.sublime-settings"}
+					},
+					{
+						"caption" : "-"
+					},
+					{
+						"caption" : "Settings – Default",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/LiveStamps/LiveStamps.sublime-settings"}
+					},
+					{
+						"caption" : "Settings – User",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/User/LiveStamps.sublime-settings"}
+					},
+					{
+						"caption" : "-"
+					},
+					{
+						"caption" : "Key Bindings – Default",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/LiveStamps/Default (Windows).sublime-keymap", "platform":"Windows"}
+					},
+					{
+						"caption" : "Key Bindings – Default",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/User/Default (Windows).sublime-keymap",  "platform":"Windows"},
+					},
+					{
+						"caption" : "Key Bindings – Default",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/LiveStamps/Default (OSX).sublime-keymap", "platform":"OSX"}
+					},
+					{
+						"caption" : "Key Bindings – Default",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/User/Default (OSX).sublime-keymap",  "platform":"OSX"},
+					},
+					{
+						"caption" : "Key Bindings – Default",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/LiveStamps/Default (Linux).sublime-keymap", "platform":"Linux"}
+					},
+					{
+						"caption" : "Key Bindings – Default",
+						"command" : "open_file",
+						"args"    : {"file":"${packages}/User/Default (Linux).sublime-keymap",  "platform":"Linux"},
+					},
+					]
+				}
+				]
+			}
 			]
 		}
 		]
-	}
-	]
-}
-]

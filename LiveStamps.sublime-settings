@@ -1,8 +1,17 @@
  {
 
- 	// Modes
+	//----------------------------------------------------------------------------------------------------
+	// LiveStamps for Sublime Text 3
+	//----------------------------------------------------------------------------------------------------
+
+	// Modes
 	"auto_update": true, // Update on LiveStamps on save
 	"highlighter": true, // Highlight LiveStamps
+
+	// Timezone settings
+	"utc_time": true,
+	"daylight": true,
+	"timezone": "America/Whitehorse",
 
 	// Highlighter Settings
 	"shading": false,
@@ -12,194 +21,128 @@
 	"scoping": "string", // Highlighting color. Matches ST3 scope of the current syntax. i.e. comment, string, keyword, constant, storage etc.
 	"maxsize": 1048576,  // Maximum filesize in bytes to parse with highlighter
 
-	// Timezone settings
-	"utc_time": true,
-	"daylight": true,
-	"timezone": "America/Whitehorse",
-
-	//----------------------------------------------------------------------------------------------------
 	// LiveStamp definitions
-	//----------------------------------------------------------------------------------------------------
-	//
-	//  LiveStamp key definitions:
-	//
-	//  id     : *REQUIRED* Unique identifier for the stamp, i.e. "name", "signature" etc.
-	//  value  : *REQUIRED* Can be a static value or "auto". The plugin will try to determin auto stamps for you
-	//  stamp  : *REQUIRED* The format string for the stamp. Stamp value(s) are inserted at tag marker(s) i.e. "{0} {1} {2}"
-	//  regex  : *OPTIONAL* Python regex pattern for livestamps. If empty or excluded, the stamp is injected as a static value.
-	//  parts  : *OPTIONAL* A list to define a stamp from other stamps, or multiple values. i.e. "parts": ["name", "email", "link"]
-	//  format : *OPTIONAL* Python format() string argument to apply to the stamp's value
-	//  strft  : *OPTIONAL* Python strftime() string argument to apply to a time value i.e. "%d-%m-%Y"
-	//
-	//	**** WARNING *********************************************************
-	//  * Regex patterns are powerful expressions!
-	//  *
-	//  * Test your stamp regex online at a site like www.regexr.com first!!!
-	//  *
-	//  * An expression that accidentally matches valid code, will instantly
-	//  * replace it. A mistyped pattern that is too "loose" could replace a
-	//  * huge amount of data in a large file, potentially causing a hardlock
-	//  * or data loss...
-	//  **********************************************************************
-	//
-	//
-	//	Basic Static Example:
-	//  ===================================================================================
-	//
-	// 	A basic stamp with a constant output that doesnt auto update.
-	//
-	//  	"mystamp": {
-	//		  "value": "An important value i use often while while programming",
-	//		  "stamp": "{0}",
-	//  	},
-	//
-	//	Output: An important value i use often while while programming
-	//
-	//
-	//	Formatted Time LiveStamp Example:
-	//  ===================================================================================
-	//
-	//  A stamp which would auto update the current date every day. Note the "auto" value,
-	//  Which tells LiveStamps to grab the current time. A constant Python time value could
-	//  be entered here as well, allowing static time inputs...though I can't see a good
-	//  reason for that lol.
-	//
-	//  	"date": {
-	//  		"value": "auto",
-	//  		"strft": "%d-%m-%Y",
-	//  		"regex": "@date.+",
-	//  		"stamp": "@date        {0}",
-	//  	},
-	//
-	//   Output: @date        08-03-2015
-	//
-	//
-	//	Multi-part LiveStamp Example:
-	//  ===================================================================================
-	//
-	//  A stamp with a "live" output that would update the year value automatically.
-	//  Note, for this to stamp to auto update the previous "date" stamp would have to be
-	//  defined. If the "date" stamp was NOT defined" the output would be:
-	//
-	//  	@copyright   (c) TundraTech date
-	//
-	//  However, the stamp would still be "live" because a regex was supplied. A change to
-	//  any of its values would still cause an auto update, allowing you to enter a static
-	//  date if desired, instantly updating all existing stamps in a document automatically.
-	//
-	//  Changing the regex however, would abandon all the the previous stamps. Careful!
-	//
-	//    "copyright": {
-	//    	"value": "(c) TundraTech",
-	//    	"parts": ["copyright", "date"],
-	//    	"regex": "@copyright.+",
-	//    	"stamp": "@copyright   {0} {1}",
-	//    },
-	//
-	//	Output: @copyright   (c) TundraTech 08-03-2015
-	//
-	//--------------------------------------------------------------------------------------
-
 	"stamps" : {
 		"name": {
 			"value": "DJ Sumanik",
-			"regex": "@author.+",
-			"stamp": "@author      {0}",
+			"regex": " \\* @author.+",
+			"stamp": " * @author      {0}",
 		},
 		"signature": {
-			"value": "auto",
-			"parts": ["name", "email", "link", "copyright", "license", "hash", "time", "quote"],
-			"stamp": "\n/** \n * @author      {0}\n * @email       {1}\n * @link        {2}\n * @copyright   {3}\n * @license     {4}\n * @checksum    {5}\n * @modified    {6}\n * @quote       {7}\n */"
+			"value": ["name", "email", "link", "copyright", "license", "checksum", "modified", "quote"],
+			"stamp": "/** \n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n */"
 			//"regex": Not needed here because the stamp is made from other stamps, which already have regex values defined!
 		},
 		"user": {
 			"value": "auto",
-			"stamp": "@user        {0}",
-			"regex": "@user.+",
+			"stamp": " * @user        {0}",
+			"regex": " \\* @user.+",
 		},
 		"email": {
 			"value": "dj@tundratech.ca",
-			"regex": "@email.+",
-			"stamp": "@email       {0}",
+			"regex": " \\* @email.+",
+			"stamp": " * @email       {0}",
 		},
 		"quote": {
 			"value": "\"I'm in the empire business.\" - Walter White",
-			"regex": "@quote.+",
-			"stamp": "@quote       {0}",
+			"regex": " \\* @quote.+",
+			"stamp": " * @quote       {0}",
+		},
+		"modified": {
+			"value": "auto",
+			"strft": "%c",
+			"regex": " \\* @modified.+",
+			"stamp": " * @modified    {0}",
 		},
 		"time": {
 			"value": "auto",
 			"strft": "%c",
-			"regex": "@modified.+",
-			"stamp": "@modified    {0}",
 		},
 		"year": {
 			"value": "auto",
 			"strft": "%Y",
-			"regex": "@year.+",
-			"stamp": "@year        {0}",
+		},
+		"month": {
+			"value": "auto",
+			"strft": "%m",
+		},
+		"day": {
+			"value": "auto",
+			"strft": "%d",
 		},
 		"date": {
 			"value": "auto",
 			"strft": "%d-%m-%Y",
-			"regex": "@date.+",
-			"stamp": "@date        {0}",
 		},
 		"checksum": {
-			"value": "auto",
-			"regex": "@checksum.+",
-			"stamp": "@checksum    {0}",
+			"value": "checksum",
+			"regex": " \\* @checksum.+",
+			"stamp": " * @checksum    {0}",
 		},
 		"link": {
 			"value": "http://www.tundratech.ca",
-			"regex": "@link.+",
-			"stamp": "@link        {0}",
+			"regex": " \\* @link.+",
+			"stamp": " * @link        {0}",
 		},
 		"version": {
 			"value": "1.0.0",
-			"regex": "@version.+",
-			"stamp": "@version     {0}",
+			"regex": " \\* @version.+",
+			"stamp": " * @version     {0}",
 		},
 		"license": {
-			"value": "MIT",
-			"regex": "@license.+",
-			"stamp": "@license     {0}",
+			"value": "MIT - http://opensource.org/licenses/MIT",
+			"regex": " \\* @license.+",
+			"stamp": " * @license     {0}",
 		},
 		"copyright": {
-			"value": "(c) TundraTech",
-			"parts": ["copyright", "year"],
-			"regex": "@copyright.+",
-			"stamp": "@copyright   {0} {1}",
+			"value": ["(c) TundraTech", "year"],
+			"regex": " \\* @copyright.+",
+			"stamp": " * @copyright   {0} {1}",
 		},
 		"file_name": {
 			"value": "auto",
-			"regex": "@filename.+",
-			"stamp": "@filename    {0}",
+			"regex": " \\* @filename.+",
+			"stamp": " * @filename    {0}",
 		},
 		"extension": {
 			"value": "auto",
-			"regex": "@extension.+",
-			"stamp": "@extension   {0}",
+			"regex": " \\* @extension.+",
+			"stamp": " * @extension   {0}",
 		},
 		"file_path": {
 			"value": "auto",
-			"regex": "@filepath.+",
-			"stamp": "@filepath    {0}",
+			"regex": " \\* @filepath.+",
+			"stamp": " * @filepath    {0}",
 		},
 		"base_name": {
 			"value": "auto",
-			"regex": "@basename.+",
-			"stamp": "@basename    {0}",
+			"regex": " \\* @basename.+",
+			"stamp": " * @basename    {0}",
 		},
 		"parent_name": {
 			"value": "auto",
-			"regex": "@parentname.+",
-			"stamp": "@parentname  {0}",
+			"regex": " \\* @parentname.+",
+			"stamp": " * @parentname  {0}",
 		},
 		"parent_path": {
 			"value": "auto",
-			"regex": "@parentpath.+",
-			"stamp": "@parentpath  {0}",
+			"regex": " \\* @parentpath.+",
+			"stamp": " * @parentpath  {0}",
+		},
+		"bases": {
+			"value": [87, "\nDecimal","\nHex", "\nOctal", "\nBinary"],
+			"stamp": "{1:<10}: {0:d} {2:<10}: {0:x} {3:<10}: {0:o} {4:<10}: {0:b}",
+		},
+		"plus_ten_hours": {
+		  "value": "years: 1.5",
+		  "value": "microseconds: -21709870.5",
+
+		  //"value": ["hours=-1", "seconds=30"],
+  		//"value": {"hours": -1, "seconds" :30},
+
+		  "strft": "%c",
+		  "regex": " \\* @plus_ten_hours.+",
+		  "stamp": " * @plus_ten_hours           {0}",
 		},
 	},
 }

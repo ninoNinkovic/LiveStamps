@@ -296,7 +296,7 @@ Output: @date        08-03-2015
 Output: @modified        Fri Mar  6 18:21:57 2015
 ```
 
-**Adding Time Offsets*:*
+**Adding Time Offsets:**
 
 Time offsets allow creation of mutiple stamps with different timezones! A single offset as a raw string. When enterings offsets as a string, the colon ":" or '=" sign must be used as the delimete between unit and value. Fractional values are automatically handled and negative offsets are allowed.
 
@@ -312,7 +312,7 @@ Here are the allowed offset units:
   * "months"
   * "years"
   
-**Offset input syntax... highly flexible!**
+**Offset Input Syntax... Highly Flexible!**
 
 ```
 # 
@@ -327,7 +327,7 @@ Here are the allowed offset units:
 
 ```
 
-** Formatted Offset Examples With Regex:**
+**Formatted Offset Examples With Regex:**
 
 ```json
 "ahead_ten_hours": {
@@ -348,6 +348,7 @@ Raw timestamp output.
 "ten_minutes_thirty_seconds_ago": {
   "value": "[minutes=-10, seconds=-30]",
 },
+```
 
 ####Regex Patterns
 

@@ -298,19 +298,55 @@ Output: @modified        Fri Mar  6 18:21:57 2015
 
 **Adding Time Offsets*:*
 
+Time offsets allow creation of mutiple stamps with different timezones! A single offset as a raw string. When enterings offsets as a string, the colon ":" or '=" sign must be used as the delimete between unit and value. Fractional values are automatically handled and negative offsets are allowed.
+
+Here are the allowed offset units:
+
+  * "microseconds"
+  * "milliseconds"
+  * "seconds"
+  * "minutes"
+  * "hours"
+  * "days"
+  * "weeks"
+  * "months"
+  * "years"
+  
+**Offset input syntax... highly flexible!**
+
+```
+# 
+"value": "microseconds: -21709870.5",
+"value": "America/Whitehorse",
+
+# Multiple offsets in a list
+"value": ["years: 10", "weeks: 3"],
+
+# Multiple offsets in a dictionary
+"value": {"months": -1.5, "seconds" :30},
+
+```
+
+** Formatted Offset Examples With Regex:**
+
 ```json
-"plus_ten_hours": {
-  "value": "hours=10",
+"ahead_ten_hours": {
+  "value": "hours: 10",
   "strft": "%c",
-  "regex": "@date.+",
-  "stamp": "@date        {0}",
+  "regex": "@plus10hrs.+",
+  "stamp": "@plus10hrs        {0}",
 },
 
+"Maui time": {
+  "value": "America/Honolulu",
+  "strft": "%c",
+  "regex": "@Maui.+",
+  "stamp": "@Maui        {0}",
+},
+
+Raw timestamp output.
 "ten_minutes_thirty_seconds_ago": {
   "value": "[minutes=-10, seconds=-30]",
-  "strft": "%c",
-  "regex": "@date.+",
-  "stamp": "@date        {0}",
 },
 
 ####Regex Patterns

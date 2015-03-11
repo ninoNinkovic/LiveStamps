@@ -315,8 +315,10 @@ Here are the allowed offset units:
 **Offset Input Syntax... Highly Flexible!**
 
 ```
-# 
+# String literal
 "value": "microseconds: -21709870.5",
+
+# Timezone support
 "value": "America/Whitehorse",
 
 # Multiple offsets in a list
@@ -324,7 +326,6 @@ Here are the allowed offset units:
 
 # Multiple offsets in a dictionary
 "value": {"months": -1.5, "seconds" :30},
-
 ```
 
 **Formatted Offset Examples With Regex:**

@@ -48,12 +48,12 @@ LiveStamps will update automatically on save, but can also output the raw value 
 
 ```json
 # General Usage:
-super + alt + letter -> inject a stamp
-ctrl  + alt + letter -> inject a stamp's raw value
+super + alt + letter -> inject a LiveStamp
+ctrl  + alt + letter -> inject it's raw value
 
 # Example: All stamps
-To view all stamps: super + alt + a     
-To view all values: ctrl  + alt + a      
+Inject all stamps: super + alt + a     
+Inject all values: ctrl  + alt + a      
 ```
 
 ####Menus:
@@ -90,7 +90,7 @@ super+shift+p -> type in LiveStamps -> select an option
 
 ###Anatomy of a LiveStamp:
 
-**LiveStamps are defined as a small python dictionaries with the minimum following keys:**
+**LiveStamps are defined as small python dictionaries with the minimum following keys:**
 
 ```json
 "mystamp": {
@@ -104,16 +104,19 @@ Output: LiveStamps rule!
 ```
 [value]  : A string literal, or list. Setting as "auto" tries to find the value for you
 ```
+
 **Optional Keys:**
+
 ```
-[stamp]  : Formatting string. This key is cool and recommended. See injection flags below. 
-[regex]  : Python regex pattern. If empty/excluded, the stamp will be static.
+[stamp]  : Formatting string. Cool and recommended 8). See injection flags below. 
+[regex]  : Python regex pattern. If empty/excluded, the stamp will be static data.
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
 ```
 
+
 ####Stamp Values:
 
-**Values can be defined as single, or list of values:**
+**Values can be defined as single item, or list of values:**
 
 ```json
 "mystamp1": {
@@ -142,14 +145,20 @@ Output: zero 1 two 3
 "checksum"    : Gets md5 hash of the current file
 "extension"   : Gets current file extension
 "base_name"   : Gets current basename
+"file_size"   : Gets current filesize
 "file_name"   : Gets current filename
 "file_path"   : Gets current filepath
 "parent_name" : Gets name of parent folder
 "parent_path" : Gets path of parent folder
 
+"mystamp": {
+  "value": "file_size",
+},
+
+Output: 768 (in bytes)
+
 More are planned in the future!
 ```
-
 **Using Other Stamps as Values:**
 
 Simply set any VALUE as the name of another stamp and PRESTO! The plugin tries to match any value with an existing key in the stamp dictionary before injection. This is great for signatures or other complex stamps.
@@ -169,8 +178,7 @@ Output: This stamp is (c) TundraTech 2015
 
 ####Injection flags:
 
-Injection flags allow for POWERFUL formatting and complex stamp designs, but for now we start with easy stuff 8).
-If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
+Injection flags allow for POWERFUL formatting and complex stamp designs, but for now we start with the easy stuff 8). If a "stamp" key is defined, each value gets mapped to a corresponding injection flag in the final output. 
 
 **Injection flags are simple markers defined as so:**
 
@@ -237,7 +245,7 @@ Output  :  @mystamp
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined actually gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.
+Because each value defined gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.
 
 Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
 

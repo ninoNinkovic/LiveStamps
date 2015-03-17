@@ -111,6 +111,7 @@ Output: LiveStamps rule!
 [stamp]  : Formatting string. Cool and recommended 8). See injection flags below. 
 [regex]  : Python regex pattern. If empty/excluded, the stamp will be static data.
 [strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
+[menu]   : Group stamp inside a submenu in the right-click context menu
 ```
 
 

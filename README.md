@@ -5,7 +5,6 @@
 **Features:**
 
   * Insert self updating tags into docblock headers
-  * User defineable, automatic menu generation so you dont have to memorize a million keyboard shortcuts
   * Background highlighting, outlining, and guttermarking of livestamps. (each one is optional)
   * Timezone support, with DST 
   * Track file metadata no matter where it is moved/renamed
@@ -13,16 +12,17 @@
   * Track user or person who last modified the file.
   * Add a checksum to the file
   * Update all your projects with a new email address or URL when it changes
-  * Easy static/dynamic custom stamp creation with powerful regex matching
+  * Easy static/dynamic custom stamp creation with powerful AUTOMATIC regex matching
   * Inject stamps via keyboard, command palette, or menus
   * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
 
 **Advanced Features:** 
+
 * Multipart stamps, or stamps made from other stamps. Great for a siggy!
 * Powerful Python format() and strftime() support for each value defined in stamps
 * Go beyond simple metadata, perform conversions, arithmetic or inject code snippets.
-* Custom regex for any stamp
-* User defineable, automatic menu generation so you dont have to memorize a million keyboard shortcuts
+* Custom regex is possible for any stamp
+* User defineable submenus and auto context generation so your custom stamps are always easy to access 
 
  
 ####Intall via Package Control: 

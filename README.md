@@ -19,7 +19,7 @@
 **Advanced Features:** 
 
 * Multipart stamps, or stamps made from other stamps. Great for a siggy!
-* Powerful Python format() and strftime() support for each value defined in stamps
+* Powerful Python format() and strftime() support for stamp values
 * Go beyond simple metadata, perform conversions, arithmetic or inject code snippets.
 * Custom regex is possible for any stamp
 * User defineable submenus and auto context generation so your custom stamps are always easy to access 

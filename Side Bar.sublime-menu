@@ -622,6 +622,9 @@
             ]
           },
           {
+            "caption": "-"
+          },
+          {
             "caption": "Update On Save",
             "command": "live_stamps_toggle",
             "args": {

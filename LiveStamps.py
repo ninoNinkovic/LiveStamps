@@ -1697,6 +1697,8 @@ class LiveStampsMenuGenCommand(sublime_plugin.TextCommand):
 		# Add menu generation submenu
 		self.add_submenu( submenu, self.get_menugen_menu() )
 
+		submenu = self.add_divider(submenu)
+
 		# Add a single root key
 		submenu['children'].append( self.build_key("Update On Save", "live_stamps_toggle", {"mode": "auto_update"}) )
 

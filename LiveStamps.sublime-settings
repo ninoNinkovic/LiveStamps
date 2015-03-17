@@ -1,148 +1,213 @@
  {
 
-	//----------------------------------------------------------------------------------------------------
-	// LiveStamps for Sublime Text 3
-	//----------------------------------------------------------------------------------------------------
+	/**
+	 * LiveStamps for Sublime Text 3
+	 *
+	 * @version           1.0.0
+	 * @author            DJ Sumanik
+	 * @email             dj@tundratech.ca
+	 * @copyright         (c) TundraTech 2015
+	 * @license           MIT - http://opensource.org/licenses/MIT
+	 * @repo              https://github.com/TundraTech/LiveStamps
+	 * @modified          05:06:03
+	 * @checksum          c8bdf966b088fd7cef82304b9e215aa0
+	 * @quote             "I'm in the empire business." - Walter White
+	 */
 
-	// Modes
-	"auto_update": true, // Update on LiveStamps on save
-	"highlighter": true, // Highlight LiveStamps
+	//------------------------------------------------------------------------------------
+	// Plugin Settings
+	//------------------------------------------------------------------------------------
 
-	// Timezone settings
-	"utc_time": true,
-	"daylight": true,
-	"timezone": "America/Whitehorse",
+		"auto_update" : true,                 // Update on LiveStamps on save
+		"hash_mode"   : "md5",                // Checksum algorithm
+		"timezone"    : "America/Whitehorse", // Local Timezone to use for all time calcs
 
-	// Highlighter Settings
-	"shading": false,
-	"outline": false,
-	"markers": true,
-	"timeout": 200,      // Delay before stamp regions are updated, lower times are more responsive but taxing on the system
-	"scoping": "string", // Highlighting color. Matches ST3 scope of the current syntax. i.e. comment, string, keyword, constant, storage etc.
-	"maxsize": 1048576,  // Maximum filesize in bytes to parse with highlighter
+	//------------------------------------------------------------------------------------
+	//  Highlighter Settings
+	//------------------------------------------------------------------------------------
 
-	// LiveStamp definitions
-	"stamps" : {
-		"name": {
-			"value": "DJ Sumanik",
-			"regex": " \\* @author.+",
-			"stamp": " * @author      {0}",
-		},
-		"signature": {
-			"value": ["name", "email", "link", "copyright", "license", "checksum", "modified", "quote"],
-			"stamp": "/** \n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n */"
-			//"regex": Not needed here because the stamp is made from other stamps, which already have regex values defined!
-		},
-		"user": {
-			"value": "auto",
-			"stamp": " * @user        {0}",
-			"regex": " \\* @user.+",
-		},
-		"email": {
-			"value": "dj@tundratech.ca",
-			"regex": " \\* @email.+",
-			"stamp": " * @email       {0}",
-		},
-		"quote": {
-			"value": "\"I'm in the empire business.\" - Walter White",
-			"regex": " \\* @quote.+",
-			"stamp": " * @quote       {0}",
-		},
-		"modified": {
-			"value": "auto",
-			"strft": "%c",
-			"regex": " \\* @modified.+",
-			"stamp": " * @modified    {0}",
-		},
-		"time": {
-			"value": "auto",
-			"strft": "%c",
-		},
-		"year": {
-			"value": "auto",
-			"strft": "%Y",
-		},
-		"month": {
-			"value": "auto",
-			"strft": "%m",
-		},
-		"day": {
-			"value": "auto",
-			"strft": "%d",
-		},
-		"date": {
-			"value": "auto",
-			"strft": "%d-%m-%Y",
-		},
-		"checksum": {
-			"value": "checksum",
-			"regex": " \\* @checksum.+",
-			"stamp": " * @checksum    {0}",
-		},
-		"link": {
-			"value": "http://www.tundratech.ca",
-			"regex": " \\* @link.+",
-			"stamp": " * @link        {0}",
-		},
-		"version": {
-			"value": "1.0.0",
-			"regex": " \\* @version.+",
-			"stamp": " * @version     {0}",
-		},
-		"license": {
-			"value": "MIT - http://opensource.org/licenses/MIT",
-			"regex": " \\* @license.+",
-			"stamp": " * @license     {0}",
-		},
-		"copyright": {
-			"value": ["(c) TundraTech", "year"],
-			"regex": " \\* @copyright.+",
-			"stamp": " * @copyright   {0} {1}",
-		},
-		"file_name": {
-			"value": "auto",
-			"regex": " \\* @filename.+",
-			"stamp": " * @filename    {0}",
-		},
-		"extension": {
-			"value": "auto",
-			"regex": " \\* @extension.+",
-			"stamp": " * @extension   {0}",
-		},
-		"file_path": {
-			"value": "auto",
-			"regex": " \\* @filepath.+",
-			"stamp": " * @filepath    {0}",
-		},
-		"base_name": {
-			"value": "auto",
-			"regex": " \\* @basename.+",
-			"stamp": " * @basename    {0}",
-		},
-		"parent_name": {
-			"value": "auto",
-			"regex": " \\* @parentname.+",
-			"stamp": " * @parentname  {0}",
-		},
-		"parent_path": {
-			"value": "auto",
-			"regex": " \\* @parentpath.+",
-			"stamp": " * @parentpath  {0}",
-		},
-		"bases": {
-			"value": [87, "\nDecimal","\nHex", "\nOctal", "\nBinary"],
-			"stamp": "{1:<10}: {0:d} {2:<10}: {0:x} {3:<10}: {0:o} {4:<10}: {0:b}",
-		},
-		"plus_ten_hours": {
-		  "value": "years: 1.5",
-		  "value": "microseconds: -21709870.5",
+		"highlighter" : true, // Highlight LiveStamps
+		"shading" : false,    // Background highlighting
+		"outline" : false,    // Outline
+		"markers" : true,     // Gutter markers
+		"timeout" : 200,      // Delay before stamp regions are highlighted after typing
+		"scoping" : "string", // Highlight color as scope: comment, string, variable etc.
+		"maxsize" : 1048576,  // Maximum filesize in bytes to parse with highlighter
 
-		  //"value": ["hours=-1", "seconds=30"],
-  		//"value": {"hours": -1, "seconds" :30},
+	//------------------------------------------------------------------------------------
+	// AutoStamp Settings
+	//------------------------------------------------------------------------------------
 
-		  "strft": "%c",
-		  "regex": " \\* @plus_ten_hours.+",
-		  "stamp": " * @plus_ten_hours           {0}",
+		"autoregex" : " \\* @{0}.+", 	// Stamp name is injected at flag {0}
+		"autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
+		"separator" : " ",	          // Separator used when multiple values are defined
+		"doc_align" : 5,              // Extra spacing to add to docblok alignment
+
+	//------------------------------------------------------------------------------------
+	// LiveStamp Definitions
+	//------------------------------------------------------------------------------------
+
+		"stamps" : {
+
+			"all": {
+				"menu" : "root",
+				"value": "auto",
+			},
+
+			//--------------------------------------------------------------------------------
+			// Time and Date Values
+			//--------------------------------------------------------------------------------
+
+			"date": {
+				"menu" : "Time",
+				"value": "auto",
+				"strft": "%d-%m-%Y",
+			},
+			"time": {
+				"menu" : "Time",
+				"value": "auto",
+				"strft": "%X",
+			},
+			"day": {
+				"menu" : "Time",
+				"value": "auto",
+				"strft": "%d",
+			},
+			"month": {
+				"menu" : "Time",
+				"value": "auto",
+				"strft": "%m",
+			},
+			"year": {
+				"menu" : "Time",
+				"value": "auto",
+				"strft": "%Y",
+			},
+
+			"pacific_time": {
+				"menu" : "Time",
+				"value": "Canada/Pacific",
+				"strft": "%c",
+			},
+			"mountain_time": {
+				"menu" : "Time",
+				"value": "Canada/Mountain",
+				"strft": "%c",
+			},
+			"central_time": {
+				"menu" : "Time",
+				"value": "Canada/Central",
+				"strft": "%c",
+			},
+			"eastern_time": {
+				"menu" : "Time",
+				"value": "Canada/Eastern",
+				"strft": "%c",
+			},
+
+			//--------------------------------------------------------------------------------
+			// Project Info
+			//--------------------------------------------------------------------------------
+
+			"modified": {
+				"menu" : "Project",
+				"value": "time",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+
+			"link": {
+				"menu" : "Project",
+				"value": "http://www.tundratech.ca",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"repo": {
+				"menu" : "Project",
+				"value": "https://github.com/TundraTech/LiveStamps",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"docs": {
+				"menu" : "Project",
+				"value": "https://github.com/TundraTech/LiveStamps/blob/master/README.md",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+
+			"version": {
+				"menu" : "Project",
+				"value": "1.0.0",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"license": {
+				"menu" : "Project",
+				"value": "MIT - http://opensource.org/licenses/MIT",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"copyright": {
+				"menu" : "Project",
+				"value": ["(c) TundraTech", "year"],
+				"regex": "auto",
+				"stamp": "auto",
+			},
+
+			//--------------------------------------------------------------------------------
+			// User info
+			//--------------------------------------------------------------------------------
+
+			"author": {
+				"menu" : "User",
+				"value": "DJ Sumanik",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"email": {
+				"menu" : "User",
+				"value": "dj@tundratech.ca",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"website": {
+				"menu" : "User",
+				"value": "http://www.tundratech.ca",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"quote": {
+				"menu" : "User",
+				"value": "\"I'm in the empire business.\" - Walter White",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+			"signature": {
+				"menu" : "User",
+				"value": ["version", "author", "email", "copyright", "license", "repo", "modified", "checksum", "quote"],
+				"stamp": "/** \n * [description]\n * \n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n */",
+				//"regex": Not needed because this stamp is composed of other stamps with regexes defined
+			},
 		},
-	},
+
+	//------------------------------------------------------------------------------------
+	// LiveStamp Examples
+	//------------------------------------------------------------------------------------
+
+		/*
+
+			LiveStamp Examples:
+
+			"convert_bases": {
+				"value": [867, "\nDecimal","\nHex", "\nOctal", "\nBinary"],
+				"stamp": "{1:<10}: {0:d} {2:<10}: {0:x} {3:<10}: {0:o} {4:<10}: {0:b}",
+			},
+
+			"yesterday_and_thirty_seconds": {
+				"value": {"days": -1, "seconds" : -30},
+				"strft": "%c",
+				"regex": "auto",
+				"stamp": "auto",
+			},
+		*/
 }

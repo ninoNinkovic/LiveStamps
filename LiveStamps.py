@@ -4,6 +4,7 @@ from collections import OrderedDict
 
 # Global settings variable
 s = sublime.load_settings("LiveStamps.sublime-settings")
+
 # Global stamp metadata variable
 m = s.get("stamps")
 
@@ -845,10 +846,11 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 						val = items.split(":")
 						offset[val[0].strip()] = val[1].strip()
 					elif "=" in items:
-						val = items.split(":")
+						val = items.split("=")
 						offset[val[0].strip()] = val[1].strip()
-				# Cool one liner cast... but not safe!
-				# offset = dict(items.split("=") for items in value)
+
+					# Cool one liner cast... but not safe!
+					# offset = dict(items.split("=") for items in value)
 
 			# Apply each offset to the current time
 			if "microseconds" in offset:
@@ -1019,6 +1021,9 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 	# Query magic values and add to global stamp meta if missing
 	def magic_values(self):
 
+
+		# Experimental regex time matching, don't use it's dangerous!
+
 		#definitions = self.get_time_flags
 
 		#for letter in map(chr, range(97, 123)):
@@ -1034,6 +1039,8 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 		#   "regex": "auto",
 		#   "stamp": "auto",
 		# }
+
+
 
 		# Build our magic regexes / stamp values
 		for stamp, info in m.items():
@@ -1065,7 +1072,25 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 					"stamp": self.stampify(stamp, "auto"),
 				}
 
+
+		userinfo = s.get("user_info")
+
+
+		# Add user info stamps
+		for stamp in userinfo:
+			if stamp not in m:
+				m[stamp] = {
+					"menu": "User",
+					"value": userinfo[stamp],
+					"regex": self.regexify(stamp),
+					"stamp": self.stampify(stamp, "auto"),
+				}
+
+		# Put username into user submenu
 		m["username"]["menu"] = "User"
+
+		# Add default all values stamp
+		m["all"] = {"menu" : "root", "value": "auto"}
 
 		return magic_values
 
@@ -1265,8 +1290,10 @@ class LiveStampsHighlightCommand(sublime_plugin.TextCommand):
 	'''
 	def run(self, view, clear=False):
 
+		global m
+
 		# Enable highlighting
-		if s.get("highlighter") and self.view.size() <= s.get("maxsize"):
+		if s.get("highlighter") and self.view.size() <= s.get("maxsize") and "LiveStamps.py" not in self.view.file_name():
 
 			# Find highlighting regions
 			self.regions = self.find_stamps(m)

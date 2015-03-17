@@ -5,6 +5,7 @@
 ####Features:  
 
   * Insert self updating tags into docblock headers
+  * User defineable, automatic menu generation so you dont have to memorize a million keyboard shortcuts
   * Background highlighting, outlining, and guttermarking of livestamps. (each one is optional)
   * Go beyond simple metadata, perform conversions, arithmetic or inject code snippets.
   * Timezone support, with DST 
@@ -16,7 +17,7 @@
   * Update all your projects with a new email address or URL when it changes
   * Easy static/dynamic custom stamp creation with powerful regex matching
   * Multipart stamps, or stamps made from other stamps. Great for a siggy!
-  * Inject stamps via keyboard, command palette, tools, context, or sidebar menus
+  * Inject stamps via keyboard, command palette, or menus
   * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
   * Powerful Python format() and strftime() formatting support for each value defined in a stamp
   
@@ -101,6 +102,7 @@ Output: LiveStamps rule!
 ```
 
 **Required Keys:**
+
 ```
 [value]  : A string literal, or list. Setting as "auto" tries to find the value for you
 ```
@@ -362,16 +364,34 @@ Raw timestamp output.
 
 ####Regex Patterns
 
-In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied. LiveStamps uses a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement:
+In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied. LiveStamps uses a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement using the 'auto' value for the regex and stamp keys:
 
 ```json
-"regex": "@mystamp.+",
+# Auto defined stamp regex:
+"mystamp": {
+  "value": "Is really cool",
+  "regex": "auto",
+  "stamp": "auto", 
+},
+
+Output: @mystamp        Is really cool
+
+# Actual values used:
+  "regex": "@Maui.+",
+  "stamp": "@Maui {0}",
 ```
 
-This regex would inject your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy the pattern would be:
+This default regex will inject your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
 
 ```json
 "regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
+```
+
+Furthermore, the default regex paradigm can be modified in the settings file by editing the following keys:
+
+```
+"autoregex" : " \\* @{0}.+", 	// Stamp name is injected at flag {0}
+"autostamp" : " * @{0} {1}",    // Stamp name is injected at flag {0}, values at {1}
 ```
 
 **WARNING!**

@@ -2,25 +2,29 @@
 
 ####A Sublime Text 3 Plugin to inject self updating metadata into any document.
 
-####Features:  
+**Features:**
 
   * Insert self updating tags into docblock headers
   * User defineable, automatic menu generation so you dont have to memorize a million keyboard shortcuts
   * Background highlighting, outlining, and guttermarking of livestamps. (each one is optional)
-  * Go beyond simple metadata, perform conversions, arithmetic or inject code snippets.
   * Timezone support, with DST 
-  * Add predefined signatures, ascii art, or class header info
-  * Automatically track file metadata no matter where it is moved/renamed
+  * Track file metadata no matter where it is moved/renamed
   * Track date the document was last modified
   * Track user or person who last modified the file.
   * Add a checksum to the file
   * Update all your projects with a new email address or URL when it changes
   * Easy static/dynamic custom stamp creation with powerful regex matching
-  * Multipart stamps, or stamps made from other stamps. Great for a siggy!
   * Inject stamps via keyboard, command palette, or menus
   * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
-  * Powerful Python format() and strftime() formatting support for each value defined in a stamp
-  
+
+**Advanced Features:** 
+* Multipart stamps, or stamps made from other stamps. Great for a siggy!
+* Powerful Python format() and strftime() support for each value defined in stamps
+* Go beyond simple metadata, perform conversions, arithmetic or inject code snippets.
+* Custom regex for any stamp
+* User defineable, automatic menu generation so you dont have to memorize a million keyboard shortcuts
+
+ 
 ####Intall via Package Control: 
 
 ```

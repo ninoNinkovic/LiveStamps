@@ -2,11 +2,42 @@ import sublime, time, sublime_plugin, getpass, hashlib, re, ntpath, os, sys, jso
 from datetime import datetime, timedelta
 from collections import OrderedDict
 
-# Global settings variable
+# Global settings
 s = sublime.load_settings("LiveStamps.sublime-settings")
 
-# Global stamp metadata variable
+# Global stamp metadata
 m = s.get("stamps")
+
+class NotifyCommand(sublime_plugin.TextCommand):
+	'''
+	*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+	* Shows a Sublime message in the console, statusbar, or error and dialog popups.
+	*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+	'''
+	def run(self, view, message, modes="console status"):
+
+		global s
+
+		# Check init and grab fresh meta if needed
+		if s.get("console_events") == None:
+			self.view.run_command('refresh_meta')
+
+		# Print a console message
+		if s.get("console_events") and 'console' in modes:
+			if 'clear' in modes or isinstance(s.get("console_events"), str):
+				print('\n'*50)
+			print (message)
+
+		# Send a popup message
+		if s.get("popup_events"):
+			if 'error' in modes:
+				sublime.error_message(message)
+			if 'dialog' in modes:
+				sublime.message_dialog(message)
+
+		# Send a statusbar notification
+		if s.get("statusbar_events") and 'status' in modes:
+			sublime.status_message(message)
 
 class RefreshMetaCommand(sublime_plugin.TextCommand):
 	'''
@@ -75,8 +106,8 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 	def regexify(self, stamp):
 		return s.get("autoregex").format(stamp)
 
-		if 'strft' in m[stamp]:
-			return self.time_regex(m[stamp]['strft'])
+		if "tflag" in m[stamp]:
+			return self.time_regex(m[stamp]["tflag"])
 		else:
 			return s.get("autoregex").format(stamp)
 
@@ -795,37 +826,27 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 			'Z' : "Time zone or name or abbreviation, blank on naive objects",
 		}
 
-	# Get current time based on a time zone, or UTC by default
-	def time_stamp(self, zonename=False):
+	# Get a +ve or -ve human readable timestamp based off the local date/time
+	def time_stamp(self, value="auto", tflags = ''):
 
-		# Set to explicitly passed timezone or use settings default
-		if not zonename:
-			zonename = s.get("timezone")
-
-		# Make sure the specified zone is valid
-		if zonename and zonename in self.timezones:
-			# Set to specified timezone
-			os.environ['TZ'] = zonename
+		# A standard timezone was specified
+		if isinstance(value, str) and value in self.timezones:
+			# Set env to specified timezone
+			os.environ['TZ'] = value
+			# Reset time conversion rules
 			time.tzset()
+			# Return formatted timestring
+			return time.strftime(tflags)
+
+		# A Time offset from the local timezone was specified
 		else:
-			# Set to UTC by default
-			os.environ['TZ'] = 'UTC'
+			# Set env to default timezone, UTC at worst
+			os.environ['TZ'] = s.get("timezone") if s.get("timezone") in self.timezones else 'UTC'
+			# Reset time conversion rules
 			time.tzset()
+			# Grab datetime object for arithmetic
+			now = datetime.now()
 
-		# is_dst     = time.daylight and time.localtime().tm_isdst > 0
-		# utc_offset = - (time.altzone if is_dst else time.timezone)
-		# utc_time   = datetime.utcnow() + timedelta(seconds=utc_offset)
-		# print(zonename +" : "+ time.strftime('%X %x %Z'))
-
-		return datetime.now()
-
-	# Get a +ve or -ve time offset from the current time/date
-	def time_offset(self, value="auto"):
-
-		if value in self.timezones:
-			return self.time_stamp(value)
-		else:
-			time = self.time_stamp()
 
 		if value != "auto":
 
@@ -854,19 +875,19 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 
 			# Apply each offset to the current time
 			if "microseconds" in offset:
-				time += timedelta(microseconds = float(offset["microseconds"]))
+				now += timedelta(microseconds = float(offset["microseconds"]))
 			if "milliseconds" in offset:
-				time += timedelta(milliseconds = float(offset["milliseconds"]))
+				now += timedelta(milliseconds = float(offset["milliseconds"]))
 			if "seconds" in offset:
-				time += timedelta(seconds      = float(offset["seconds"]))
+				now += timedelta(seconds      = float(offset["seconds"]))
 			if "minutes" in offset:
-				time += timedelta(minutes      = float(offset["minutes"]))
+				now += timedelta(minutes      = float(offset["minutes"]))
 			if "hours" in offset:
-				time += timedelta(hours        = float(offset["hours"]))
+				now += timedelta(hours        = float(offset["hours"]))
 			if "days" in offset:
-				time += timedelta(days         = float(offset["days"]))
+				now += timedelta(days         = float(offset["days"]))
 			if "weeks" in offset:
-				time += timedelta(weeks        = float(offset["weeks"]))
+				now += timedelta(weeks        = float(offset["weeks"]))
 			if "months" in offset:
 
 				# Get current date info
@@ -884,7 +905,7 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 				days = (date - today).days
 
 				# Add the offset
-				time += timedelta(days = days)
+				now += timedelta(days = days)
 
 			if "years" in offset:
 
@@ -898,9 +919,13 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 				days = float(offset["years"]) * year
 
 				# Add the offset
-				time += timedelta(days = days)
+				now += timedelta(days = days)
 
-		return time
+		# Convert datetime object to epoch timestamp
+		totalsecs = (now - datetime.utcfromtimestamp(0)).total_seconds()
+
+		# Convert back to time object for consistent formatting
+		return time.strftime(tflags, time.localtime(totalsecs))
 
 	#-------------------------------------------------------------------------------
 	# Value Helpers
@@ -943,7 +968,7 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 		return stamp
 
 	# Generate clean checksum of the file contents
-	def md5hash(self):
+	def checksum(self):
 
 		mode = s.get("hash_mode")
 
@@ -987,19 +1012,23 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 		else:
 			(basename, ext) = os.path.splitext(filepath)
 
-			# Current filename with extension
+			# File name without extension
 			if prop == "file_name":
+				return os.path.basename(basename)
+
+			# File name with extension
+			if prop == "file_extname":
 				return os.path.basename(filepath)
 
-			# Current filepath
+			# File path
 			elif prop == "file_path":
 				return filepath
 
-			# Current filesize
+			# File size
 			elif prop == "file_size":
 				return os.stat(filepath).st_size
 
-			# Current file extension
+			# File extension
 			elif prop == "extension":
 				return ext.strip('.')
 
@@ -1018,79 +1047,61 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 		# Couldn't find what user was looking for
 		return False
 
+	# Builds a single stamp key
+	def build_stamp(self, name, value, menu=None, tflag=None):
+
+		stamp = {
+			"value": value,
+			"stamp": self.stampify(name, "auto"),
+			"regex": self.regexify(name),
+		}
+
+		if menu != None:
+			stamp["menu"] = menu
+		if tflag != None:
+			stamp["tflag"] = tflag
+
+		return stamp
+
 	# Query magic values and add to global stamp meta if missing
 	def magic_values(self):
 
+		# Add default all values stamp
+		m["all"] = {"menu" : "root", "value": "auto"}
 
-		# Experimental regex time matching, don't use it's dangerous!
+		# Grab user info
+		userinfo             = s.get("user_info")
+		userinfo["username"] = getpass.getuser()
 
-		#definitions = self.get_time_flags
+		# Get available magic values
+		magic_values = {
+			"checksum"       : self.checksum(),
+			"extension"      : self.get_file("extension", self.path),
+			"base_name"      : self.get_file("base_name", self.path),
+			"file_size"      : self.get_file("file_size", self.path),
+			"file_name"      : self.get_file("file_name", self.path),
+			"file_path"      : self.get_file("file_path", self.path),
+			"parent_name"    : self.get_file("parent_name", self.path),
+			"parent_path"    : self.get_file("parent_path", self.path),
+			"file_extname"  : self.get_file("file_extname", self.path),
+		}
 
-		#for letter in map(chr, range(97, 123)):
-		# m[letter] = {
-		#   "value": "auto",
-		#   "strft": "%" + letter,
-		#   "regex": "auto",
-		#   "stamp": "auto",
-		# }
-		# m[letter.upper()] = {
-		#   "value": "auto",
-		#   "strft": "%" + letter.upper(),
-		#   "regex": "auto",
-		#   "stamp": "auto",
-		# }
-
-
-
-		# Build our magic regexes / stamp values
+		# Build user defined "auto" regexes and stamps
 		for stamp, info in m.items():
 			if "stamp" in info and info['stamp'] == 'auto':
 				m[stamp]['stamp'] = self.stampify(stamp, info['value'] )
 			if "regex" in info and info['regex'] == 'auto':
 				m[stamp]['regex'] = self.regexify(stamp)
 
-		# Get available magic values
-		magic_values = {
-			"username"    : getpass.getuser(),
-			"checksum"    : self.md5hash(),
-			"extension"   : self.get_file("extension", self.path),
-			"base_name"   : self.get_file("base_name", self.path),
-			"file_size"   : self.get_file("file_size", self.path),
-			"file_name"   : self.get_file("file_name", self.path),
-			"file_path"   : self.get_file("file_path", self.path),
-			"parent_name" : self.get_file("parent_name", self.path),
-			"parent_path" : self.get_file("parent_path", self.path),
-		}
-
-		# Ensure magic stamps exist
-		for stamp in magic_values:
+		# Build magic value stamps
+		for stamp, value in magic_values.items():
 			if stamp not in m:
-				m[stamp] = {
-					"menu": "File",
-					"value": magic_values[stamp],
-					"regex": self.regexify(stamp),
-					"stamp": self.stampify(stamp, "auto"),
-				}
+				m[stamp] = self.build_stamp(stamp, value, 'File')
 
-
-		userinfo = s.get("user_info")
-
-
-		# Add user info stamps
-		for stamp in userinfo:
+		# Build user info stamps
+		for stamp, value in userinfo.items():
 			if stamp not in m:
-				m[stamp] = {
-					"menu": "User",
-					"value": userinfo[stamp],
-					"regex": self.regexify(stamp),
-					"stamp": self.stampify(stamp, "auto"),
-				}
-
-		# Put username into user submenu
-		m["username"]["menu"] = "User"
-
-		# Add default all values stamp
-		m["all"] = {"menu" : "root", "value": "auto"}
+				m[stamp] = self.build_stamp(stamp, value, 'User')
 
 		return magic_values
 
@@ -1107,22 +1118,23 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 
 			return values
 
+		name = str(stamp).lstrip('_')
+
 		# If the value is another stamp, investigate.
-		if stamp in m :
+		if name in m :
 
 			value = ""
 
 			# If the stamp is a TimeStamp, get time and format
-			if "strft" in m[stamp]:
-				time  = self.time_offset(m[stamp]["value"])
-				value = time.strftime(m[stamp]["strft"])
+			if "tflag" in m[name]:
+				value = self.time_stamp( m[name]["value"], m[name]["tflag"] )
 
 			# Otherwise, load the stamp and recurse one last time
 			else:
-				value = self.true_values( m[stamp]["value"], False )
+				value = self.true_values( m[name]["value"], False )
 
 			# If the stamp has injection flags, load them or use defaults
-			layout = m[stamp]["stamp"] if "stamp" in m[stamp] else "{0}"
+			layout = m[name]["stamp"] if "stamp" in m[name] else "{0}"
 
 			# Format the stamp(s)
 			if isinstance(value, list):
@@ -1132,12 +1144,12 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 
 			# Store final values, all recursion has completed.
 			if final_value:
-				m[stamp]['final_stamp'] = layout
-				m[stamp]['final_value'] = value
+				m[name]['final_stamp'] = layout
+				m[name]['final_value'] = value
 
 			# Return a recursed and formatted sub-stamp
 			else:
-				return layout
+				return layout if stamp[0] != "_" else value
 
 		# Only reach here on non stamp base stamp values
 		return stamp
@@ -1253,6 +1265,15 @@ class LiveStampsInsertCommand(sublime_plugin.TextCommand):
 		else:
 			self.view.run_command('value_inserter', {'kind': kind})
 
+		if kind == "all":
+			stamptype += "s"
+
+		# Build a status message
+		msg = "LiveStamps: Inserted " + kind + " " + stamptype
+
+		# Inform the user of the state change, via status bar and console
+		self.view.run_command('notify', {'message': msg, 'modes': 'console status'})
+
 class LiveStampsUpdateCommand(sublime_plugin.TextCommand):
 	'''
 	*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
@@ -1264,18 +1285,27 @@ class LiveStampsUpdateCommand(sublime_plugin.TextCommand):
 		# Grab fresh file, user, document and checksum meta
 		self.view.run_command('refresh_meta')
 
-		# Update any stamp, except those in a sublime settings file
-		#if "sublime" not in m["extension"]["final_stamp"] and m["file_name"] != "LiveStamps.py":
-		if m["file_name"] != "LiveStamps.py":
+		# Build a status message
+		msg = "LiveStamps: Updated all stamps"
+
+		# Update any stamp, except those in a sublime settings files
+		if "sublime" not in m["extension"]["value"] and m["file_extname"]["value"] != "LiveStamps.py":
 
 			for stamp, info in m.items():
-
 				# Check if a regex is supplied, it must be a live stamp
 				if 'regex' in info and info['regex'] != 'auto':
 
 					# Find each stamp and replace
 					for region in self.view.find_all(info['regex'] , 0):
 						self.view.replace(edit, region, info['final_stamp'])
+
+		# Change notification on prevent
+		else:
+			msg = "LiveStamps: Auto update disabled while editing plugin files."
+
+
+		# Inform the user of the state change, via status bar and console
+		self.view.run_command('notify', {'message': msg, 'modes': 'console status'})
 
 class LiveStampsHighlightCommand(sublime_plugin.TextCommand):
 	'''
@@ -1284,60 +1314,146 @@ class LiveStampsHighlightCommand(sublime_plugin.TextCommand):
 	*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 		MODES:
-			shading - Highlights the stamp background
-			outline - Underlines the stamp
-			markers - Adds markers in the gutter on lines where a stmap is present
+
+		shading - Highlights the stamp background
+		outline - Underlines the stamp
+		markers - Adds markers in the gutter on lines where a stmap is present
 	'''
 	def run(self, view, clear=False):
 
-		global m
-
 		# Enable highlighting
-		if s.get("highlighter") and self.view.size() <= s.get("maxsize") and "LiveStamps.py" not in self.view.file_name():
+		if (s.get("highlighter") and self.view.size() <= s.get("maxsize")):
 
-			# Find highlighting regions
-			self.regions = self.find_stamps(m)
-			self.scoping = s.get("scoping")
-
-			# Logic gauntlet to ensure refresh after a mode is enabled/disabled
-			if s.get("shading"):
-				self.shading()
-			else:
-				self.view.erase_regions("StampHighlighterShading")
-
-			if s.get("outline"):
-				self.outline()
-			else:
-				self.view.erase_regions("StampHighlighterOutline")
-
-			if s.get("markers"):
-				self.markers()
-			else:
-				self.view.erase_regions("StampHighlighterMarkers")
+			self.highlight()
 
 		# Disable highlighting
 		else:
-			self.view.erase_regions("StampHighlighterShading")
-			self.view.erase_regions("StampHighlighterOutline")
-			self.view.erase_regions("StampHighlighterMarkers")
+
+			self.clear()
+
+	#-------------------------------------------------------------------------------
+	# Helpers
+	#-------------------------------------------------------------------------------
 
 	# Get all matching stamp patterns
-	def find_stamps(self, stamps):
+	def find(self):
+
 		result = [];
-		for stamp, info in stamps.items():
+
+		# Iterate the stamp list
+		for stamp, info in m.items():
+
+			# Check if a regex is supplied
 			if 'regex' in info:
+
+				# Final initialization check
+				if info['regex'] == 'auto':
+					self.view.run_command('refresh_meta')
+					return self.find()
+
+				# Find each stamp location
 				matches = self.view.find_all(info['regex'], 0)
+
+				# Append the locations to the master list
 				for items in matches:
 					result.append(items)
 
 		return result
 
+	# Clear all highlighting
+	def clear(self):
+		self.view.erase_regions("LiveStampsShading")
+		self.view.erase_regions("LiveStampsOutline")
+		self.view.erase_regions("LiveStampsMarkers")
+		self.view.erase_regions("LiveStampsUnderline")
+
+	# Enable highlighting
+	def highlight(self):
+
+		# Logic gauntlet to ensure refresh after a mode is enabled/disabled
+
+		# Get user modes
+		self.marker_mode     = self.get_marker_mode()
+		self.underline_mode  = self.get_underline_mode()
+
+		# Find highlighting regions
+		self.regions = self.find()
+
+		# Check if background shading enabled
+		if s.get("shading"):
+			self.shading()
+		else:
+			self.view.erase_regions("LiveStampsShading")
+
+		# Check if outlining enabled
+		if s.get("outline"):
+			self.outline()
+		else:
+			self.view.erase_regions("LiveStampsOutline")
+
+		# Check if underlining enabled
+		if self.underline_mode:
+			self.underline()
+		else:
+			self.view.erase_regions("LiveStampsUnderline")
+
+		# Check if markers enabled
+		if self.marker_mode:
+			self.markers()
+		else:
+			self.view.erase_regions("LiveStampsMarkers")
+
+	# Marker mode check
+	def get_marker_mode(self):
+
+		mode   = s.get("markers");
+		marker = ["dot", "circle", "bookmark", "cross"]
+
+		if mode == True:
+			return "dot"
+		elif mode in marker:
+			return mode
+		else:
+			return False
+
+	# Underline mode check
+	def get_underline_mode(self):
+
+		mode = s.get("underline");
+
+		underline = {
+		 "solid"    : sublime.DRAW_SOLID_UNDERLINE,
+		 "stippled" : sublime.DRAW_STIPPLED_UNDERLINE,
+		 "squiggly" : sublime.DRAW_SQUIGGLY_UNDERLINE,
+		}
+
+		if mode == True:
+			return sublime.DRAW_SOLID_UNDERLINE
+		elif mode in underline:
+			return underline[mode]
+		else:
+			return False
+
+	#-------------------------------------------------------------------------------
+	# Highlight Region Calls
+	#-------------------------------------------------------------------------------
+
+	# Enable gutter markers
+	def markers(self):
+		self.view.add_regions(
+			'LiveStampsMarkers',
+			self.regions,
+			str(s.get('marker_color')),
+			self.marker_mode,
+			sublime.DRAW_NO_FILL | sublime.DRAW_NO_OUTLINE
+		)
+
 	# Enable background highlighting
 	def shading(self):
 		self.view.add_regions(
-			'StampHighlighterShading',
+			'LiveStampsShading',
 			self.regions,
-			self.scoping,
+			str(s.get('shading_color')),
 			"",
 			sublime.DRAW_EMPTY
 		)
@@ -1345,21 +1461,21 @@ class LiveStampsHighlightCommand(sublime_plugin.TextCommand):
 	# Enable outline/underline
 	def outline(self):
 		self.view.add_regions(
-			'StampHighlighterOutline',
+			'LiveStampsOutline',
 			self.regions,
-			self.scoping,
+			str(s.get('outline_color')),
 			"",
 			sublime.DRAW_NO_FILL
 		)
 
 	# Enable gutter markers
-	def markers(self):
+	def underline(self):
 		self.view.add_regions(
-			'StampHighlighterMarkers',
+			'LiveStampsUnderline',
 			self.regions,
-			self.scoping,
-			"dot",
-			sublime.DRAW_STIPPLED_UNDERLINE | sublime.DRAW_NO_FILL | sublime.DRAW_NO_OUTLINE
+			str(s.get('underline_color')),
+			"",
+			self.underline_mode | sublime.DRAW_NO_FILL | sublime.DRAW_NO_OUTLINE
 		)
 
 class LiveStampsToggleCommand(sublime_plugin.TextCommand):
@@ -1368,28 +1484,50 @@ class LiveStampsToggleCommand(sublime_plugin.TextCommand):
 	* Toggles A Plugin Setting
 	*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	'''
-	def run(self, edit, mode):
+	def run(self, edit, mode, value=None):
 
-		# Get current State and toggle it
-		state = False if s.get(mode) == True else True
+		self.value = value
 
-		# Save settings
-		s.set(mode, state)
-		sublime.save_settings("LiveStamps.sublime-settings")
+		# Assume boolean True/False by default
+		if value == None:
 
-		# Change to state to semantic output
-		state = "ON" if state else "OFF"
+			# Get current State and toggle it
+			value = False if s.get(mode) == True else True
+
+			self.value = value
+
+			# Save settings
+			s.set(mode, value)
+			sublime.save_settings("LiveStamps.sublime-settings")
+
+			# Change to state to semantic output
+			value = "ON" if value else "OFF"
+
+		# Allow explicit values
+		else:
+			s.set(mode, value)
+			sublime.save_settings("LiveStamps.sublime-settings")
+
+		# Build a status message
+		msg = "LiveStamps: Set " + mode + " to " + str(value)
+
+		# Inform the user of the value change, via status bar and console
+		self.view.run_command('notify', {'message': msg, 'modes': 'console status'})
 
 		# Refresh highlighter
 		self.view.run_command('live_stamps_highlight', {'clear': True})
 		self.view.run_command('live_stamps_highlight')
 
-		# Build a status message
-		msg = "LiveStamps: Set " + mode + " " + state
 
-		# Inform the user of the state change, via status bar and console
-		print (msg)
-		sublime.status_message(msg)
+	def is_checked(self, **args):
+
+		mode = args['mode']
+
+		# Check for non-boolean values
+		if mode in ["markers", "underline", "hash_mode"] and "value" in args:
+			return args['value'] == s.get(mode)
+
+		return s.get(mode) != False
 
 class LiveStampsMenuGenCommand(sublime_plugin.TextCommand):
 	'''
@@ -1401,39 +1539,85 @@ class LiveStampsMenuGenCommand(sublime_plugin.TextCommand):
 
 		global m
 
-		# Get latest stamp definitions
-		self.view.run_command('refresh_meta')
-		# Sort them
-		self.stamp_keys = self.sort_stamps()
+		# Build every menu, one by one
+		if menutype == "all":
+			self.view.run_command('live_stamps_menu_gen', {'menutype' : 'context'})
+			self.view.run_command('live_stamps_menu_gen', {'menutype' : 'toolbar'})
+			self.view.run_command('live_stamps_menu_gen', {'menutype' : 'sidebar'})
+			self.view.run_command('live_stamps_menu_gen', {'menutype' : 'command'})
 
-		# Figure out which type of menu is being generated
-		if menutype == "context":
-			menutype = self.get_context_menu()
-		elif menutype == "toolbar":
-			menutype = self.get_toolbar_menu()
-		elif menutype == "sidebar":
-			menutype = self.get_sidebar_menu()
-		elif menutype == "command":
-			menutype = self.get_command_menu()
-
-
-		# Dump the dictionary to a JSON array
-		if not isinstance(menutype, list):
-			menutype = json.dumps( [menutype], sort_keys=False, indent=2 )
+		# Build a single menu
 		else:
-			menutype = json.dumps( menutype, sort_keys=False, indent=2 )
 
+			# Get latest stamp definitions
+			self.view.run_command('refresh_meta')
 
-		# Insert the menu into the document
+			# Sort them
+			self.stamp_keys = self.sort_stamps()
+
+			# Figure out menutype and filename
+			if menutype == "context":
+				menujson = self.get_context_menu()
+				menuname = "Context.sublime-menu"
+
+			elif menutype == "toolbar":
+				menujson = self.get_toolbar_menu()
+				menuname = "Main.sublime-menu"
+
+			elif menutype == "sidebar":
+				menujson = self.get_sidebar_menu()
+				menuname = "Side Bar.sublime-menu"
+
+			elif menutype == "command":
+				menujson = self.get_command_menu()
+				menuname = "LiveStamps.sublime-commands"
+
+			# Concatenate the appropriate filename
+			menuname = sublime.packages_path() + "/LiveStamps/" + menuname
+
+			# Dump the dictionary to a JSON array
+			if not isinstance(menujson, list):
+				menujson = json.dumps( [menujson], sort_keys=False, indent=2 )
+			else:
+				menujson = json.dumps( menujson, sort_keys=False, indent=2 )
+
+			# Write the new menu
+			self.write_menu(menuname, menujson)
+
+			# Build a status message
+			msg = "LiveStamps: Generating " + menutype + " menu"
+
+			# Inform the user of the state change, via status bar and console
+			self.view.run_command('notify', {'message': msg, 'modes': 'console status'})
+
+	#-------------------------------------------------------------------------------
+	# I/O Helpers
+	#-------------------------------------------------------------------------------
+
+	# Write the menu to file
+	def write_menu(self, fname, contents=False):
+		'''
+		Create a file from current view, or from specified string.
+		'''
+
+		ftemp = open(fname, "wb")
+
+		if contents:
+			ftemp.write(bytes(contents, 'UTF-8'))
+		else:
+			ftemp.write(self.get_text())
+
+		ftemp.close
+
+	# Insert the menu into the current view
+	def paste_menu(self, menu):
 		for pos in self.view.sel():
-
 			# Insert at each cursor location
 			if pos.empty():
-				self.view.insert(edit, pos.a, menutype)
-
+				self.view.insert(edit, pos.a, menujson)
 			# Replace selected area(s) with menu
 			else:
-				self.view.replace(edit, pos, menutype)
+				self.view.replace(edit, pos, menujson)
 
 	#-------------------------------------------------------------------------------
 	# Menu Constructors
@@ -1463,7 +1647,6 @@ class LiveStampsMenuGenCommand(sublime_plugin.TextCommand):
 			# Otherwise add to the root menu
 			else:
 				menus['root'].append(stamp)
-
 
 		for menu in menus:
 			menus[menu] = sorted(menus[menu])
@@ -1525,64 +1708,79 @@ class LiveStampsMenuGenCommand(sublime_plugin.TextCommand):
 
 		return parent
 
-	# Add keys to a parent menu
-	def add_keys(self, parent, keymap):
+	# Check caption/argument pairs are formatted as a valid dictionary
+	def cap_check(self, cap_vals, noargs):
+
+		result = {}
+
+		# A dict was passed, all good
+		if isinstance(cap_vals, dict):
+			result = cap_vals
+
+		# If a list of captions was passed use them to create a default dictionary
+		elif isinstance(cap_vals, list):
+
+			# Use caption as default argument value, or None if args flag is false
+			for caption in cap_vals:
+				result[caption] = None if noargs else caption
+
+		# If a string was passed create a default dictionary
+		elif isinstance(cap_vals, str):
+			result = {
+				cap_vals : None if noargs else cap_vals
+			}
+
+		return result #OrderedDict(sorted(result.items()))
+
+	# Add keys to a parent menu with a common command
+	def add_keys(self, parent, keymap, noargs = False):
 
 		# Assign some vars for clarity
-		captions = keymap['captions']
-		command  = keymap['command']
-		argkeys  = keymap['arg_keys']
+		command = keymap['command']
+		argkeys = keymap['arg_keys']
+		capvals = self.cap_check(keymap["cap_vals"], noargs)
 
-		# Use captions as default arguments if none specified
-		argvals  = keymap['arg_vals'] if 'arg_vals' in keymap else captions
-
-		# Counter for iterating value list
-		i = 0
-
-		# Iterate the list of captions
-		for caption in captions:
+		# Build each key
+		for caption, argument in capvals.items():
 
 			# When the command has no arguments, save some work
-			if argvals == None:
+			if argument == None:
 				parent['children'].append( self.build_key(caption, command) )
 
 			# Otherwise, format the arguments
 			else:
 
-				# Get the current command arguments
-				arg_values = argvals[i]
-
 				# Reset our argument formatter
 				arg_result = {}
-
 
 				# If a string was passed, inject our values into it and convert to dict
 				if isinstance(argkeys, str):
 
-					if isinstance(arg_values, list):
-						key = argkeys % tuple(arg_values)
+					if isinstance(argument, list):
+						key = argkeys % tuple(argument)
 					else:
-						key = argkeys % arg_values
+						key = argkeys % argument
 
 					arg_result = json.loads(key)
 
-				# If a dict was passed, reassign base keys
+				# If a dict was passed, reassign base keys, based on specified integer
 				elif isinstance(argkeys, dict):
 
-					if not isinstance(arg_values, list):
-						arg_values = [arg_values]
+					# If a single string is passed, convert to a list
+					if not isinstance(argument, list):
+						argument = [argument]
 
+					# Iterate and assign
 					for key in argkeys:
-						arg_result[key] = arg_values[ argkeys[key] ]
 
+						# When an int is found, assign the dict key to the apprpriate list index
+						if isinstance(argkeys[key], int):
+							arg_result[key] = argument[ argkeys[key] ]
+						else:
+							arg_result[key] = argkeys[key]
 
-				# Add our nicely formatted key to the parent menu
+				# Finally, add our formatted menu key to the parent menu
 				parent['children'].append( self.build_key(caption, command, arg_result) )
-
-
-			# Move on to the next set of arguments
-			i += 1
-
 
 		# All done! Return the menu with the appended keys
 		return parent
@@ -1617,145 +1815,201 @@ class LiveStampsMenuGenCommand(sublime_plugin.TextCommand):
 	# Submenu Macros
 	#-------------------------------------------------------------------------------
 
-	# Submenu: Insert Stamps
+	# menu: Insert Stamps
 	def get_stamp_menu(self, header='Insert Stamp', ID=False, mnemonic=False):
 
-		# Define the menu
-		submenu = self.build_menu(header, ID, mnemonic)
+		# Define the submenu
+		menu = self.build_menu(header, ID, mnemonic)
 
 		# Iterate the sorted stamp commands
-		for menu in self.stamp_keys:
+		for submenu in self.stamp_keys:
 
 			# Add root commands
-			if menu == 'root':
-				submenu = self.add_keys(submenu, {
+			if submenu == 'root':
+				self.add_keys(menu, {
 					"command"  : "live_stamps_insert",
-					"captions" : self.stamp_keys[menu],
 					"arg_keys" : '{"stamptype": "stamp", "kind": "%s"}',
+					"cap_vals" : self.stamp_keys[submenu],
 				})
 
-			# Add submenus
+			# Add menus
 			else:
-				parent = self.add_keys(self.build_menu(menu), {
+				parent = self.add_keys(self.build_menu(submenu), {
 					"command"  : "live_stamps_insert",
-					"captions" : self.stamp_keys[menu],
 					"arg_keys" : '{"stamptype": "stamp", "kind": "%s"}',
+					"cap_vals" : self.stamp_keys[submenu],
 				})
 
-				submenu = self.add_submenu(submenu, parent)
-
+				self.add_submenu(menu, parent)
 
 		# Sort commands by caption key
-		submenu['children'] = sorted(submenu['children'], key=lambda k: k['caption'])
+		menu['children'] = sorted(menu['children'], key=lambda k: k['caption'])
 
-		return submenu
+		return menu
 
 	# Submenu: Insert Value
 	def get_value_menu(self, header='Insert Value', ID=False, mnemonic=False):
 
-
-		# Define the menu
-		submenu = self.build_menu(header, ID, mnemonic)
+		# Define the submenu
+		menu = self.build_menu(header, ID, mnemonic)
 
 		# Iterate the sorted stamp commands
-		for menu in self.stamp_keys:
+		for submenu in self.stamp_keys:
 
 			# Add root commands
-			if menu == 'root':
-				submenu = self.add_keys(submenu, {
+			if submenu == 'root':
+				self.add_keys(menu, {
 					"command"  : "live_stamps_insert",
-					"captions" : self.stamp_keys[menu],
 					"arg_keys" : '{"stamptype": "value", "kind": "%s"}',
+					"cap_vals" : self.stamp_keys[submenu],
 				})
 
-			# Add submenus
+			# Add menus
 			else:
-				parent = self.add_keys(self.build_menu(menu), {
+				parent = self.add_keys(self.build_menu(submenu), {
 					"command"  : "live_stamps_insert",
-					"captions" : self.stamp_keys[menu],
 					"arg_keys" : '{"stamptype": "value", "kind": "%s"}',
+					"cap_vals" : self.stamp_keys[submenu],
 				})
 
-				submenu = self.add_submenu(submenu, parent)
+				self.add_submenu(menu, parent)
 
 		# Sort commands by caption key
-		submenu['children'] = sorted(submenu['children'], key=lambda k: k['caption'])
+		menu['children'] = sorted(menu['children'], key=lambda k: k['caption'])
 
-		return submenu
+		return menu
 
 	# Submenu: Highlighting Options
 	def get_hilite_menu(self, header='Highlighting', ID=False, mnemonic=False):
 
 		# Define the menu
-		submenu = self.build_menu(header, ID, mnemonic)
+		menu = self.build_menu(header, ID, mnemonic)
 
 		# Add root commands
-		return self.add_keys(submenu, {
+		self.add_keys(menu, {
 			"command"  : "live_stamps_toggle",
-			"captions" : ["highlighter", "outline", "markers", "shading"],
 			"arg_keys" : {"mode": 0},
+			"cap_vals" : ["highlighter"],
+		})
+
+		self.add_divider(menu)
+
+		# Add root commands
+		self.add_keys(menu, {
+			"command"  : "live_stamps_toggle",
+			"arg_keys" : {"mode": 0},
+			"cap_vals" : ["outline", "shading"],
+		})
+
+		# Add Marker submenu
+		markers = self.add_keys(self.build_menu("Markers"), {
+			"command"  : "live_stamps_toggle",
+			"arg_keys" : {"mode": "markers", "value": 0},
+			"cap_vals" : ["none", "dot", "circle", "bookmark", "cross"],
+		})
+
+		# Add menu marker submenu
+		self.add_submenu( menu, markers )
+
+		underlines = self.add_keys(self.build_menu("Underline"), {
+			"command"  : "live_stamps_toggle",
+			"arg_keys" : {"mode": "underline", "value": 0},
+			"cap_vals" : ["none", "stippled", "squiggly", "solid"],
+		})
+
+		# Add menu marker submenu
+		self.add_submenu( menu, underlines )
+
+		return menu
+
+	# Submenu: Checksum Mode
+	def get_checksum_menu(self, header='Checksum Mode', ID=False, mnemonic=False):
+
+		# Define the menu
+		menu = self.build_menu(header, ID, mnemonic)
+
+		# Add Checksum submenu
+		return self.add_keys(menu, {
+			"command"  : "live_stamps_toggle",
+			"arg_keys" : {"mode": "hash_mode", "value": 0},
+			"cap_vals" : ["md5", "sha1", "sha224", "sha256", "sha384", "sha512"],
 		})
 
 	# Submenu: Menu Generation
-	def get_menugen_menu(self, header='Menu Generator', ID=False, mnemonic=False):
+	def get_menugen_menu(self, header='Generate Menu', ID=False, mnemonic=False):
 
 		# Define the menu
-		submenu = self.build_menu(header, ID, mnemonic)
+		menu = self.build_menu(header, ID, mnemonic)
 
-		# Add root commands
-		return self.add_keys(submenu, {
-			"command"  : "live_stamps_menu_gen",
-			"captions" : ["context", "command", "sidebar", "toolbar"],
-			"arg_keys" : {"menutype": 0},
+		# Add Checksum submenu
+		launch = self.add_keys(self.build_menu("Open"), {
+			"command"  : "open_file",
+			"arg_keys" : '{"file" : "${packages}/LiveStamps/%s"}',
+			"cap_vals" : {
+				'Context Menu'  : "Context.sublime-menu",
+				'Side Bar Menu' : "Side Bar.sublime-menu",
+				'Main Menu'     : "Main.sublime-menu",
+				'Commands'      : "LiveStamps.sublime-commands",
+			},
 		})
 
-	# Submenu: Plugin Commands
-	def get_plugin_menu(self):
+		self.add_submenu( menu, launch )
+
+		# Add divider and settings commands
+		self.add_divider(menu)
 
 		# Add root commands
-		return self.build_key("Update Now", "live_stamps_update")
+		return self.add_keys(menu, {
+			"command"  : "live_stamps_menu_gen",
+			"arg_keys" : {"menutype": 0},
+			"cap_vals" : ["all", "command", "context", "sidebar", "toolbar"],
+		})
 
 	# Submenu: Plugin Preferences
 	def get_preference_menu(self, header='Preferences', ID=False, mnemonic=False):
 
 		# Define the menu
-		submenu = self.build_menu(header, ID, mnemonic)
+		menu = self.build_menu(header, ID, mnemonic)
+
+		#menu['children'].append( self.build_key("Update On Save", "live_stamps_toggle", {"mode": "auto_update"}) )
+
+		# Add divider and a single root key
+		self.add_submenu( menu, self.build_key("Update On Save", "live_stamps_toggle", {"mode": "auto_update"}) )
+		self.add_divider( menu )
+
+		# Add menu Hilite submenu
+		self.add_submenu( menu, self.get_hilite_menu() )
 
 		# Add menu generation submenu
-		self.add_submenu( submenu, self.get_menugen_menu() )
+		self.add_submenu( menu, self.get_menugen_menu() )
 
-		submenu = self.add_divider(submenu)
-
-		# Add a single root key
-		submenu['children'].append( self.build_key("Update On Save", "live_stamps_toggle", {"mode": "auto_update"}) )
+		# Add Checksum submenu
+		self.add_submenu( menu, self.get_checksum_menu() )
 
 		# Add divider and settings commands
-		submenu = self.add_divider(submenu)
-		submenu = self.add_keys(submenu, {
+		self.add_divider( menu )
+		self.add_keys(menu, {
 			"command"  : "open_file",
-			"captions" : ["Settings – Default", "Settings – User"],
 			"arg_keys" : '{"file" : "${packages}/%s/LiveStamps.sublime-settings"}',
-			"arg_vals" : ['LiveStamps', 'User'],
+			"cap_vals" : {
+				'Settings – Default' : "LiveStamps",
+				'Settings – User'    : "User",
+			},
 		})
 
-		# Special case for keybindings, create variables and captions programatically
-		argvals = []
-		capvals = []
-
+		# Add divider and keybindings commands, Special case create cap_vals programatically
+		self.add_divider( menu )
 		for platform in ['Windows', 'OSX', 'Linux']:
-			capvals.append( "Key Bindings – Default" )
-			capvals.append( "Key Bindings – User" )
-			argvals.append( ['LiveStamps', platform, platform] )
-			argvals.append( ['User', platform, platform] )
+			self.add_keys( menu, {
+				"command"  : "open_file",
+				"arg_keys" : '{"file":"${packages}/%s/Default (%s).sublime-keymap", "platform":"%s"}',
+				"cap_vals" : {
+					'Key Bindings – Default' : ['LiveStamps', platform, platform],
+					'Key Bindings – User'    : ['User',       platform, platform],
+				},
+			})
 
-		# Add divider and keybindings commands
-		submenu = self.add_divider(submenu)
-		return self.add_keys(submenu, {
-			"command"  : "open_file",
-			"captions" : capvals,
-			"arg_keys" : '{"file":"${packages}/%s/Default (%s).sublime-keymap",  "platform":"%s"}',
-			"arg_vals" : argvals
-		})
+		return menu
 
 	#-------------------------------------------------------------------------------
 	# Main Menu Macros
@@ -1765,17 +2019,16 @@ class LiveStampsMenuGenCommand(sublime_plugin.TextCommand):
 	def get_context_menu(self, header='LiveStamps', ID='timestamps-context-menu', mnemonic=False):
 
 		# Define the menu
-		context_menu = self.build_menu(header, ID, mnemonic)
+		menu = self.build_menu(header, ID, mnemonic)
 
 		# Add submenus and dividers
-		self.add_submenu( context_menu, self.get_stamp_menu() )
-		self.add_submenu( context_menu, self.get_value_menu() )
-		self.add_submenu( context_menu, self.get_hilite_menu() )
-		self.add_divider( context_menu )
-		self.add_submenu( context_menu, self.get_preference_menu() )
-		self.add_submenu( context_menu, self.get_plugin_menu() )
+		self.add_submenu( menu, self.get_stamp_menu() )
+		self.add_submenu( menu, self.get_value_menu() )
+		self.add_submenu( menu, self.get_preference_menu() )
+		self.add_divider( menu )
+		self.add_submenu( menu, self.build_key("Update Now", "live_stamps_update") )
 
-		return context_menu
+		return menu
 
 	# Toolbar Menu
 	def get_toolbar_menu(self):
@@ -1845,20 +2098,45 @@ class LiveStampsListener(sublime_plugin.EventListener):
 	*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 	'''
 	def __init__(self):
+
 		# Initialize queue tracker
 		self.queue = 0
 
+
+	# On first load check for setting initialization
+	def check_init(self, view):
+
+		if s.get("stamps") == None:
+			view.run_command('refresh_meta')
+
+	# Launch the highlighter on load, if enabled
+	def on_load(self, view):
+
+		# Check settings init
+		self.check_init(view)
+
+		if s.get("highlighter"):
+			view.run_command('live_stamps_highlight')
+
 	# Listen for save event
 	def on_pre_save(self, view):
+
+		# Check settings init
+		self.check_init(view)
+
 		if s.get("auto_update"):
 			view.run_command('live_stamps_update')
 
 	# When the view is changed, queue the highlighter and set the timeout
 	def on_modified(self, view):
+
+		# Check settings init
+		self.check_init(view)
+
 		# Increment queue
 		self.queue += 1
 		# Queue asynchronous worker thread
-		sublime.set_timeout_async(lambda: self.queue_highlighter(view), s.get("timeout"))
+		sublime.set_timeout_async(lambda: self.queue_highlighter(view), s.get("timeout", 200))
 
 	# If the queue is empty, call the highlighter. Otherwise wait for queue to clear
 	def queue_highlighter(self, view):
@@ -1869,23 +2147,20 @@ class LiveStampsListener(sublime_plugin.EventListener):
 			view.run_command('live_stamps_highlight')
 
 	# Launch the highlighter on activation, if enabled
-	def on_activated(self, view):
+	def on_activated_async(self, view):
+
+		# Check settings init
+		self.check_init(view)
+
 		if s.get("highlighter"):
+
 			view.run_command('live_stamps_highlight')
 
-	# Launch the highlighter on load, if enabled
-	def on_load(self, view):
-		if s.get("highlighter"):
-			view.run_command('live_stamps_highlight')
+
 
 	# Determine if the view is a find results view.
 	def is_find_results(view):
 		return view.settings().get('syntax') and "Find Results" in view.settings().get('syntax')
-
-
-
-
-
 
 
 

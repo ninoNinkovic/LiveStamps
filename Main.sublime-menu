@@ -1,840 +1,1285 @@
 [
   {
-    "caption": "Tools",
-    "id": "tools",
+    "caption": "Tools", 
+    "id": "tools", 
     "children": [
       {
-        "caption": "LiveStamps",
-        "id": "livestamps-tools-menu",
+        "caption": "LiveStamps", 
+        "id": "livestamps-tools-menu", 
         "children": [
           {
-            "caption": "Insert Stamp",
+            "caption": "Insert Stamp", 
             "children": [
               {
-                "caption": "All",
-                "command": "live_stamps_insert",
+                "caption": "All", 
+                "command": "live_stamps_insert", 
                 "args": {
-                  "stamptype": "stamp",
+                  "stamptype": "stamp", 
                   "kind": "all"
                 }
-              },
+              }, 
               {
-                "caption": "File",
+                "caption": "File", 
                 "children": [
                   {
-                    "caption": "Base Name",
-                    "command": "live_stamps_insert",
+                    "caption": "File Path", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
-                      "kind": "base_name"
-                    }
-                  },
-                  {
-                    "caption": "Checksum",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "checksum"
-                    }
-                  },
-                  {
-                    "caption": "Extension",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "extension"
-                    }
-                  },
-                  {
-                    "caption": "File Name",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "file_name"
-                    }
-                  },
-                  {
-                    "caption": "File Path",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
                       "kind": "file_path"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "File Size",
-                    "command": "live_stamps_insert",
+                    "caption": "Parent Path", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
-                      "kind": "file_size"
+                      "stamptype": "stamp", 
+                      "kind": "parent_path"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Parent Name",
-                    "command": "live_stamps_insert",
+                    "caption": "Parent Name", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
                       "kind": "parent_name"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Parent Path",
-                    "command": "live_stamps_insert",
+                    "caption": "File Name", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
-                      "kind": "parent_path"
+                      "stamptype": "stamp", 
+                      "kind": "file_name"
+                    }
+                  }, 
+                  {
+                    "caption": "File Extname", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "file_extname"
+                    }
+                  }, 
+                  {
+                    "caption": "Base Name", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "base_name"
+                    }
+                  }, 
+                  {
+                    "caption": "File Size", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "file_size"
+                    }
+                  }, 
+                  {
+                    "caption": "Extension", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "extension"
+                    }
+                  }, 
+                  {
+                    "caption": "Checksum", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "checksum"
                     }
                   }
                 ]
-              },
+              }, 
               {
-                "caption": "Project",
+                "caption": "Project", 
                 "children": [
                   {
-                    "caption": "Copyright",
-                    "command": "live_stamps_insert",
+                    "caption": "Copyright", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
                       "kind": "copyright"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Docs",
-                    "command": "live_stamps_insert",
+                    "caption": "Repo", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
-                      "kind": "docs"
-                    }
-                  },
-                  {
-                    "caption": "License",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "license"
-                    }
-                  },
-                  {
-                    "caption": "Link",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "link"
-                    }
-                  },
-                  {
-                    "caption": "Modified",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "modified"
-                    }
-                  },
-                  {
-                    "caption": "Repo",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
                       "kind": "repo"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Version",
-                    "command": "live_stamps_insert",
+                    "caption": "Modified", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
+                      "kind": "modified"
+                    }
+                  }, 
+                  {
+                    "caption": "Link", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "link"
+                    }
+                  }, 
+                  {
+                    "caption": "Docs", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "docs"
+                    }
+                  }, 
+                  {
+                    "caption": "License", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "license"
+                    }
+                  }, 
+                  {
+                    "caption": "Version", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
                       "kind": "version"
                     }
                   }
                 ]
-              },
+              }, 
               {
-                "caption": "Time",
+                "caption": "Right Now", 
+                "command": "live_stamps_insert", 
+                "args": {
+                  "stamptype": "stamp", 
+                  "kind": "right_now"
+                }
+              }, 
+              {
+                "caption": "Time", 
                 "children": [
                   {
-                    "caption": "Central Time",
-                    "command": "live_stamps_insert",
+                    "caption": "Time", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
-                      "kind": "central_time"
-                    }
-                  },
-                  {
-                    "caption": "Date",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "date"
-                    }
-                  },
-                  {
-                    "caption": "Day",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "day"
-                    }
-                  },
-                  {
-                    "caption": "Eastern Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "eastern_time"
-                    }
-                  },
-                  {
-                    "caption": "Month",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "month"
-                    }
-                  },
-                  {
-                    "caption": "Mountain Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "mountain_time"
-                    }
-                  },
-                  {
-                    "caption": "Pacific Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "pacific_time"
-                    }
-                  },
-                  {
-                    "caption": "Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
                       "kind": "time"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Year",
-                    "command": "live_stamps_insert",
+                    "caption": "Central Time", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
+                      "kind": "central_time"
+                    }
+                  }, 
+                  {
+                    "caption": "Pacific Time", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "pacific_time"
+                    }
+                  }, 
+                  {
+                    "caption": "Date", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "date"
+                    }
+                  }, 
+                  {
+                    "caption": "Day", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "day"
+                    }
+                  }, 
+                  {
+                    "caption": "Year", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
                       "kind": "year"
                     }
+                  }, 
+                  {
+                    "caption": "Month", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "month"
+                    }
+                  }, 
+                  {
+                    "caption": "Eastern Time", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "eastern_time"
+                    }
+                  }, 
+                  {
+                    "caption": "Mountain Time", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "mountain_time"
+                    }
                   }
                 ]
-              },
+              }, 
               {
-                "caption": "User",
+                "caption": "User", 
                 "children": [
                   {
-                    "caption": "Author",
-                    "command": "live_stamps_insert",
+                    "caption": "Website", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "stamp",
-                      "kind": "author"
-                    }
-                  },
-                  {
-                    "caption": "Email",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "email"
-                    }
-                  },
-                  {
-                    "caption": "Quote",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "quote"
-                    }
-                  },
-                  {
-                    "caption": "Signature",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "signature"
-                    }
-                  },
-                  {
-                    "caption": "Username",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
-                      "kind": "username"
-                    }
-                  },
-                  {
-                    "caption": "Website",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "stamp",
+                      "stamptype": "stamp", 
                       "kind": "website"
                     }
+                  }, 
+                  {
+                    "caption": "Author", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "author"
+                    }
+                  }, 
+                  {
+                    "caption": "Signature", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "signature"
+                    }
+                  }, 
+                  {
+                    "caption": "Username", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "username"
+                    }
+                  }, 
+                  {
+                    "caption": "Vendor", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "vendor"
+                    }
+                  }, 
+                  {
+                    "caption": "Email", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "email"
+                    }
+                  }, 
+                  {
+                    "caption": "Quote", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "stamp", 
+                      "kind": "quote"
+                    }
                   }
                 ]
+              }, 
+              {
+                "caption": "Yesterday", 
+                "command": "live_stamps_insert", 
+                "args": {
+                  "stamptype": "stamp", 
+                  "kind": "yesterday"
+                }
               }
             ]
-          },
+          }, 
           {
-            "caption": "Insert Value",
+            "caption": "Insert Value", 
             "children": [
               {
-                "caption": "All",
-                "command": "live_stamps_insert",
+                "caption": "All", 
+                "command": "live_stamps_insert", 
                 "args": {
-                  "stamptype": "value",
+                  "stamptype": "value", 
                   "kind": "all"
                 }
-              },
+              }, 
               {
-                "caption": "File",
+                "caption": "File", 
                 "children": [
                   {
-                    "caption": "Base Name",
-                    "command": "live_stamps_insert",
+                    "caption": "File Path", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
-                      "kind": "base_name"
-                    }
-                  },
-                  {
-                    "caption": "Checksum",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "checksum"
-                    }
-                  },
-                  {
-                    "caption": "Extension",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "extension"
-                    }
-                  },
-                  {
-                    "caption": "File Name",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "file_name"
-                    }
-                  },
-                  {
-                    "caption": "File Path",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
                       "kind": "file_path"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "File Size",
-                    "command": "live_stamps_insert",
+                    "caption": "Parent Path", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
-                      "kind": "file_size"
+                      "stamptype": "value", 
+                      "kind": "parent_path"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Parent Name",
-                    "command": "live_stamps_insert",
+                    "caption": "Parent Name", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
                       "kind": "parent_name"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Parent Path",
-                    "command": "live_stamps_insert",
+                    "caption": "File Name", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
-                      "kind": "parent_path"
+                      "stamptype": "value", 
+                      "kind": "file_name"
+                    }
+                  }, 
+                  {
+                    "caption": "File Extname", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "file_extname"
+                    }
+                  }, 
+                  {
+                    "caption": "Base Name", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "base_name"
+                    }
+                  }, 
+                  {
+                    "caption": "File Size", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "file_size"
+                    }
+                  }, 
+                  {
+                    "caption": "Extension", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "extension"
+                    }
+                  }, 
+                  {
+                    "caption": "Checksum", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "checksum"
                     }
                   }
                 ]
-              },
+              }, 
               {
-                "caption": "Project",
+                "caption": "Project", 
                 "children": [
                   {
-                    "caption": "Copyright",
-                    "command": "live_stamps_insert",
+                    "caption": "Copyright", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
                       "kind": "copyright"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Docs",
-                    "command": "live_stamps_insert",
+                    "caption": "Repo", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
-                      "kind": "docs"
-                    }
-                  },
-                  {
-                    "caption": "License",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "license"
-                    }
-                  },
-                  {
-                    "caption": "Link",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "link"
-                    }
-                  },
-                  {
-                    "caption": "Modified",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "modified"
-                    }
-                  },
-                  {
-                    "caption": "Repo",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
                       "kind": "repo"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Version",
-                    "command": "live_stamps_insert",
+                    "caption": "Modified", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
+                      "kind": "modified"
+                    }
+                  }, 
+                  {
+                    "caption": "Link", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "link"
+                    }
+                  }, 
+                  {
+                    "caption": "Docs", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "docs"
+                    }
+                  }, 
+                  {
+                    "caption": "License", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "license"
+                    }
+                  }, 
+                  {
+                    "caption": "Version", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
                       "kind": "version"
                     }
                   }
                 ]
-              },
+              }, 
               {
-                "caption": "Time",
+                "caption": "Right Now", 
+                "command": "live_stamps_insert", 
+                "args": {
+                  "stamptype": "value", 
+                  "kind": "right_now"
+                }
+              }, 
+              {
+                "caption": "Time", 
                 "children": [
                   {
-                    "caption": "Central Time",
-                    "command": "live_stamps_insert",
+                    "caption": "Time", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
-                      "kind": "central_time"
-                    }
-                  },
-                  {
-                    "caption": "Date",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "date"
-                    }
-                  },
-                  {
-                    "caption": "Day",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "day"
-                    }
-                  },
-                  {
-                    "caption": "Eastern Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "eastern_time"
-                    }
-                  },
-                  {
-                    "caption": "Month",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "month"
-                    }
-                  },
-                  {
-                    "caption": "Mountain Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "mountain_time"
-                    }
-                  },
-                  {
-                    "caption": "Pacific Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "pacific_time"
-                    }
-                  },
-                  {
-                    "caption": "Time",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
                       "kind": "time"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Year",
-                    "command": "live_stamps_insert",
+                    "caption": "Central Time", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
+                      "kind": "central_time"
+                    }
+                  }, 
+                  {
+                    "caption": "Pacific Time", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "pacific_time"
+                    }
+                  }, 
+                  {
+                    "caption": "Date", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "date"
+                    }
+                  }, 
+                  {
+                    "caption": "Day", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "day"
+                    }
+                  }, 
+                  {
+                    "caption": "Year", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
                       "kind": "year"
                     }
+                  }, 
+                  {
+                    "caption": "Month", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "month"
+                    }
+                  }, 
+                  {
+                    "caption": "Eastern Time", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "eastern_time"
+                    }
+                  }, 
+                  {
+                    "caption": "Mountain Time", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "mountain_time"
+                    }
                   }
                 ]
-              },
+              }, 
               {
-                "caption": "User",
+                "caption": "User", 
                 "children": [
                   {
-                    "caption": "Author",
-                    "command": "live_stamps_insert",
+                    "caption": "Website", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "stamptype": "value",
-                      "kind": "author"
-                    }
-                  },
-                  {
-                    "caption": "Email",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "email"
-                    }
-                  },
-                  {
-                    "caption": "Quote",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "quote"
-                    }
-                  },
-                  {
-                    "caption": "Signature",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "signature"
-                    }
-                  },
-                  {
-                    "caption": "Username",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
-                      "kind": "username"
-                    }
-                  },
-                  {
-                    "caption": "Website",
-                    "command": "live_stamps_insert",
-                    "args": {
-                      "stamptype": "value",
+                      "stamptype": "value", 
                       "kind": "website"
                     }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "caption": "Highlighting",
-            "children": [
-              {
-                "caption": "Highlighter",
-                "command": "live_stamps_toggle",
-                "args": {
-                  "mode": "highlighter"
-                }
-              },
-              {
-                "caption": "Outline",
-                "command": "live_stamps_toggle",
-                "args": {
-                  "mode": "outline"
-                }
-              },
-              {
-                "caption": "Markers",
-                "command": "live_stamps_toggle",
-                "args": {
-                  "mode": "markers"
-                }
-              },
-              {
-                "caption": "Shading",
-                "command": "live_stamps_toggle",
-                "args": {
-                  "mode": "shading"
-                }
-              }
-            ]
-          },
-          {
-            "caption": "-"
-          },
-          {
-            "caption": "Preferences",
-            "children": [
-              {
-                "caption": "Menu Generator",
-                "children": [
+                  }, 
                   {
-                    "caption": "Context",
-                    "command": "live_stamps_menu_gen",
+                    "caption": "Author", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "menutype": "context"
+                      "stamptype": "value", 
+                      "kind": "author"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Command",
-                    "command": "live_stamps_menu_gen",
+                    "caption": "Signature", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "menutype": "command"
+                      "stamptype": "value", 
+                      "kind": "signature"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Sidebar",
-                    "command": "live_stamps_menu_gen",
+                    "caption": "Username", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "menutype": "sidebar"
+                      "stamptype": "value", 
+                      "kind": "username"
                     }
-                  },
+                  }, 
                   {
-                    "caption": "Toolbar",
-                    "command": "live_stamps_menu_gen",
+                    "caption": "Vendor", 
+                    "command": "live_stamps_insert", 
                     "args": {
-                      "menutype": "toolbar"
+                      "stamptype": "value", 
+                      "kind": "vendor"
+                    }
+                  }, 
+                  {
+                    "caption": "Email", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "email"
+                    }
+                  }, 
+                  {
+                    "caption": "Quote", 
+                    "command": "live_stamps_insert", 
+                    "args": {
+                      "stamptype": "value", 
+                      "kind": "quote"
                     }
                   }
                 ]
-              },
+              }, 
               {
-                "caption": "-"
-              },
+                "caption": "Yesterday", 
+                "command": "live_stamps_insert", 
+                "args": {
+                  "stamptype": "value", 
+                  "kind": "yesterday"
+                }
+              }
+            ]
+          }, 
+          {
+            "caption": "Preferences", 
+            "children": [
               {
-                "caption": "Update On Save",
-                "command": "live_stamps_toggle",
+                "caption": "Update On Save", 
+                "command": "live_stamps_toggle", 
                 "args": {
                   "mode": "auto_update"
                 }
-              },
+              }, 
               {
                 "caption": "-"
-              },
+              }, 
               {
-                "caption": "Settings \u2013 Default",
-                "command": "open_file",
+                "caption": "Highlighting", 
+                "children": [
+                  {
+                    "caption": "Highlighter", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "highlighter"
+                    }
+                  }, 
+                  {
+                    "caption": "-"
+                  }, 
+                  {
+                    "caption": "Outline", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "outline"
+                    }
+                  }, 
+                  {
+                    "caption": "Shading", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "shading"
+                    }
+                  }, 
+                  {
+                    "caption": "Markers", 
+                    "children": [
+                      {
+                        "caption": "Cross", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "cross"
+                        }
+                      }, 
+                      {
+                        "caption": "Dot", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "dot"
+                        }
+                      }, 
+                      {
+                        "caption": "Bookmark", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "bookmark"
+                        }
+                      }, 
+                      {
+                        "caption": "Circle", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "circle"
+                        }
+                      }, 
+                      {
+                        "caption": "None", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "none"
+                        }
+                      }
+                    ]
+                  }, 
+                  {
+                    "caption": "Underline", 
+                    "children": [
+                      {
+                        "caption": "Solid", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "solid"
+                        }
+                      }, 
+                      {
+                        "caption": "Stippled", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "stippled"
+                        }
+                      }, 
+                      {
+                        "caption": "Squiggly", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "squiggly"
+                        }
+                      }, 
+                      {
+                        "caption": "None", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "none"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }, 
+              {
+                "caption": "Generate Menu", 
+                "children": [
+                  {
+                    "caption": "Open", 
+                    "children": [
+                      {
+                        "caption": "Main Menu", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/Main.sublime-menu"
+                        }
+                      }, 
+                      {
+                        "caption": "Commands", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/LiveStamps.sublime-commands"
+                        }
+                      }, 
+                      {
+                        "caption": "Side Bar Menu", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/Side Bar.sublime-menu"
+                        }
+                      }, 
+                      {
+                        "caption": "Context Menu", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/Context.sublime-menu"
+                        }
+                      }
+                    ]
+                  }, 
+                  {
+                    "caption": "-"
+                  }, 
+                  {
+                    "caption": "All", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "all"
+                    }
+                  }, 
+                  {
+                    "caption": "Command", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "command"
+                    }
+                  }, 
+                  {
+                    "caption": "Context", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "context"
+                    }
+                  }, 
+                  {
+                    "caption": "Toolbar", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "toolbar"
+                    }
+                  }, 
+                  {
+                    "caption": "Sidebar", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "sidebar"
+                    }
+                  }
+                ]
+              }, 
+              {
+                "caption": "Checksum Mode", 
+                "children": [
+                  {
+                    "caption": "Sha384", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha384"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha1", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha1"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha512", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha512"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha256", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha256"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha224", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha224"
+                    }
+                  }, 
+                  {
+                    "caption": "Md5", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "md5"
+                    }
+                  }
+                ]
+              }, 
+              {
+                "caption": "-"
+              }, 
+              {
+                "caption": "Settings \u2013 Default", 
+                "command": "open_file", 
                 "args": {
                   "file": "${packages}/LiveStamps/LiveStamps.sublime-settings"
                 }
-              },
+              }, 
               {
-                "caption": "Settings \u2013 User",
-                "command": "open_file",
+                "caption": "Settings \u2013 User", 
+                "command": "open_file", 
                 "args": {
                   "file": "${packages}/User/LiveStamps.sublime-settings"
                 }
-              },
+              }, 
               {
                 "caption": "-"
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 Default",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 User", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "Windows",
-                  "file": "${packages}/LiveStamps/Default (Windows).sublime-keymap"
-                }
-              },
-              {
-                "caption": "Key Bindings \u2013 User",
-                "command": "open_file",
-                "args": {
-                  "platform": "Windows",
+                  "platform": "Windows", 
                   "file": "${packages}/User/Default (Windows).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 Default",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 Default", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "OSX",
-                  "file": "${packages}/LiveStamps/Default (OSX).sublime-keymap"
+                  "platform": "Windows", 
+                  "file": "${packages}/LiveStamps/Default (Windows).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 User",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 User", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "OSX",
+                  "platform": "OSX", 
                   "file": "${packages}/User/Default (OSX).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 Default",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 Default", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "Linux",
-                  "file": "${packages}/LiveStamps/Default (Linux).sublime-keymap"
+                  "platform": "OSX", 
+                  "file": "${packages}/LiveStamps/Default (OSX).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 User",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 User", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "Linux",
+                  "platform": "Linux", 
                   "file": "${packages}/User/Default (Linux).sublime-keymap"
+                }
+              }, 
+              {
+                "caption": "Key Bindings \u2013 Default", 
+                "command": "open_file", 
+                "args": {
+                  "platform": "Linux", 
+                  "file": "${packages}/LiveStamps/Default (Linux).sublime-keymap"
                 }
               }
             ]
-          },
+          }, 
           {
-            "caption": "Update Now",
+            "caption": "-"
+          }, 
+          {
+            "caption": "Update Now", 
             "command": "live_stamps_update"
           }
         ]
       }
     ]
-  },
+  }, 
   {
-    "caption": "Preferences",
-    "id": "preferences",
+    "caption": "Preferences", 
+    "id": "preferences", 
     "children": [
       {
-        "caption": "Package Settings",
-        "id": "package-settings",
-        "mnemonic": "P",
+        "caption": "Package Settings", 
+        "id": "package-settings", 
+        "mnemonic": "P", 
         "children": [
           {
-            "caption": "LiveStamps",
-            "id": "livestamps-preferences-menu",
+            "caption": "LiveStamps", 
+            "id": "livestamps-preferences-menu", 
             "children": [
               {
-                "caption": "Menu Generator",
-                "children": [
-                  {
-                    "caption": "Context",
-                    "command": "live_stamps_menu_gen",
-                    "args": {
-                      "menutype": "context"
-                    }
-                  },
-                  {
-                    "caption": "Command",
-                    "command": "live_stamps_menu_gen",
-                    "args": {
-                      "menutype": "command"
-                    }
-                  },
-                  {
-                    "caption": "Sidebar",
-                    "command": "live_stamps_menu_gen",
-                    "args": {
-                      "menutype": "sidebar"
-                    }
-                  },
-                  {
-                    "caption": "Toolbar",
-                    "command": "live_stamps_menu_gen",
-                    "args": {
-                      "menutype": "toolbar"
-                    }
-                  }
-                ]
-              },
-              {
-                "caption": "-"
-              },
-              {
-                "caption": "Update On Save",
-                "command": "live_stamps_toggle",
+                "caption": "Update On Save", 
+                "command": "live_stamps_toggle", 
                 "args": {
                   "mode": "auto_update"
                 }
-              },
+              }, 
               {
                 "caption": "-"
-              },
+              }, 
               {
-                "caption": "Settings \u2013 Default",
-                "command": "open_file",
+                "caption": "Highlighting", 
+                "children": [
+                  {
+                    "caption": "Highlighter", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "highlighter"
+                    }
+                  }, 
+                  {
+                    "caption": "-"
+                  }, 
+                  {
+                    "caption": "Outline", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "outline"
+                    }
+                  }, 
+                  {
+                    "caption": "Shading", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "shading"
+                    }
+                  }, 
+                  {
+                    "caption": "Markers", 
+                    "children": [
+                      {
+                        "caption": "Cross", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "cross"
+                        }
+                      }, 
+                      {
+                        "caption": "Dot", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "dot"
+                        }
+                      }, 
+                      {
+                        "caption": "Bookmark", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "bookmark"
+                        }
+                      }, 
+                      {
+                        "caption": "Circle", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "circle"
+                        }
+                      }, 
+                      {
+                        "caption": "None", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "markers", 
+                          "value": "none"
+                        }
+                      }
+                    ]
+                  }, 
+                  {
+                    "caption": "Underline", 
+                    "children": [
+                      {
+                        "caption": "Solid", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "solid"
+                        }
+                      }, 
+                      {
+                        "caption": "Stippled", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "stippled"
+                        }
+                      }, 
+                      {
+                        "caption": "Squiggly", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "squiggly"
+                        }
+                      }, 
+                      {
+                        "caption": "None", 
+                        "command": "live_stamps_toggle", 
+                        "args": {
+                          "mode": "underline", 
+                          "value": "none"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }, 
+              {
+                "caption": "Generate Menu", 
+                "children": [
+                  {
+                    "caption": "Open", 
+                    "children": [
+                      {
+                        "caption": "Main Menu", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/Main.sublime-menu"
+                        }
+                      }, 
+                      {
+                        "caption": "Commands", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/LiveStamps.sublime-commands"
+                        }
+                      }, 
+                      {
+                        "caption": "Side Bar Menu", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/Side Bar.sublime-menu"
+                        }
+                      }, 
+                      {
+                        "caption": "Context Menu", 
+                        "command": "open_file", 
+                        "args": {
+                          "file": "${packages}/LiveStamps/Context.sublime-menu"
+                        }
+                      }
+                    ]
+                  }, 
+                  {
+                    "caption": "-"
+                  }, 
+                  {
+                    "caption": "All", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "all"
+                    }
+                  }, 
+                  {
+                    "caption": "Command", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "command"
+                    }
+                  }, 
+                  {
+                    "caption": "Context", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "context"
+                    }
+                  }, 
+                  {
+                    "caption": "Toolbar", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "toolbar"
+                    }
+                  }, 
+                  {
+                    "caption": "Sidebar", 
+                    "command": "live_stamps_menu_gen", 
+                    "args": {
+                      "menutype": "sidebar"
+                    }
+                  }
+                ]
+              }, 
+              {
+                "caption": "Checksum Mode", 
+                "children": [
+                  {
+                    "caption": "Sha384", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha384"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha1", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha1"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha512", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha512"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha256", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha256"
+                    }
+                  }, 
+                  {
+                    "caption": "Sha224", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "sha224"
+                    }
+                  }, 
+                  {
+                    "caption": "Md5", 
+                    "command": "live_stamps_toggle", 
+                    "args": {
+                      "mode": "hash_mode", 
+                      "value": "md5"
+                    }
+                  }
+                ]
+              }, 
+              {
+                "caption": "-"
+              }, 
+              {
+                "caption": "Settings \u2013 Default", 
+                "command": "open_file", 
                 "args": {
                   "file": "${packages}/LiveStamps/LiveStamps.sublime-settings"
                 }
-              },
+              }, 
               {
-                "caption": "Settings \u2013 User",
-                "command": "open_file",
+                "caption": "Settings \u2013 User", 
+                "command": "open_file", 
                 "args": {
                   "file": "${packages}/User/LiveStamps.sublime-settings"
                 }
-              },
+              }, 
               {
                 "caption": "-"
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 Default",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 User", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "Windows",
-                  "file": "${packages}/LiveStamps/Default (Windows).sublime-keymap"
-                }
-              },
-              {
-                "caption": "Key Bindings \u2013 User",
-                "command": "open_file",
-                "args": {
-                  "platform": "Windows",
+                  "platform": "Windows", 
                   "file": "${packages}/User/Default (Windows).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 Default",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 Default", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "OSX",
-                  "file": "${packages}/LiveStamps/Default (OSX).sublime-keymap"
+                  "platform": "Windows", 
+                  "file": "${packages}/LiveStamps/Default (Windows).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 User",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 User", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "OSX",
+                  "platform": "OSX", 
                   "file": "${packages}/User/Default (OSX).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 Default",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 Default", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "Linux",
-                  "file": "${packages}/LiveStamps/Default (Linux).sublime-keymap"
+                  "platform": "OSX", 
+                  "file": "${packages}/LiveStamps/Default (OSX).sublime-keymap"
                 }
-              },
+              }, 
               {
-                "caption": "Key Bindings \u2013 User",
-                "command": "open_file",
+                "caption": "Key Bindings \u2013 User", 
+                "command": "open_file", 
                 "args": {
-                  "platform": "Linux",
+                  "platform": "Linux", 
                   "file": "${packages}/User/Default (Linux).sublime-keymap"
+                }
+              }, 
+              {
+                "caption": "Key Bindings \u2013 Default", 
+                "command": "open_file", 
+                "args": {
+                  "platform": "Linux", 
+                  "file": "${packages}/LiveStamps/Default (Linux).sublime-keymap"
                 }
               }
             ]

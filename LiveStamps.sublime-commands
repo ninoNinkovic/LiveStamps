@@ -437,22 +437,6 @@
     }
   }, 
   {
-    "caption": "LiveStamps Insert: Right Now Stamp", 
-    "command": "live_stamps_insert", 
-    "args": {
-      "stamptype": "stamp", 
-      "kind": "right_now"
-    }
-  }, 
-  {
-    "caption": "LiveStamps Insert: Right Now Value", 
-    "command": "live_stamps_insert", 
-    "args": {
-      "stamptype": "value", 
-      "kind": "right_now"
-    }
-  }, 
-  {
     "caption": "LiveStamps Insert: Signature Stamp", 
     "command": "live_stamps_insert", 
     "args": {
@@ -562,22 +546,6 @@
     "args": {
       "stamptype": "value", 
       "kind": "year"
-    }
-  }, 
-  {
-    "caption": "LiveStamps Insert: Yesterday Stamp", 
-    "command": "live_stamps_insert", 
-    "args": {
-      "stamptype": "stamp", 
-      "kind": "yesterday"
-    }
-  }, 
-  {
-    "caption": "LiveStamps Insert: Yesterday Value", 
-    "command": "live_stamps_insert", 
-    "args": {
-      "stamptype": "value", 
-      "kind": "yesterday"
     }
   }, 
   {

@@ -25,36 +25,37 @@
 
   // Enable/Disable various notifications
 
-  "popup_events"     : true, // Popup dialogs
-  "console_events"   : true, // Modes: true, false, "clear" (clears console each time)
-  "statusbar_events" : true, // Status bar notifications
+  "popup_events"     : true,                 // Popup dialogs
+  "console_events"   : true,                 // Modes: true, false, "clear"
+  "statusbar_events" : true,                 // Status bar notifications
 
 //---------------------------------------------------------------------------------------
 //  Highlighter Settings
 //---------------------------------------------------------------------------------------
 
-  "enabled"   : true,       // Enable/Disable LiveStamp highlighting
-  "timeout"   : 200,        // Delay before stamp regions are highlighted after typing
-  "maxsize"   : 1048576,    // Maximum filesize in bytes to parse with highlighter
+  "enabled"   : true,        // Enable/Disable LiveStamp highlighting
+  "timeout"   : 200,         // Delay before stamp regions are highlighted after typing
+  "maxsize"   : 1048576,     // Maximum filesize in bytes to parse with highlighter
 
-  "shading"   : false,      // Enable / Disable background shading
-  "outline"   : false,      // Enable / Disable Underlines
-  "markers"   : "bookmark", // Modes: "dot", "circle", "bookmark", "cross", True, False
-  "underline" : true,       // Modes: "stippled", "squiggly", "solid", True, False
+  "shading"   : false,       // Enable / Disable background shading
+  "outline"   : false,       // Enable / Disable Underlines
+  "markers"   : "bookmark",  // Modes: "dot", "circle", "bookmark", "cross", True, False
+  "underline" : true,        // Modes: "stippled", "squiggly", "solid", True, False
 
-  "marker_color"    : "string", // Color as syntax scope: comment, string, variable...
-  "shading_color"   : "string", // Color as syntax scope: comment, string, variable...
-  "outline_color"   : "string", // Color as syntax scope: comment, string, variable...
-  "underline_color" : "string", // Color as syntax scope: comment, string, variable...
+	// Colors as syntax scopes: comment, string, variable..
+  "marker_color"    : "string",
+  "shading_color"   : "string",
+  "outline_color"   : "string",
+  "underline_color" : "string",
 
 //---------------------------------------------------------------------------------------
-// AutoStamp Settings
+// AutoStamp Settings - Careful these are powerful settings!
 //---------------------------------------------------------------------------------------
 
-  "autoregex" : " \\* @{0}.+",  // Stamp name is injected at flag {0}
+  "autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}
   "autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
   "separator" : " ",            // Separator used when multiple values are defined
-  "doc_align" : 2,              // False to disable or an integer to add docblock spacing
+  "doc_align" : 2,              // False to disable or integer to add docblock spacing
 
 //---------------------------------------------------------------------------------------
 // LiveStamp Definitions
@@ -167,21 +168,6 @@
       "menu" : "User",
       "value": ["version", "author", "email", "copyright", "license", "repo", "modified", "checksum", "quote"],
       "stamp": "/** \n * [description]\n * \n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n */",
-      //"regex": Not needed as stamp is made from other stamps with regexes defined
-    },
-
-    "right_now": {
-      "value": "auto",
-      "tflag": "%c",
-      "regex": "auto",
-      "stamp": "auto",
-    },
-
-    "yesterday": {
-      "value": { "days": -1, "hours" : 2, "seconds" : -30 },
-      "tflag": "%c",
-      "regex": "auto",
-      "stamp": "auto",
     },
 
   },

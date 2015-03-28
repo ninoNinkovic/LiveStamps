@@ -1,5 +1,26 @@
 [
   {
+    "caption": "LiveStamps Help: Dump Meta", 
+    "command": "live_stamps_help", 
+    "args": {
+      "info": "dump_meta"
+    }
+  }, 
+  {
+    "caption": "LiveStamps Help: Format Flags", 
+    "command": "live_stamps_help", 
+    "args": {
+      "info": "format_flags"
+    }
+  }, 
+  {
+    "caption": "LiveStamps Help: Time Flags", 
+    "command": "live_stamps_help", 
+    "args": {
+      "info": "time_flags"
+    }
+  }, 
+  {
     "caption": "LiveStamps Insert: All Stamp", 
     "command": "live_stamps_insert", 
     "args": {
@@ -595,14 +616,14 @@
     }
   }, 
   {
-    "caption": "LiveStamps Open File: Commands", 
+    "caption": "LiveStamps Open File: Command", 
     "command": "open_file", 
     "args": {
       "file": "${packages}/LiveStamps/LiveStamps.sublime-commands"
     }
   }, 
   {
-    "caption": "LiveStamps Open File: Context Menu", 
+    "caption": "LiveStamps Open File: Context", 
     "command": "open_file", 
     "args": {
       "file": "${packages}/LiveStamps/Context.sublime-menu"
@@ -612,55 +633,48 @@
     "caption": "LiveStamps Open File: Key Bindings \u2013 Default", 
     "command": "open_file", 
     "args": {
-      "platform": "Windows", 
-      "file": "${packages}/LiveStamps/Default (Windows).sublime-keymap"
+      "file": "${packages}/LiveStamps/Default (Windows).sublime-keymap", 
+      "platform": "Windows"
     }
   }, 
   {
     "caption": "LiveStamps Open File: Key Bindings \u2013 Default", 
     "command": "open_file", 
     "args": {
-      "platform": "OSX", 
-      "file": "${packages}/LiveStamps/Default (OSX).sublime-keymap"
+      "file": "${packages}/LiveStamps/Default (OSX).sublime-keymap", 
+      "platform": "OSX"
     }
   }, 
   {
     "caption": "LiveStamps Open File: Key Bindings \u2013 Default", 
     "command": "open_file", 
     "args": {
-      "platform": "Linux", 
-      "file": "${packages}/LiveStamps/Default (Linux).sublime-keymap"
+      "file": "${packages}/LiveStamps/Default (Linux).sublime-keymap", 
+      "platform": "Linux"
     }
   }, 
   {
     "caption": "LiveStamps Open File: Key Bindings \u2013 User", 
     "command": "open_file", 
     "args": {
-      "platform": "Windows", 
-      "file": "${packages}/User/Default (Windows).sublime-keymap"
+      "file": "${packages}/User/Default (Windows).sublime-keymap", 
+      "platform": "Windows"
     }
   }, 
   {
     "caption": "LiveStamps Open File: Key Bindings \u2013 User", 
     "command": "open_file", 
     "args": {
-      "platform": "OSX", 
-      "file": "${packages}/User/Default (OSX).sublime-keymap"
+      "file": "${packages}/User/Default (OSX).sublime-keymap", 
+      "platform": "OSX"
     }
   }, 
   {
     "caption": "LiveStamps Open File: Key Bindings \u2013 User", 
     "command": "open_file", 
     "args": {
-      "platform": "Linux", 
-      "file": "${packages}/User/Default (Linux).sublime-keymap"
-    }
-  }, 
-  {
-    "caption": "LiveStamps Open File: Main Menu", 
-    "command": "open_file", 
-    "args": {
-      "file": "${packages}/LiveStamps/Main.sublime-menu"
+      "file": "${packages}/User/Default (Linux).sublime-keymap", 
+      "platform": "Linux"
     }
   }, 
   {
@@ -678,10 +692,17 @@
     }
   }, 
   {
-    "caption": "LiveStamps Open File: Side Bar Menu", 
+    "caption": "LiveStamps Open File: Sidebar", 
     "command": "open_file", 
     "args": {
       "file": "${packages}/LiveStamps/Side Bar.sublime-menu"
+    }
+  }, 
+  {
+    "caption": "LiveStamps Open File: Toolbar", 
+    "command": "open_file", 
+    "args": {
+      "file": "${packages}/LiveStamps/Main.sublime-menu"
     }
   }, 
   {
@@ -717,10 +738,10 @@
     }
   }, 
   {
-    "caption": "LiveStamps Toggle: Highlighter", 
+    "caption": "LiveStamps Toggle: Enabled", 
     "command": "live_stamps_toggle", 
     "args": {
-      "mode": "highlighter"
+      "mode": "enabled"
     }
   }, 
   {

@@ -33,14 +33,14 @@
 //  Highlighter Settings
 //---------------------------------------------------------------------------------------
 
-  "highlighter" : true,     // Highlight LiveStamps
-  "timeout"     : 200,      // Delay before stamp regions are highlighted after typing
-  "maxsize"     : 1048576,  // Maximum filesize in bytes to parse with highlighter
+  "enabled"   : true,       // Enable/Disable LiveStamp highlighting
+  "timeout"   : 200,        // Delay before stamp regions are highlighted after typing
+  "maxsize"   : 1048576,    // Maximum filesize in bytes to parse with highlighter
 
   "shading"   : false,      // Enable / Disable background shading
   "outline"   : false,      // Enable / Disable Underlines
   "markers"   : "bookmark", // Modes: "dot", "circle", "bookmark", "cross", True, False
-  "underline" : true, // Modes: "stippled", "squiggly", "solid", True, False
+  "underline" : true,       // Modes: "stippled", "squiggly", "solid", True, False
 
   "marker_color"    : "string", // Color as syntax scope: comment, string, variable...
   "shading_color"   : "string", // Color as syntax scope: comment, string, variable...

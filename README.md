@@ -12,17 +12,18 @@
   * Track user or person who last modified the file.
   * Add a checksum to the file
   * Update all your projects with a new email address or URL when it changes
-  * Easy static/dynamic custom stamp creation with powerful AUTOMATIC regex matching
+  * Easy static/dynamic custom stamp creation with powerful custom/automatic regex matching
   * Inject stamps via keyboard, command palette, or menus
   * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
 
 **Advanced Features:** 
 
+* Automatic menu generation, define as many stamps as you want with no need to memorize shortcuts
+* Customize menu layout from the settings file, simply define a submenu to sort your stamps
 * Multipart stamps, or stamps made from other stamps. Great for a siggy!
-* Powerful Python format() and strftime() support for stamp values
-* Go beyond simple metadata, perform conversions, arithmetic or inject code snippets.
-* Custom regex is possible for any stamp
-* User defineable submenus and auto context generation so your custom stamps are always easy to access 
+* Go beyond simple metadata, perform conversions with Powerful Python format() and strftime() functions
+* Python format() and srtftime() reference helpers, meta data dump for testing
+* Custom per stamp, and global "auto" regex definitions
 
  
 ####Intall via Package Control: 

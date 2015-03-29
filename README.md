@@ -24,21 +24,19 @@
 * Go beyond simple metadata, perform conversions with powerful Python formatting
 * Built-in help: Python format() & srtftime() live reference and data dump to test new designs
 * Use powerful custom regexes or define global "auto" regex definitions, its up to you!
-
-## Setup:
  
-####Intall via Package Control: 
+####Installation: 
 
 ```
+# Via Package Control:
   1. Open Sublime Text 3
   2. cmd+shift+p
   3. Package Control: Install Package
   4. Search for LiveStamps
-```
-
-###Manual Install: 
-
-```
+  
+  OR
+  
+# Manual:  
   1. Open Sublime Text 3
   2. Sublime Text Menu -> Preferences -> Browse Packages
   3. Create folder called LiveStamps

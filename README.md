@@ -462,7 +462,7 @@ Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://w
 
 If you are making a stamp for use within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. In the following example, the default regex will inject stamp values to anything that appears after " * @mystamp "
 
-**After values anything is ERASED until the end of the line:** 
+**After values are injected, anything is ERASED until the end of the line:** 
 
 ```
 # Auto defined stamp/value:
@@ -476,7 +476,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
 # Which would work great in a docblock header:
 
 /**
- * @mystamp Is really cool   // Anything here will always get erased on update
+ * @mystamp Is really cool   // But Anything here will always get erased on update
  */
 ```
 

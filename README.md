@@ -475,7 +475,13 @@ Output: * @mystamp        Is really cool
 },
 ```
 
-The default regex will inject your stamp values to anything that appears after **" * @mystamp" until the end of the line.** Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
+The default regex will inject your stamp values to anything that appears after:
+
+" * @mystamp" 
+
+**until the end of the line.** 
+
+Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
 
 ```json
 "regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",

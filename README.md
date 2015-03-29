@@ -121,9 +121,9 @@ Output: LiveStamps rule!
 **Optional Keys:**
 
 ```
-[stamp]  : Formatting string. Cool and recommended 8). See injection flags below. 
-[regex]  : Python regex pattern. Set to auto or if excluded, the stamp will be static data.
-[tflag]  : Python strftime() format flags to apply to a time value i.e. "%d-%m-%Y"
+[stamp]  : Formatting string. Python format() flags. See injection flags below. 
+[tflag]  : Time Formatting string. Python strftime()format flags i.e. "%d-%m-%Y"
+[regex]  : Regex pattern. Set to auto for docblock. Exclude for static data.
 [menu]   : Groups a stamp under a submenu in the right-click context menu
 ```
 
@@ -133,17 +133,26 @@ Output: LiveStamps rule!
 Values can be defined as a single item, or list of values:
 
 ```json
+
+# String Literal:
+
 "mystamp1": {
   "value": "zero",
 },
 
 Output: zero
 
+
+# Single List Item:
+
 "mystamp2": {
   "value": ["zero"],
 },
 
 Output: zero
+
+
+# Multiple List Items:
 
 "mystamp3": {
   "value": ["zero", 1, "two", 3],
@@ -158,7 +167,7 @@ Output: zero 1 two 3
 # The following stamps are auto generated:
 
 "user"         : Gets current user
-"checksum"     : Gets md5 hash of the current file (hash algorithm con be modified in settings)
+"checksum"     : Gets md5 hash of the current file (hash algorithm can be modified)
 "extension"    : Gets current file extension
 "base_name"    : Gets current basename
 "file_size"    : Gets current filesize
@@ -168,7 +177,7 @@ Output: zero 1 two 3
 "parent_path"  : Gets path of parent folder
 "file_extname" : Gets current filename with extension
 
-# Uuser info defined in LiveStamps.sublime-settings:
+# Personal data built from "user_info" key in LiveStamps.sublime-settings:
 
 "author"      : Your name here                                  
 "vendor"      : Your company here                                     
@@ -181,9 +190,9 @@ More are planned in the future!
 
 ####Using Stamps Inside Other Stamps 
 
-Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with the definitions in the existing stamp dictionary. This is great for signatures or other complex stamps.
+Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with definitions in the existing stamp dictionary. This is great for signatures or other complex stamps.
 
-**Example: using the "copyright" stamp within "mystamp":**
+**Example: Using the "copyright" stamp within "mystamp"**
 
 ```json
 "copyright": {
@@ -234,37 +243,40 @@ Output -> Tic Tac Toe
 
 ####Injection flags:
 
-Injection flags allow for POWERFUL formatting and complex stamp designs, but for now we start with the easy stuff 8). If a "stamp" key is defined, each value gets mapped to a corresponding injection flag in the final output. 
+Injection flags allow for POWERFUL formatting and complex stamp designs, but for now we start with the easy stuff. If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
 
 **Injection flags are simple markers defined as so:**
 
 ```
 'stamp': "{0} {1} {2}" // Explicit location (stamp values injected by index)
-'stamp': "{} {} {}"     // Implicit location (stamp values injected sequentially
+'stamp': "{} {} {}"    // Implicit location (stamp values injected sequentially
 ```
 
 **Basic Injection: the following stamps all provide the exact same output:**
 
 ```
 # No injection
+
 "mystamp": {
   "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
 },
 
-
 # Complete injection
+
 "mystamp": {
   "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
   "stamp": "{0}",
 },
 
 # Partial injection (explicit)
+
 "mystamp": {
   "value": "LiveStamps rule!",
   "stamp": "Have you heard? {0} Thanks TundraTech!",
 },
 
 # Partial injection (implicit)
+
 "mystamp": {
   "value": "LiveStamps rule!",
   "stamp": "Have you heard? {} Thanks TundraTech!",
@@ -274,8 +286,14 @@ Output: Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
 ####Multiple Injection Flags:
 
-```json
-# Various outputs of "mystamp" using different injection flags:
+Stamps can easily accept multiple values/stamps to construct "super" stamps. All values are generated recursively so you can build sub dependencies as deep as you wish.
+
+**Various outputs of "mystamp" using different injection flags:**
+
+```
+
+SOURCE STAMP
+--------------
 
 "mystamp": {
   "value": ["zero", "one", "two", "three"],
@@ -283,26 +301,37 @@ Output: Have you heard? LiveStamps rule! Thanks TundraTech!
 },
 
 # Normal Output: Each value is mapped to a Python format() flag:
+
 "stamp" : "@mystamp   {0} {1} {2} {3}",
 Output  :  @mystamp   zero one two three
 
+
 # Mixed ordering is allowed and flags can be injected anywhere:
+
 "stamp" : "@mystamp   {3} hello {1} {2} world {0}",
 Output  :  @mystamp   three hello one two world zero
 
+
 # Not all flags have to be used
+
 "stamp" : "@mystamp   {0} {1}",
 Output  :  @mystamp   zero one
 
+
 # It's OK to define more flags used than values to allow for future expansion
+
 "stamp" : "@mystamp   {0} {1} {2} {3} {4} {5} {6} {7}",
 Output  :  @mystamp   zero one two three
 
+
 # Using a flag more than once is OK.
+
 "stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3} {0}",
 Output  :  @mystamp   zero zero zero zero one two three zero
 
+
 # Using no flags is also OK.
+
 "stamp" : "@mystamp   ",
 Output  :  @mystamp   
 ```

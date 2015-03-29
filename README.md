@@ -312,7 +312,7 @@ Output  :  @mystamp   zero one two three
 Output  :  @mystamp   three hello one two world zero
 
 
-# Not all flags have to be used
+# Not all values have to be mapped to a flag
 
 "stamp" : "@mystamp   {0} {1}",
 Output  :  @mystamp   zero one
@@ -340,14 +340,13 @@ Output  :  @mystamp
 
 Because each value defined gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets and powerful conversions are quick and easy to implement.
 
-You may refer to the built in format references for help with building new stamps:
+Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook").
+
+**Refer to the built in format reference for help with building new stamps:**
 
 ```
 Right Click -> LiveStamps -> Help -> format() Reference
 ```
-
-Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
-
 
 **Example: Convert number 87 to different bases in decimal, hex, octal, binary:**
 

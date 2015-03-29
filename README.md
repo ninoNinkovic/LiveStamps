@@ -152,7 +152,7 @@ Output: zero
 Output: zero 1 two 3
 ```
 
-**LiveStamps auto defines some magic values for handy usage:**
+####Magic Values (auto generated):
 
 ```
 "user"         : Gets current user

@@ -272,7 +272,7 @@ Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
 ####Multiple Injection Flags:
 
-Stamps can easily accept multiple values/stamps to construct "super" stamps. All values are generated recursively so you can build sub dependencies as deep as you wish.
+Stamps can easily accept multiple values/stamps. All values are generated recursively so you can build sub dependencies as deep as you wish.
 
 **Various outputs of "mystamp" using different injection flags:**
 
@@ -288,38 +288,38 @@ SOURCE STAMP
 
 # Normal Output: Each value is mapped to a Python format() flag:
 
-"stamp" : "@mystamp   {0} {1} {2} {3}",
-Output  :  @mystamp   zero one two three
+  "stamp" : "@mystamp   {0} {1} {2} {3}",
+  Output  :  @mystamp   zero one two three
 
 
 # Mixed ordering is allowed and flags can be injected anywhere:
 
-"stamp" : "@mystamp   {3} hello {1} {2} world {0}",
-Output  :  @mystamp   three hello one two world zero
+  "stamp" : "@mystamp   {3} hello {1} {2} world {0}",
+  Output  :  @mystamp   three hello one two world zero
 
 
 # Not all values have to be mapped to a flag
 
-"stamp" : "@mystamp   {0} {1}",
-Output  :  @mystamp   zero one
+  "stamp" : "@mystamp   {0} {1}",
+  Output  :  @mystamp   zero one
 
 
 # It's OK to define more flags used than values to allow for future expansion
 
-"stamp" : "@mystamp   {0} {1} {2} {3} {4} {5} {6} {7}",
-Output  :  @mystamp   zero one two three
+  "stamp" : "@mystamp   {0} {1} {2} {3} {4} {5} {6} {7}",
+  Output  :  @mystamp   zero one two three
 
 
 # Using a flag more than once is OK.
 
-"stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3} {0}",
-Output  :  @mystamp   zero zero zero zero one two three zero
+  "stamp" : "@mystamp   {0} {0} {0} {0} {1} {2} {3} {0}",
+  Output  :  @mystamp   zero zero zero zero one two three zero
 
 
 # Using no flags is also OK.
 
-"stamp" : "@mystamp   ",
-Output  :  @mystamp   
+  "stamp" : "@mystamp   ",
+  Output  :  @mystamp   
 ```
 
 ####Advanced Formatting With Injection Flags: 
@@ -360,17 +360,17 @@ Binary   : 1010111
 
 ```
 
-###Time Stamps: 
+###TimeStamps: 
 
-Time is formatted according to the Python strftime() function and as such requires a special stamp key. 
+Time is formatted according to the Python strftime() function and as such requires a special "tflag" key. Learn about available formatting flags at [www.strftime.org](http://strftime.org "Strftime")
+
+**Refer to the built-in strftime() reference for help with building new TimeStamps:**
 
 ```
 Right Click -> LiveStamps -> Help -> strftime() Reference
 ```
 
-Learn about available flags at [www.strftime.org](http://strftime.org "Strftime")
-
-Note the "auto" value, Which tells LiveStamps to grab the current time. 
+**Note the "auto" value, which grabs the current local time as defined in settings**
 
 ```json
 "date": {
@@ -394,7 +394,7 @@ Output: @modified        Fri Mar  6 18:21:57 2015
 
 **Adding Time Offsets:**
 
-Time offsets allow creation of mutiple stamps with different timezones! A single offset as a raw string. When enterings offsets as a string, the colon ":" or '=" sign must be used as the delimete between unit and value. Fractional values are automatically handled and negative offsets are allowed.
+Time offsets allow creation of stamps with different timezones or delays/advances. You may enter a single offset as a raw string. When entering offsets as a string, the colon ":" or '=" sign must be used as the delimeter between unit and value. Fractional values are automatically handled and negative offsets are allowed.
 
 Here are the allowed offset units:
 
@@ -408,7 +408,7 @@ Here are the allowed offset units:
   * "months"
   * "years"
   
-**Offset Input Syntax... Highly Flexible!**
+**Offset Input Syntax is Highly Flexible!**
 
 ```
 # String literal
@@ -430,15 +430,13 @@ Here are the allowed offset units:
 "ahead_ten_hours": {
   "value": "hours: 10",
   "strft": "%c",
-  "regex": "@plus10hrs.+",
-  "stamp": "@plus10hrs        {0}",
 },
 
 "Maui time": {
   "value": "America/Honolulu",
   "strft": "%c",
-  "regex": "@Maui.+",
-  "stamp": "@Maui        {0}",
+  "regex": "Maui time is:.+ ",
+  "stamp": "Maui time is: {0}",
 },
 
 Raw timestamp output.
@@ -449,13 +447,13 @@ Raw timestamp output.
 
 ###Regex Patterns
 
-In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied. Advanced users can feel free to define any regex pattern they wish, however for docblock tags a built in default pattern is supplied. 
+In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. Advanced users can feel free to define any regex pattern they wish, however for docblock tags a built-in pattern is supplied. 
 
 ### The default Regex/stamp pattern
 
-If you are using a stamp within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. The flags LiveStamps to use a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement:
+If you are using a stamp within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. This tells LiveStamps to use a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement:
 
-```json
+```
 # Auto defined stamp regex:
 "mystamp": {
   "value": "Is really cool",
@@ -477,13 +475,13 @@ Output: * @mystamp        Is really cool
 },
 ```
 
-The default regex will inject your stamp values to anything that appears after " * @mystamp" until the end of the line. Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
+The default regex will inject your stamp values to anything that appears after **" * @mystamp" until the end of the line.** Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
 
 ```json
 "regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
 ```
 
-Furthermore, the default regex paradigm can be modified in the settings file by editing the following keys:
+Th default regex paradigm can be modified in the settings file by editing the following keys:
 
 ```
 "autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}

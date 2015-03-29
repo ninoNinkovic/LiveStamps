@@ -199,7 +199,7 @@ Output: This stamp is (c) TundraTech 2015
 
 **Using the _underscore to use values instead**
 
-```json
+```
 SOURCE:
 -------
 

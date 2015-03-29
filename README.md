@@ -188,23 +188,9 @@ Output: zero 1 two 3
 More are planned in the future!
 ```
 
-####Using Stamps Inside Other Stamps 
+###"Super" Stamps
 
-Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with definitions in the existing stamp dictionary. This is great for signatures or other complex stamps.
-
-**Example: Using the "copyright" stamp within "mystamp"**
-
-```json
-"copyright": {
-  "value": "(c) TundraTech 2015",
-},
-
-"mystamp": {
-  "value": ["This stamp is", "copyright"],
-},
-
-Output: This stamp is (c) TundraTech 2015
-```
+Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with definitions in the existing stamp dictionary and pull in the output. Use a leading _underscore in front of the name to get the raw value instead of the formatted output. This is great for signatures or other complex stamps!
 
 **The leading _underscore grabs a stamp's value instead:**
 
@@ -243,7 +229,7 @@ Output -> Tic Tac Toe
 
 ###Injection flags:
 
-Injection flags allow for POWERFUL formatting and complex stamp designs, but for now we start with the easy stuff. If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
+Injection flags allow for POWERFUL formatting and complex stamp designs. If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
 
 **Injection flags are simple markers defined as so:**
 
@@ -252,14 +238,21 @@ Injection flags allow for POWERFUL formatting and complex stamp designs, but for
 'stamp': "{} {} {}"    // Implicit location (stamp values injected sequentially
 ```
 
-**Basic Injection: the following stamps all provide the exact same output:**
+**Basic Injection:**
 
 ```
+
+# The following stamps all provide the exact same output:
+
+Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
+
+
 # No injection
 
 "mystamp": {
   "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
 },
+
 
 # Complete injection
 
@@ -268,6 +261,7 @@ Injection flags allow for POWERFUL formatting and complex stamp designs, but for
   "stamp": "{0}",
 },
 
+
 # Partial injection (explicit)
 
 "mystamp": {
@@ -275,14 +269,13 @@ Injection flags allow for POWERFUL formatting and complex stamp designs, but for
   "stamp": "Have you heard? {0} Thanks TundraTech!",
 },
 
+
 # Partial injection (implicit)
 
 "mystamp": {
   "value": "LiveStamps rule!",
   "stamp": "Have you heard? {} Thanks TundraTech!",
 },
-
-Output: Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
 ####Multiple Injection Flags:
 

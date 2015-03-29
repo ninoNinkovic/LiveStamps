@@ -5,8 +5,6 @@
 // LiveStamps for Sublime Text 3                                                 v1.0.0 *
 //***************************************************************************************
 
-	"test" : false,
-
   "user_info" : {
     "author"  : "DJ Sumanik",                                     // Your name here
     "vendor"  : "TundraTech",                                     // Your company here
@@ -123,36 +121,42 @@
       "regex" : "auto",
       "stamp" : "auto",
     },
+
     "link": {
       "menu"  : "Project",
       "value" : "_website",
       "regex" : "auto",
       "stamp" : "auto",
     },
+
     "repo": {
       "menu"  : "Project",
       "value" : ["https://github.com", "_vendor",  "_file_name"],
       "regex" : "auto",
       "stamp" : " * @repo {0}/{1}/{2}",
     },
+
     "docs": {
       "menu"  : "Project",
       "value" : ["https://github.com", "_vendor", "_file_name"],
       "regex" : "auto",
       "stamp" : " * @docs {0}/{1}/{2}/blob/master/README.md",
     },
+
     "version": {
       "menu"  : "Project",
       "value" : "1.0.0",
       "regex" : "auto",
       "stamp" : "auto",
     },
+
     "license": {
       "menu"  : "Project",
       "value" : "MIT - http://opensource.org/licenses/MIT",
       "regex" : "auto",
       "stamp" : "auto",
     },
+
     "copyright": {
       "menu"  : "Project",
       "value" : ["(c)", "_vendor", "_year"],

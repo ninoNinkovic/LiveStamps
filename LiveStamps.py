@@ -166,9 +166,19 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 			# If the stamp has injection flags, load them or use defaults
 			layout = m[name]["stamp"] if "stamp" in m[name] else "{0}"
 
-			# Format the stamp(s)
+			# Format multiple values
 			if isinstance(value, list):
+
+				# Count injection flags
+				flag_count = layout.count('{')
+
+				# Add blanks when tuple index out of range,
+				while (flag_count > len(value)):
+					value.append("")
+
 				layout = self.doc_align(layout.format(*value))
+
+			# Format single value
 			else:
 				layout = self.doc_align(layout.format(value))
 
@@ -1286,7 +1296,6 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 	# Get a +ve or -ve human readable timestamp based off the local time
 	def time_stamp(self, value="auto", tflags = ''):
 
-		# A standard timezone was specified
 		if isinstance(value, str) and value in self.timezones:
 			# Set env to specified timezone
 			os.environ['TZ'] = value
@@ -1295,16 +1304,15 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 			# Return formatted timestring
 			return time.strftime(tflags)
 
-		# A Time offset from the local timezone was specified
 		else:
-			# Set env to default timezone, UTC at worst
+			# Use default timezone or UTC at worst
 			os.environ['TZ'] = s.get("timezone") if s.get("timezone") in self.timezones else 'UTC'
 			# Reset time conversion rules
 			time.tzset()
 			# Grab datetime object for arithmetic
 			now = datetime.now()
 
-
+		# A time offset was specified
 		if value != "auto":
 
 			offset = value
@@ -1386,9 +1394,9 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 				now += timedelta(days = days)
 
 		# Convert datetime object to epoch timestamp
-		totalsecs = (now - datetime.utcfromtimestamp(0)).total_seconds()
+		totalsecs = (now - datetime.fromtimestamp(0)).total_seconds()
 
-		# Convert back to time object for consistent formatting
+		# Convert back to time object for consistent formatting (%Z %z)
 		return time.strftime(tflags, time.localtime(totalsecs))
 
 
@@ -1618,7 +1626,7 @@ class RefreshMetaCommand(sublime_plugin.TextCommand):
 			"file_extname" : self.get_file("file_extname", self.path),
 		}
 
-
+		# experminetal time regex matching not used yet
 		#for letter in map(chr, range(97, 123)):
 		#  m[letter] = {
 		#    "value": "auto",

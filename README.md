@@ -500,7 +500,9 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 # Output: Date is 28-03-2015  
 ```
 
-The default regex paradigm can be modified in the settings file by editing the following keys, CAREFUL!:
+The default regex paradigm can be modified in the settings file by editing the following keys:
+
+**CAREFUL!**
 
 ```
 "autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}

@@ -29,14 +29,14 @@
 
 ```
 # Via Package Control:
+
   1. Open Sublime Text 3
   2. cmd+shift+p
   3. Package Control: Install Package
   4. Search for LiveStamps
   
-  OR
-  
-# Manual:  
+# Manual Install:  
+
   1. Open Sublime Text 3
   2. Sublime Text Menu -> Preferences -> Browse Packages
   3. Create folder called LiveStamps
@@ -51,9 +51,9 @@
 
 ## USAGE:
 
-Each LiveStamp has a formatted output, as well as a raw value which can be output in the following ways:
+Each LiveStamp has a formatted output and a raw value accessed in the following ways:
 
-####Keyboard:
+####Keyboard Injection:
 
 ```json
 # Generic Usage:
@@ -65,7 +65,7 @@ Inject all stamps: super + alt + a
 Inject all values: ctrl  + alt + a      
 ```
 
-####Menus:
+####Menu Injection:
 
 ```
 # Context Menu:
@@ -74,9 +74,9 @@ Right-click -> LiveStamps -> Insert Value -> type
 
 ```
 
-**Generation**
+####Menu Generation:
 
-By default, LiveStamps has a right click context menu defined, but sidebar, command pallate and tools menus can be easily generated if you prefer. This should also be done whenever you add new stamp definitions to avoid defining excessive keyboard shortcuts:
+By default LiveStamps has a right click context menu defined but the sidebar menu, tools menu and the command pallate can be easily generated if you prefer. This should also be done whenever you add new stamp definitions to avoid using excessive keyboard shortcuts:
 
 ```
 # To Generate a Menu:

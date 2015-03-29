@@ -460,9 +460,9 @@ Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://w
 
 #### The default Regex/stamp pattern
 
-If you are making a stamp for use within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. In the following example, the default regex will inject stamp values to anything that appears after " * @mystamp" 
+If you are making a stamp for use within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. In the following example, the default regex will inject stamp values to anything that appears after " * @mystamp "
 
-**Until the end of the line:** 
+**After values anything is ERASED until the end of the line:** 
 
 ```
 # Auto defined stamp/value:

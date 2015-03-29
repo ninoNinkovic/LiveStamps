@@ -25,6 +25,7 @@
 * Built-in help: Python format() & srtftime() live reference and data dump to test new designs
 * Use powerful custom regexes or define global "auto" regex definitions, its up to you!
 
+## Setup:
  
 ####Intall via Package Control: 
 
@@ -35,7 +36,7 @@
   4. Search for LiveStamps
 ```
 
-####Manual Install: 
+###Manual Install: 
 
 ```
   1. Open Sublime Text 3
@@ -44,7 +45,11 @@
   4. Copy this repo to the folder.
 ```
 
-
+####Fill In User Info:
+```
+  1. Right-click -> LiveStamps -> Preferences -> Settings - Default
+  2. Fill in "user_info" key accordingly
+```
 
 ## USAGE:
 

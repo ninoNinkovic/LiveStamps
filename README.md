@@ -482,6 +482,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
     "stamp": "* @mystamp {0}",
   },
 ```
+Of course advanced users may use any regex pattern they desire, for instance date matching.
 
 **Regex for dd-mm-yyyy**
 

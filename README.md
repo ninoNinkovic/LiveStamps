@@ -65,18 +65,28 @@ Inject all values: ctrl  + alt + a
 ####Menus:
 
 ```
-# Generate Context, Tools, Side Bar and Command Pallate Menus:
-Right-click -> LiveStamps -> Preferences -> Menu Generation -> Build -> all
-```
-**Generation**
-
-By default, LiveStamps has a right click context menu defined, but sidebar, command pallate and tools menus can be easily generated if you prefer:
-
-```
 # Context Menu:
 Right-click -> LiveStamps -> Insert Stamp -> type
 Right-click -> LiveStamps -> Insert Value -> type
 
+```
+
+**Generation**
+
+By default, LiveStamps has a right click context menu defined, but sidebar, command pallate and tools menus can be easily generated if you prefer. This should also be done whenever you add new stamp definitions so you do not have to constantly remember new shortcuts:
+
+```
+# To Generate a Menu:
+Right-click -> LiveStamps -> Preferences -> Menu Generation -> Build -> menutype
+
+# Sidebar Menu:
+Right-click in sidebar -> LiveStamps -> Insert Stamp -> type
+
+# Using Tools Menu:
+Tools -> LiveStamps -> Insert Stamp -> type
+
+# Using Command Pallete:
+super+shift+p -> type in LiveStamps -> select an option
 ```
 
 #### Using Command Pallete:

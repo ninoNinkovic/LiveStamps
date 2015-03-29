@@ -57,10 +57,12 @@ Each LiveStamp has a formatted output and a raw value accessed in the following 
 
 ```json
 # Generic Usage:
+
 super + alt + letter -> inject a LiveStamp
 ctrl  + alt + letter -> inject it's raw value
 
-# Example: All Atamps
+# Example: All Stamps
+
 Inject all stamps: super + alt + a     
 Inject all values: ctrl  + alt + a      
 ```
@@ -69,6 +71,7 @@ Inject all values: ctrl  + alt + a
 
 ```
 # Context Menu:
+
 Right-click -> LiveStamps -> Insert Stamp -> type
 Right-click -> LiveStamps -> Insert Value -> type
 
@@ -80,16 +83,8 @@ By default LiveStamps has a right click context menu defined but the sidebar men
 
 ```
 # To Generate a Menu:
+
 Right-click -> LiveStamps -> Preferences -> Menu Generation -> Build -> menutype
-
-# Sidebar Menu:
-Right-click in sidebar -> LiveStamps -> Insert Stamp -> type
-
-# Using Tools Menu:
-Tools -> LiveStamps -> Insert Stamp -> type
-
-# Using Command Pallete:
-super+shift+p -> type in LiveStamps -> select an option
 ```
 
 ## Creating Custom Stamps:
@@ -104,7 +99,9 @@ super+shift+p -> type in LiveStamps -> select an option
 
 ###Anatomy of a LiveStamp:
 
-**LiveStamps are defined as small python dictionaries with the minimum following keys:**
+LiveStamps are defined as small python dictionaries that lets you easily define exactly what you want your samp output to be.
+
+**A LiveStamp has the minimum following keys:**
 
 ```json
 "mystamp": {

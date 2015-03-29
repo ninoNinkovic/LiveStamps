@@ -464,6 +464,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
   "value": "Is really cool",
   "regex": "auto",
   "stamp": "auto", 
+ }
   
 # Which would work great in a header:
 

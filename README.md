@@ -483,10 +483,8 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
   },
 ```
 
-Advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
+**Regex for dd-mm-yyyy**
 
-
-**Regex for dd-mm-yyyy **
 ```json
 
 # Note the escaped backslashes because input is in JSON.

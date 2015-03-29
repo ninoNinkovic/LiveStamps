@@ -471,15 +471,16 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
 /**
  * @mystamp        Is really cool
  */
+```
 
-# Actual values used after parsing:
+**Actual values used after parsing: (for reference)**
 
+```
   "mystamp": {
     "value": "Is really cool",
     "regex": "* @mystamp.+",
     "stamp": "* @mystamp {0}",
   },
-  
 ```
 
 Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:

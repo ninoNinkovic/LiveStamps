@@ -242,29 +242,31 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
 
 ```
 # No injection
-"mystamp": {
-  "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
-},
 
+  "mystamp": {
+    "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
+  },
 
 # Complete injection
-"mystamp": {
-  "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
-  "stamp": "{0}",
-},
+
+  "mystamp": {
+    "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
+    "stamp": "{0}",
+  },
 
 # Partial injection (explicit)
-"mystamp": {
-  "value": "LiveStamps rule!",
-  "stamp": "Have you heard? {0} Thanks TundraTech!",
-},
+
+  "mystamp": {
+    "value": "LiveStamps rule!",
+    "stamp": "Have you heard? {0} Thanks TundraTech!",
+  },
 
 # Partial injection (implicit)
-"mystamp": {
-  "value": "LiveStamps rule!",
-  "stamp": "Have you heard? {} Thanks TundraTech!",
-},
 
+  "mystamp": {
+    "value": "LiveStamps rule!",
+    "stamp": "Have you heard? {} Thanks TundraTech!",
+  },
 
 Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
 ```

@@ -197,7 +197,7 @@ Simply set any "value" key as the name of another stamp and PRESTO! The plugin w
 Output: This stamp is (c) TundraTech 2015
 ```
 
-**The leading _underscore grabs a value instead:**
+**The leading _underscore grabs a stamp's value instead:**
 
 ```
 SOURCE:
@@ -215,7 +215,7 @@ USING THE SOURCE VALUE:
 -----------------------
 
 "tic": {
-  "value": "_tic_tac",    // Leading underscore gets the "value" key of tic_tac
+  "value": "_tic_tac",  // Leading underscore gets the "value" key of tic_tac
 }
 
 Output -> Tic
@@ -225,7 +225,7 @@ USING THE SOURCE STAMP:
 -----------------------
 
 "tic_tac_toe": {
-  "value": "tic_tac",     // No underscore gets the formattad "stamp" key of tic_tac
+  "value": "tic_tac",   // No underscore gets the formattad "stamp" key of tic_tac
   "stamp": "{0} Toe",
 }
 
@@ -239,10 +239,11 @@ Injection flags allow for POWERFUL formatting and complex stamp designs, but for
 **Injection flags are simple markers defined as so:**
 
 ```
-'stamp': "{0} {1} {2} {3}"
+'stamp': "{0} {1} {2}}" // Explicit location (stamp values injected by index)
+'stamp': "{} {} {}"     // Implicit location (stamp values injected sequentially
 ```
 
-**Injecting values into a stamp. The following stamps all provide the exact same output:**
+**Basic Injection: the following stamps all provide the exact same output:**
 
 ```
 # No injection
@@ -278,7 +279,7 @@ Output: Have you heard? LiveStamps rule! Thanks TundraTech!
 "stamp" : "@mystamp   {0} {1} {2} {3}",
 Output  :  @mystamp   zero one two three
 
-# Mixed order is allowed and flags can be injected anywhere:
+# Mixed ordering is allowed and flags can be injected anywhere:
 "stamp" : "@mystamp   {3} hello {1} {2} world {0}",
 Output  :  @mystamp   three hello one two world zero
 

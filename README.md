@@ -466,14 +466,14 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
   "stamp": "auto", 
  }
   
-# Which would work great in a header:
+# Which would work great in a docblock header:
 
 /**
  * @mystamp        Is really cool
  */
 ```
 
-**Actual values used after parsing: (for reference)**
+**Actual values used after parsing:**
 
 ```
   "mystamp": {
@@ -483,13 +483,22 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
   },
 ```
 
-Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
+Advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
 
+
+**Regex for dd-mm-yyyy **
 ```json
-"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)"
 
-Note the escaped backslashes because input is in JSON initially.
+# Note the escaped backslashes because input is in JSON.
 
+  "date": {
+    "value": "Date is: ",
+    "tflag": "%d-%m-%Y",
+    "regex": "Date is (\\d\\d-\\d\\d-\\d\\d\\d\\d)",
+    "stamp": "{0}",
+  },
+
+# Output: Date is 28-03-2015  
 ```
 
 The default regex paradigm can be modified in the settings file by editing the following keys, CAREFUL!:

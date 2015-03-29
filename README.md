@@ -447,6 +447,14 @@ Raw timestamp output.
 
 ###Regex Patterns
 
+**WARNING!**
+
+Regex patterns are powerful expressions!
+    
+Test your regex on a separate document before trying it on a master file! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
+
+Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
+
 In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern is supplied. 
 
 #### The default Regex/stamp pattern
@@ -509,14 +517,6 @@ The default regex paradigm can be modified in the settings file by editing the f
 "autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
 "separator" : " ",            // Separator used when multiple values are defined
 ```
-
-**WARNING!**
-
-Regex patterns are powerful expressions!
-    
-Test your regex on a separate document before trying it on a master file! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss...
-
-Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
 
 
 

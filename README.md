@@ -183,7 +183,7 @@ More are planned in the future!
 
 Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with the definitions in the existing stamp dictionary. This is great for signatures or other complex stamps.
 
-**Example: Using the "copyright" stamp within "mystamp":**
+**Example: using the "copyright" stamp within "mystamp":**
 
 ```json
 "copyright": {
@@ -197,7 +197,7 @@ Simply set any "value" key as the name of another stamp and PRESTO! The plugin w
 Output: This stamp is (c) TundraTech 2015
 ```
 
-**Using the _underscore to use values instead**
+**The leading _underscore grabs a value instead:**
 
 ```
 SOURCE:

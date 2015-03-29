@@ -484,7 +484,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
 ```
 Of course advanced users may use any regex pattern they desire, for instance date matching.
 
-**Regex for dd-mm-yyyy**
+**Regex for dd-mm-yyyy:**
 
 ```json
 

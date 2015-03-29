@@ -99,7 +99,7 @@ Right-click -> LiveStamps -> Preferences -> Menu Generation -> Build -> menutype
 
 ###Anatomy of a LiveStamp:
 
-LiveStamps are defined as small python dictionaries that lets you easily define exactly what you want your samp output to be.
+LiveStamps are defined as small python dictionaries that let you easily define exact stamp output, regex matching and context menu location.
 
 **A LiveStamp has the minimum following keys:**
 

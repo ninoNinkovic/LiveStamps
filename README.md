@@ -179,9 +179,9 @@ Output: zero 1 two 3
 More are planned in the future!
 ```
 
-**Using Other Stamps as Values:**
+####USING STAMPS INSIDE OTHER STAMPS 
 
-Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match anyything in the existing stamp dictionary before injection. This is great for signatures or other complex stamps.
+Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with the definitions in the existing stamp dictionary. This is great for signatures or other complex stamps.
 
 **Example: Using the "copyright" stamp within "mystamp":**
 
@@ -199,14 +199,37 @@ Output: This stamp is (c) TundraTech 2015
 **Using other values within a stamp:**
 
 ```json
-"copyright": {
-  "value": "(c) TundraTech 2015",
-},
-"mystamp": {
-  "value": ["This stamp is", "copyright"],
+SOURCE:
+-------
+
+"tic_tac": {
+  "value": "Tic",
+  "stamp": "{0} Tac",
 },
 
-Output: This stamp is (c) TundraTech 2015
+Output -> Tic Tac
+
+
+USING A VALUE:
+--------------
+
+"tic": {
+  "value": "_tic_tac",    // Leading underscore gets the "value" key of tic_tac
+}
+
+Output -> Tic
+
+
+USING A STAMP:
+--------------
+
+"tic_tac_toe": {
+  "value": "tic_tac",     // No underscore gets the formattad "stamp" key of tic_tac
+  "stamp": "{0} Toe",
+}
+
+Output -> Tic Tac Toe
+   Output -> Tic Tac Toe
 ```
 
 ####Injection flags:

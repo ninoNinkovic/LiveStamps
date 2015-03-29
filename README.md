@@ -241,7 +241,7 @@ USING THE SOURCE STAMP:
 Output -> Tic Tac Toe
 ```
 
-####Injection flags:
+###Injection flags:
 
 Injection flags allow for POWERFUL formatting and complex stamp designs, but for now we start with the easy stuff. If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
 

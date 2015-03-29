@@ -6,7 +6,7 @@
 
   * Insert self updating tags into docblock headers
   * Background highlighting, outlining, and guttermarking of livestamps. (each one is optional)
-  * Timezone support, with DST 
+  * Timezone/DST aware timestamps with custom formatting
   * Track file metadata no matter where it is moved/renamed
   * Track date the document was last modified
   * Track user or person who last modified the file.
@@ -18,12 +18,12 @@
 
 **Advanced Features:** 
 
-* Menu generator, define as many stamps as you want and they are only a right click away!
+* Menu generator, define as many stamps as you want and they are only a right click away
 * Customize menu layout from the settings file, simply define a menu key to sort your stamps
-* Multi value stamps, or stamps made from other stamps. Great for a siggy!
-* Go beyond simple metadata, perform conversions with Powerful Python format() and strftime() functions
-* Built-in help: Python format() & srtftime() live reference and data dump to test new stamp designs
-* Custom per stamp, and global "auto" regex definitions
+* Use multiple values or other stamps within larger stamps... Great for a siggy!
+* Go beyond simple metadata, perform conversions with powerful Python formatting
+* Built-in help: Python format() & srtftime() live reference and data dump to test new designs
+* Use powerful custom regexes or define global "auto" regex definitions, its up to you!
 
  
 ####Intall via Package Control: 
@@ -48,16 +48,16 @@
 
 ## USAGE:
 
-LiveStamps will update automatically on save, but can also output the raw value as static data which is useful for things like the current time, filename, path, parent folder etc.
+Each LiveStamp has a formatted output, as well as a raw value which can be output in the following ways:
 
 ####Keyboard:
 
 ```json
-# General Usage:
+# Generic Usage:
 super + alt + letter -> inject a LiveStamp
 ctrl  + alt + letter -> inject it's raw value
 
-# Example: All stamps
+# Example: All Atamps
 Inject all stamps: super + alt + a     
 Inject all values: ctrl  + alt + a      
 ```
@@ -65,17 +65,17 @@ Inject all values: ctrl  + alt + a
 ####Menus:
 
 ```
+# Generate Context, Tools, Side Bar and Command Pallate Menus:
+Right-click -> LiveStamps -> Preferences -> Menu Generation -> Build -> all
+```
+**Generation**
+By default, LiveStamps has a right click context menu defined, but sidebar, command pallate and tools menus can be easily generated if you prefer:
+
+```
 # Context Menu:
-Right-click -> LiveStamps -> stamp -> stamptype
-Right-click -> LiveStamps -> value -> stampvalue
+Right-click -> LiveStamps -> Insert Stamp -> type
+Right-click -> LiveStamps -> Insert Value -> type
 
-# Tools Menu:
-Tools -> LiveStamps -> stamp -> stamptype
-Tools -> LiveStamps -> value -> stampvalue
-
-# Example: Time stamp
-Right-click -> LiveStamps -> Stamp -> Time
-Right-click -> LiveStamps -> Value -> Time
 ```
 
 #### Using Command Pallete:

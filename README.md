@@ -338,9 +338,7 @@ Output  :  @mystamp
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets and powerful conversions are quick and easy to implement.
-
-Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook").
+Because each value defined gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets and powerful conversions are quick and easy to implement. Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook").
 
 **Refer to the built in format reference for help with building new stamps:**
 
@@ -353,11 +351,10 @@ Right Click -> LiveStamps -> Help -> format() Reference
 ```json
 "bases": {
   "value": 87,
-  "regex": "@bases.+",
-  "stamp": "@bases       {0:d} - {0:x} - {0:o} - {0:b}",
+  "stamp": "Base conversion: {0:d} - {0:x} - {0:o} - {0:b}",
 },
 		
-Output: @bases         87 - 57 - 127 - 1010111
+Output: Base conversion:  87 - 57 - 127 - 1010111
 ```
 
 **Getting even trickier: Getting nice alignment AND converting bases.**
@@ -377,7 +374,7 @@ Binary   : 1010111
 
 ```
 
-####Time formatting: 
+###Time Stamps: 
 
 Time is formatted according to the Python strftime() function and as such requires a special stamp key. 
 

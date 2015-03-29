@@ -447,6 +447,8 @@ Raw timestamp output.
 
 ###Regex Patterns
 
+In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern is supplied. 
+
 **WARNING!**
 
 Regex patterns are powerful expressions!
@@ -455,7 +457,6 @@ Test your regex on a separate document before trying it on a master file! An exp
 
 Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
 
-In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern is supplied. 
 
 #### The default Regex/stamp pattern
 

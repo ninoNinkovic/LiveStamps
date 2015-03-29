@@ -73,7 +73,7 @@ Right-click -> LiveStamps -> Insert Value -> type
 
 **Generation**
 
-By default, LiveStamps has a right click context menu defined, but sidebar, command pallate and tools menus can be easily generated if you prefer. This should also be done whenever you add new stamp definitions so you do not have to constantly remember new shortcuts:
+By default, LiveStamps has a right click context menu defined, but sidebar, command pallate and tools menus can be easily generated if you prefer. This should also be done whenever you add new stamp definitions to avoid defining excessive keyboard shortcuts:
 
 ```
 # To Generate a Menu:
@@ -89,18 +89,12 @@ Tools -> LiveStamps -> Insert Stamp -> type
 super+shift+p -> type in LiveStamps -> select an option
 ```
 
-#### Using Command Pallete:
-
-```
-super+shift+p -> type in LiveStamps -> select an option
-```
-
 ## Creating Custom Stamps:
 
   1. Open Sublime Text 3
-  2. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - Default
+  2. Right-click -> LiveStamps -> Preferences -> Settings - Default
   3. Copy everything to clipboard.
-  4. Menu: Sublime Text -> Preferences -> Package Settings -> LiveStamps -> Settings - User
+  4. Right-click -> LiveStamps -> Preferences -> Settings - User
   5. Paste and save.
   6. Modify stamp definitions in the "stamps" array at the bottom.
   7. If you make a mistake just copy from Settings - Default again.
@@ -120,22 +114,23 @@ Output: LiveStamps rule!
 **Required Keys:**
 
 ```
-[value]  : A string literal, or list. Setting as "auto" tries to find the value for you
+[name]   : Parent key with actual name of the stamp using snake_case
+[value]  : A string literal, or list of values to be used for injection.
 ```
 
 **Optional Keys:**
 
 ```
 [stamp]  : Formatting string. Cool and recommended 8). See injection flags below. 
-[regex]  : Python regex pattern. If empty/excluded, the stamp will be static data.
-[strft]  : Python strftime() format to apply to a time value i.e. "%d-%m-%Y"
-[menu]   : Group stamp inside a submenu in the right-click context menu
+[regex]  : Python regex pattern. Set to auto or if excluded, the stamp will be static data.
+[tflag]  : Python strftime() format flags to apply to a time value i.e. "%d-%m-%Y"
+[menu]   : Groups a stamp under a submenu in the right-click context menu
 ```
 
 
 ####Stamp Values:
 
-**Values can be defined as single item, or list of values:**
+Values can be defined as a single item, or list of values:
 
 ```json
 "mystamp1": {
@@ -157,27 +152,31 @@ Output: zero
 Output: zero 1 two 3
 ```
 
-**LiveStamps can also pull in some magic values for handy usage:**
+**LiveStamps auto defines some magic values for handy usage:**
 
 ```
-"user"        : Gets current user
-"checksum"    : Gets md5 hash of the current file
-"extension"   : Gets current file extension
-"base_name"   : Gets current basename
-"file_size"   : Gets current filesize
-"file_name"   : Gets current filename
-"file_path"   : Gets current filepath
-"parent_name" : Gets name of parent folder
-"parent_path" : Gets path of parent folder
+"user"         : Gets current user
+"checksum"     : Gets md5 hash of the current file (hash algorithm con be modified in settings)
+"extension"    : Gets current file extension
+"base_name"    : Gets current basename
+"file_size"    : Gets current filesize
+"file_name"    : Gets current filename
+"file_path"    : Gets current filepath
+"parent_name"  : Gets name of parent folder
+"parent_path"  : Gets path of parent folder
+"file_extname" : Gets current filename with extension
 
-"mystamp": {
-  "value": "file_size",
-},
+# Also, user info defined in LiveStamps.sublime-settings:
 
-Output: 768 (in bytes)
+"author"      : Your name here                                  
+"vendor"      : Your company here                                     
+"email"       : Your email here                              
+"website"     : Your website here                     
+"quote"       : A quote you like
 
 More are planned in the future!
 ```
+
 **Using Other Stamps as Values:**
 
 Simply set any VALUE as the name of another stamp and PRESTO! The plugin tries to match any value with an existing key in the stamp dictionary before injection. This is great for signatures or other complex stamps.

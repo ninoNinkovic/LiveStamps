@@ -239,7 +239,7 @@ Injection flags allow for POWERFUL formatting and complex stamp designs, but for
 **Injection flags are simple markers defined as so:**
 
 ```
-'stamp': "{0} {1} {2}}" // Explicit location (stamp values injected by index)
+'stamp': "{0} {1} {2}" // Explicit location (stamp values injected by index)
 'stamp': "{} {} {}"     // Implicit location (stamp values injected sequentially
 ```
 
@@ -251,21 +251,28 @@ Injection flags allow for POWERFUL formatting and complex stamp designs, but for
   "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
 },
 
+
 # Complete injection
 "mystamp": {
   "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
   "stamp": "{0}",
 },
 
-# Partial injection
+# Partial injection (explicit)
 "mystamp": {
   "value": "LiveStamps rule!",
   "stamp": "Have you heard? {0} Thanks TundraTech!",
 },
 
+# Partial injection (implicit)
+"mystamp": {
+  "value": "LiveStamps rule!",
+  "stamp": "Have you heard? {} Thanks TundraTech!",
+},
+
 Output: Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
-**Multiple Injection Flags:**
+####Multiple Injection Flags:
 
 ```json
 # Various outputs of "mystamp" using different injection flags:
@@ -302,11 +309,18 @@ Output  :  @mystamp
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets, powerful conversions and arithmetic are quick and easy to implement.
+Because each value defined gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets and powerful conversions are quick and easy to implement.
+
+You may refer to the built in format references for help with building new stamps:
+
+```
+Right Click -> LiveStamps -> Help -> format() Reference
+```
 
 Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook")
 
-**Convert the number 87 to different bases, decimal, hex, octal, binary:**
+
+**Example: Convert number 87 to different bases in decimal, hex, octal, binary:**
 
 ```json
 "bases": {
@@ -337,14 +351,20 @@ Binary   : 1010111
 
 ####Time formatting: 
 
-Time is formatted according to the Python strftime() function and as such requires a special stamp key. Learn about available flags at [www.strftime.org](http://strftime.org "Strftime")
+Time is formatted according to the Python strftime() function and as such requires a special stamp key. 
+
+```
+Right Click -> LiveStamps -> Help -> strftime() Reference
+```
+
+Learn about available flags at [www.strftime.org](http://strftime.org "Strftime")
 
 Note the "auto" value, Which tells LiveStamps to grab the current time. 
 
 ```json
 "date": {
   "value": "auto",
-  "strft": "%d-%m-%Y",
+  "tflag": "%d-%m-%Y",
   "regex": "@date.+",
   "stamp": "@date        {0}",
 },
@@ -353,7 +373,7 @@ Output: @date        08-03-2015
 
 "time": {
   "value": "auto",
-  "strft": "%c",
+  "tflag": "%c",
   "regex": "@modified.+",
   "stamp": "@modified    {0}",
 },
@@ -416,9 +436,13 @@ Raw timestamp output.
 },
 ```
 
-####Regex Patterns
+###Regex Patterns
 
-In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied. LiveStamps uses a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement using the 'auto' value for the regex and stamp keys:
+In order to make a stamp 'live' so that is updated whenever the document is saved, a regex pattern must be supplied. Advanced users can feel free to define any regex pattern they wish, however for docblock tags a built in default pattern is supplied. 
+
+### The default Regex/stamp pattern
+
+If you are using a stamp within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. The flags LiveStamps to use a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement:
 
 ```json
 # Auto defined stamp regex:
@@ -426,16 +450,23 @@ In order to make a stamp 'live' so that is updated whenever the document is save
   "value": "Is really cool",
   "regex": "auto",
   "stamp": "auto", 
-},
+  
+Output: * @mystamp        Is really cool
 
-Output: @mystamp        Is really cool
+# Which would work great in a header:
+
+/**
+ *
+ * @mystamp        Is really cool
+ */
 
 # Actual values used:
-  "regex": "@Maui.+",
-  "stamp": "@Maui {0}",
+"regex": "* @Maui.+",
+"stamp": "* @Maui {0}",
+},
 ```
 
-This default regex will inject your stamp values to anything that appears after "@mystamp" until the end of the line. Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
+The default regex will inject your stamp values to anything that appears after " * @mystamp" until the end of the line. Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
 
 ```json
 "regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
@@ -444,8 +475,9 @@ This default regex will inject your stamp values to anything that appears after 
 Furthermore, the default regex paradigm can be modified in the settings file by editing the following keys:
 
 ```
-"autoregex" : " \\* @{0}.+", 	// Stamp name is injected at flag {0}
-"autostamp" : " * @{0} {1}",    // Stamp name is injected at flag {0}, values at {1}
+"autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}
+"autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
+"separator" : " ",            // Separator used when multiple values are defined
 ```
 
 **WARNING!**

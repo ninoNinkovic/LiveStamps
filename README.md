@@ -517,6 +517,9 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 # Output: Date is 28-03-2015  
 ```
 
+**Custom Regex for "Sat Mar 28 21:11:31 2015"**
 
-
+```
+"tflag": (Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\s|\s\s)(\d|\d\d)\s(\d\d:\d\d:\d\d)\s\d\d\d\d)"
+```
 

@@ -447,47 +447,50 @@ Raw timestamp output.
 
 ###Regex Patterns
 
-In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. Advanced users can feel free to define any regex pattern they wish, however for docblock tags a built-in pattern is supplied. 
+In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern is supplied. 
 
-### The default Regex/stamp pattern
+#### The default Regex/stamp pattern
 
-If you are using a stamp within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. This tells LiveStamps to use a simple "flag matching" paradigm which conforms nicely with docblock tags and is fairly safe/easy to implement:
+If you are making a stamp for use within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. In the following example, the default regex will inject stamp values to anything that appears after:
+
+" * @mystamp" **until the end of the line.** 
+
+**Example:**
 
 ```
-# Auto defined stamp regex:
+# Auto defined stamp/value:
+
 "mystamp": {
   "value": "Is really cool",
   "regex": "auto",
   "stamp": "auto", 
   
-Output: * @mystamp        Is really cool
-
 # Which would work great in a header:
 
 /**
- *
  * @mystamp        Is really cool
  */
 
-# Actual values used:
-"regex": "* @Maui.+",
-"stamp": "* @Maui {0}",
-},
+# Actual values used after parsing:
+
+  "mystamp": {
+    "value": "Is really cool",
+    "regex": "* @mystamp.+",
+    "stamp": "* @mystamp {0}",
+  },
+  
 ```
-
-The default regex will inject your stamp values to anything that appears after:
-
-" * @mystamp" 
-
-**until the end of the line.** 
 
 Of course advanced users may use any regex pattern they desire. For instance to match any dates in the document with the pattern dd-mm-yyyy a possible regex pattern could be:
 
 ```json
-"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)",
+"regex": "(\\d\\d-\\d\\d-\\d\\d\\d\\d)"
+
+Note the escaped backslashes because input is in JSON initially.
+
 ```
 
-Th default regex paradigm can be modified in the settings file by editing the following keys:
+The default regex paradigm can be modified in the settings file by editing the following keys, CAREFUL!:
 
 ```
 "autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}

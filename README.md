@@ -69,6 +69,7 @@ Inject all values: ctrl  + alt + a
 Right-click -> LiveStamps -> Preferences -> Menu Generation -> Build -> all
 ```
 **Generation**
+
 By default, LiveStamps has a right click context menu defined, but sidebar, command pallate and tools menus can be easily generated if you prefer:
 
 ```

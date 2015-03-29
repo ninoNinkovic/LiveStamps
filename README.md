@@ -489,9 +489,19 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
     "stamp": "* @mystamp {0}",
   },
 ```
+The default regex paradigm can be modified in the settings file by editing the following keys.
+
+**CAREFUL:**
+
+```
+"autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}
+"autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
+"separator" : " ",            // Separator used when multiple values are defined
+```
+
 Of course advanced users may use any regex pattern they desire, for instance date matching.
 
-**Regex for dd-mm-yyyy:**
+**Custom Regex for dd-mm-yyyy:**
 
 ```json
 
@@ -507,14 +517,6 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 # Output: Date is 28-03-2015  
 ```
 
-The default regex paradigm can be modified in the settings file by editing the following keys:
 
-**CAREFUL!**
-
-```
-"autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}
-"autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
-"separator" : " ",            // Separator used when multiple values are defined
-```
 
 

@@ -152,9 +152,11 @@ Output: zero
 Output: zero 1 two 3
 ```
 
-####Magic Values (auto generated):
+####Magic Values:
 
 ```
+# The following stamps are auto generated:
+
 "user"         : Gets current user
 "checksum"     : Gets md5 hash of the current file (hash algorithm con be modified in settings)
 "extension"    : Gets current file extension
@@ -166,7 +168,7 @@ Output: zero 1 two 3
 "parent_path"  : Gets path of parent folder
 "file_extname" : Gets current filename with extension
 
-# Also, user info defined in LiveStamps.sublime-settings:
+# Uuser info defined in LiveStamps.sublime-settings:
 
 "author"      : Your name here                                  
 "vendor"      : Your company here                                     
@@ -179,9 +181,22 @@ More are planned in the future!
 
 **Using Other Stamps as Values:**
 
-Simply set any VALUE as the name of another stamp and PRESTO! The plugin tries to match any value with an existing key in the stamp dictionary before injection. This is great for signatures or other complex stamps.
+Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match anyything in the existing stamp dictionary before injection. This is great for signatures or other complex stamps.
 
-**Using the "copyright" stamp within "mystamp":**
+**Example: Using the "copyright" stamp within "mystamp":**
+
+```json
+"copyright": {
+  "value": "(c) TundraTech 2015",
+},
+"mystamp": {
+  "value": ["This stamp is", "copyright"],
+},
+
+Output: This stamp is (c) TundraTech 2015
+```
+
+**Using other values within a stamp:**
 
 ```json
 "copyright": {

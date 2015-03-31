@@ -491,7 +491,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
 ```
 The default regex paradigm can be modified in the settings file by editing the following keys.
 
-**CAREFUL:**
+**Careful! Changes will have a big effect:**
 
 ```
 "autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}

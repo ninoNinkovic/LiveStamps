@@ -463,9 +463,9 @@ Allowed offset units:
 # Output: Maui time is: Wed Apr  1 22:29:05 2015
 ```
 
-**For raw timestamp output no format flags are specified:**
+**For Raw Timestamp No Flags Are Specified:**
 
-```
+```python
 "ten_minutes_thirty_seconds_ago": {
   "value": "[minutes=-10, seconds=-30]",
   "tflag": ""

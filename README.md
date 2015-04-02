@@ -102,15 +102,15 @@ Right-click -> LiveStamps -> Menus -> Open -> menutype
 
 ## Creating Custom Stamps:
 
-LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location. Defining new stamps is extremly simple, but advanced users can get quite complex once they get the hang of it. Let's get started!
-
-###Anatomy of a LiveStamp:
-
 ```
   1. Right-Click -> LiveStamps -> Definitions -> Open
   2. Custom stamp definitions are defined within the "stamps" key
   3. There are a few examples and instructions to get you started here as well
 ```
+
+LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location. Defining new stamps is extremly simple, but advanced users can get quite complex once they get the hang of it. Let's get started!
+
+###Anatomy of a LiveStamp:
 
 **A LiveStamp has the minimum following keys:**
 

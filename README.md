@@ -85,6 +85,14 @@ Right-click -> LiveStamps -> Insert Stamp -> type
 Right-click -> LiveStamps -> Insert Value -> type
 ```
 
+####Command Pallate:
+
+```python
+1. Right-click -> LiveStamps -> Menu -> Build -> Command
+2. Command + shift + p
+3. Type LiveStamps to see list of available commands, enter to execute.
+```
+
 ####Menu Generation:
 
 By default LiveStamps has a right click context menu defined. If you prefer, the sidebar, tools and command pallate menus can be easily generated. **Menu generation should also be refreshed** whenever you add new stamp definitions in order to avoid using excessive keyboard shortcuts:

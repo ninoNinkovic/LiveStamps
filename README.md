@@ -47,7 +47,7 @@
 ```
   1. Right-click -> LiveStamps -> Definitions -> Open
   2. Fill in "user_info" key accordingly
-  3. You may add custom keys, i.e. "location" etc and stamps will auto generate
+  3. You may add custom keys here if you like
 ```
 
 ## USAGE:

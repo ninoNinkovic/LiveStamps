@@ -33,7 +33,7 @@ A great potential use for LiveStamps exists in the ability to switch between sta
 
 Document type detection/auto menu generation is already implemented, it is for the most part a matter of simply writing the definition files:
 
-**Assistance creating Language specific definition files with code snippets would be very much appreciated!**
+**Assistance creating language specific definition files with code snippets would be very much appreciated!**
 
 #### Installation: 
 

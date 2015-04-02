@@ -25,13 +25,13 @@
 * **Built-in Help** - Python format() & srtftime() live reference and data dump to test new designs
 * **Flexible Regexes** - Custom per stamp or global "auto" regex patterns, its up to you!
 
-Coming Soon:
+**Coming Soon:**
 
 Language Specific Code Snippets and Stamp Definitions
 
-A great potential use for LiveStamps exists in the ability to switch between stamp definitions depending on the document you are working with. Definition files containing javascript, SASS, PHP snippets will be easily accessible through the menu.
+A great potential use for LiveStamps lies in the ability to easily/automatically switch between stamp definitions depending on the document you are working with. Definition files containing javascript, SASS, PHP snippets could me made easily accessible through the menu.
 
-Document type detection/auto menu generation is already implemented, it is for the most part a matter of simply writing the definition files:
+Document type detection and menu generation are already implemented, it is for the most part a matter of simply writing the definition files:
 
 **Assistance creating language specific definition files with code snippets would be very much appreciated!**
 

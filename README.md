@@ -95,7 +95,7 @@ Right-click -> LiveStamps -> Insert Value -> type
 
 ####Menu Generation:
 
-By default LiveStamps has a right click context menu defined. If you prefer, the sidebar, tools and command pallate menus can be easily generated. **Menu generation should also be refreshed** whenever you add new stamp definitions in order to avoid using excessive keyboard shortcuts:
+The default LiveStamps config uses the right-click context menu only. If you prefer, the sidebar/tools/command pallate menus can be easily generated. **Menu generation should also be refreshed** whenever you add new stamp definitions in order to avoid using excessive keyboard shortcuts:
 
 ```python
 # Refresh Existing Menus:

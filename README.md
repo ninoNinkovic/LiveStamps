@@ -108,9 +108,18 @@ Right-click -> LiveStamps -> Menus -> Build -> menutype
 Right-click -> LiveStamps -> Menus -> Open -> menutype
 ```
 
+###Language Specific Code snippets and Definitions:
+
+**COMING SOON!!**
+
+Another great potential use for LiveStamps exists in the ability to switch between stamp defenitions depending on the document you are creating. You could create definition files containing javascript, SASS, PHP snippets and so forth.In the future it is planned to have some predefined snippets... the document type detection is already implemented to have them made automatically available via menu.
+
+**Assistance creating Language specific definition files with code snippets would be very much appreciated**
+
+
 ###Stamp Definition Import/Export & Backup:
 
-Livestamps supports a simple stamp versioning system that allows you to easily share or backup your custom stamp definitions. ANother great use is to switch between stamps defenitions depending on the document you are using. You could create definition files containing javascript, SASS, PHP snippets and so forth...
+Livestamps supports a simple stamp versioning system that allows you to easily share or backup your custom stamp definitions.
 
 **Backup/Import/Export/Rename Definitions:**
 ```

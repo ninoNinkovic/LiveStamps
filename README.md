@@ -108,6 +108,28 @@ Right-click -> LiveStamps -> Menus -> Build -> menutype
 Right-click -> LiveStamps -> Menus -> Open -> menutype
 ```
 
+####Backup/Restore/Share Stamp definitions:
+Livestamps supports a simple stamp versioning system that allows you to easily share and backup your custom stamp definitions.
+
+**To backup all existing stamp definitions and user info:**
+```
+ Right-Click -> LiveStamps -> Definitions -> Backup
+```
+**To restore previous stamp definitions:**
+```
+ Right-Click -> LiveStamps -> Definitions -> Restore -> [definition file]
+```
+**To Rename Backups:**
+```
+ 1. Right-Click -> LiveStamps -> Definitions -> Browse
+ 2. Rename any files as you wish (keep .sublime-settings extension)
+```
+**To Import or Share Backups:**
+```
+ 1. Right-Click -> LiveStamps -> Definitions -> Browse
+ 2. Copy any stamp definition files to or from this directory to import/export
+```
+
 ## Creating Custom Stamps:
 
 ```

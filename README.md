@@ -526,7 +526,7 @@ The default regex paradigm can be modified in the settings file by editing the f
 "separator" : " ",            # Separator used for "auto" multi value stamps
 ```
 
-Of course advanced users may use any regex pattern they desire, for instance date matching. You must be extra carefult not to make your patterns too loose, and remember to escape slashes and other characters becaus ethe input is in JSON format.
+Of course advanced users may use any regex pattern they desire, for instance date matching. You must be extra careful not to make your patterns too loose, and remember to escape slashes and other characters becaus ethe input is in JSON format.
 
 **Custom Regex for dd-mm-yyyy:**
 

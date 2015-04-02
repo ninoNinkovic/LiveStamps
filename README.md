@@ -108,7 +108,7 @@ LiveStamps are defined as small python dictionaries that contain stamp output, r
 
 ```
   1. Right-Click -> LiveStamps -> Definitions -> Open
-  2. Custom stamp definitions are defined within the  master "stamps" dictionary
+  2. Custom stamp definitions are defined within the "stamps" key
   3. There are a few examples and instructions to get you started here as well
 ```
 

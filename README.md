@@ -532,7 +532,7 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 
 ```python
 
-# Note the escaped backslashes because input is in python.
+# Note the escaped backslashes because input is in JSON.
 
   "date": {
     "value": "Date is: ",

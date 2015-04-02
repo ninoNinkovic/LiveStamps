@@ -25,7 +25,9 @@
 * **Built-in Help** - Python format() & srtftime() live reference and data dump to test new designs
 * **Flexible Regexes** - Custom per stamp or global "auto" regex patterns, its up to you!
  
-**COMING SOON: Language Specific Code Snippets and Definitions:**
+**COMING SOON:**
+
+Language Specific Code Snippets and Definitions:
 
 A great potential use for LiveStamps exists in the ability to switch between stamp defenitions depending on the document you are working with. Definition files containing javascript, SASS, PHP snippets will be easily accessible through the menu.
 

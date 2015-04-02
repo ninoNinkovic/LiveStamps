@@ -67,13 +67,13 @@ Formatted and raw values are accessed in the following ways:
 ```python
 # Generic Usage:
 
-super + alt + letter -> inject a LiveStamp
-ctrl  + alt + letter -> inject a raw value
+[super] + [alt] + [letter] -> inject a LiveStamp
+[ctrl]  + [alt] + [letter] -> inject a raw value
 
 # Example: All Stamps
 
-Inject all stamps: super + alt + a     
-Inject all values: ctrl  + alt + a      
+Inject all stamps: [super] + [alt] + a     
+Inject all values: [ctrl]  + [alt] + a      
 ```
 
 ####Menu Injection:

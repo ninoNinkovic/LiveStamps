@@ -125,7 +125,17 @@ Output: LiveStamps rule!
 ####Key Reference:
 
 ```
-#Required Keys:
+# Stamp Keymap:
+
+"[name]": {
+  "[menu]"  : ... ,
+  "[value]" : int|string|list|, *dict can be used for time offsets*
+  "[regex]" : string ,
+  "[stamp]" : string ,
+  "[tflag]" : string ,
+},
+
+# Required Keys:
 
 [name]   : The parent key containing the stamp name using snake_case
 [value]  : A string/int literal, or list of values to be used for injection.

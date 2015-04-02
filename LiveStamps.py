@@ -18,7 +18,9 @@ m = s.get("default_stamps")
 
 class LiveStampsOpenFolderCommand(sublime_plugin.TextCommand):
 
+
   ''' Opens A Folder '''
+
 
   def run(self, view, folder=sublime.packages_path()):
 
@@ -43,7 +45,9 @@ class LiveStampsOpenFolderCommand(sublime_plugin.TextCommand):
 
 class LiveStampsWriteFileCommand(sublime_plugin.TextCommand):
 
+
   ''' Save Data To A File '''
+
 
   def run(self, view, fname, contents=False):
 
@@ -56,6 +60,8 @@ class LiveStampsWriteFileCommand(sublime_plugin.TextCommand):
 
     ftemp.close
 
+    msg = "LiveStamps: Writing file " + fname
+    self.view.run_command( "live_stamps_notify", { "message" : msg, "modes" : "console status" } )
 
 class LiveStampsInjectCommand(sublime_plugin.TextCommand):
 
@@ -2468,7 +2474,7 @@ class LiveStampsMenuCommand(sublime_plugin.TextCommand):
 
     self.add_keys(menu, {
       "command"  : "open_file",
-      "arg_keys" : '{"file" : "${packages}/User/%s"}',
+      "arg_keys" : '{"file" : "${packages}/LiveStamps/%s"}',
       "cap_args" : { "README.md" : "README.md" }
     })
 

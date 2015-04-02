@@ -521,12 +521,12 @@ Test your regex on a separate document before trying it on a master file! An exp
 Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
 
 
-**Modifying The Default Regex Pattern - CAUTION:**
+**Modifying The Default Regex Pattern:**
 
 ```python
 Right-Click -> LiveStamps -> Preferences -> Settings - User
 
-# Careful! Changes here will have a big, potentially dangerous effect:
+# CAUTION!!! Changes here will have a big, potentially dangerous effect:
 
 "autoregex" : " \\* @{0}.+",  # Stamp name injected at flag {0}
 "autostamp" : " * @{0} {1}",  # Stamp name injected at flag {0}, values at {1}

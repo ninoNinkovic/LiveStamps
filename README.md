@@ -108,9 +108,9 @@ Right-click -> LiveStamps -> Menus -> Open -> menutype
   3. There are a few examples and instructions to get you started here as well
 ```
 
-LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location. Defining new stamps is extremly simple, but advanced users can get quite complex once they get the hang of it. Let's get started!
-
 ###Anatomy of a LiveStamp:
+
+LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location. Defining new stamps is extremly simple, but advanced users can get quite complex once they get the hang of it. Let's get started!
 
 **A LiveStamp has the minimum following keys:**
 

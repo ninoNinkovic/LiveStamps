@@ -37,7 +37,7 @@ A great potential use for LiveStamps lies in the ability to easily/automatically
 
 #### Installation: 
 
-```
+```python
 # Package Control:
 
   1. Open Sublime Text 3
@@ -54,7 +54,7 @@ A great potential use for LiveStamps lies in the ability to easily/automatically
 ```
 
 #### Setup User Info:
-```
+```python
   1. Right-Click -> LiveStamps -> Definitions -> Open
   2. Fill in "user_info" key accordingly
   3. You may add custom keys here if you like

@@ -24,7 +24,6 @@
 * **Go Beyond Metadata** - Perform conversions with powerful Python formatting
 * **Built-in Help** - Python format() & srtftime() live reference and data dump to test new designs
 * **Flexible Regexes** - Custom per stamp or global "auto" regex patterns, its up to you!
- 
 --
 
 **Coming Soon:**

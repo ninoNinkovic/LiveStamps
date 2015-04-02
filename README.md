@@ -25,10 +25,10 @@
 * Built-in help: Python format() & srtftime() live reference and data dump to test new designs
 * Use powerful custom regexes or define global "auto" regex definitions, its up to you!
  
-####Installation: 
+#### Installation: 
 
 ```
-# Via Package Control:
+# Package Control:
 
   1. Open Sublime Text 3
   2. cmd+shift+p
@@ -40,18 +40,19 @@
   1. Open Sublime Text 3
   2. Sublime Text Menu -> Preferences -> Browse Packages
   3. Create folder called LiveStamps
-  4. Copy this repo to the folder.
+  4. Copy the contents of this repo to the folder.
 ```
 
-####Fill In User Info:
+#### Setup User Info:
 ```
-  1. Right-click -> LiveStamps -> Preferences -> Settings - Default
+  1. Right-click -> LiveStamps -> Definitions -> Open
   2. Fill in "user_info" key accordingly
+  3. You may add custom keys, i.e. "location" etc and stamps will auto generate
 ```
 
 ## USAGE:
 
-Each LiveStamp has a formatted output and a raw value accessed in the following ways:
+Each LiveStamp has a formatted output and a raw value which can be accessed in the following ways:
 
 ####Keyboard Injection:
 
@@ -74,7 +75,6 @@ Inject all values: ctrl  + alt + a
 
 Right-click -> LiveStamps -> Insert Stamp -> type
 Right-click -> LiveStamps -> Insert Value -> type
-
 ```
 
 ####Menu Generation:
@@ -83,23 +83,25 @@ By default LiveStamps has a right click context menu defined but the sidebar men
 
 ```
 # To Generate a Menu:
+Right-click -> LiveStamps -> Menus -> Build -> menutype
 
-Right-click -> LiveStamps -> Preferences -> Menu Generation -> Build -> menutype
+# To Refresh Existing Menus:
+Right-click -> LiveStamps -> Menus -> Refresh
+
+# Open an Existing Menu:
+Right-click -> LiveStamps -> Menus -> Open -> menutype
 ```
 
 ## Creating Custom Stamps:
 
   1. Open Sublime Text 3
-  2. Right-click -> LiveStamps -> Preferences -> Settings - Default
-  3. Copy everything to clipboard.
-  4. Right-click -> LiveStamps -> Preferences -> Settings - User
-  5. Paste and save.
-  6. Modify stamp definitions in the "stamps" array at the bottom.
-  7. If you make a mistake just copy from Settings - Default again.
+  2. Right-click -> LiveStamps -> Definitions -> Open
+  3. Modify stamp definitions in the "stamps"
+  4. There are examples and instructions to get you started
 
 ###Anatomy of a LiveStamp:
 
-LiveStamps are defined as small python dictionaries that let you easily define exact stamp output, regex matching and context menu location.
+LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location.
 
 **A LiveStamp has the minimum following keys:**
 
@@ -111,30 +113,30 @@ LiveStamps are defined as small python dictionaries that let you easily define e
 Output: LiveStamps rule!
 ```
 
-**Required Keys:**
+####Key Reference:
 
 ```
+
+#Required Keys:
+
 [name]   : Parent key with actual name of the stamp using snake_case
 [value]  : A string literal, or list of values to be used for injection.
-```
 
-**Optional Keys:**
+# Optional Keys:
 
-```
 [stamp]  : Formatting string. Python format() flags. See injection flags below. 
 [tflag]  : Time Formatting string. Python strftime()format flags i.e. "%d-%m-%Y"
 [regex]  : Regex pattern. Set to auto for docblock. Exclude for static data.
 [menu]   : Groups a stamp under a submenu in the right-click context menu
 ```
 
-
 ####Stamp Values:
 
-Values can be defined as a single item, or list of values:
+Values are the core meta for the stamp and can be defined as a single item, or list of values:
 
 ```json
 
-# String Literal:
+# A String Literal:
 
 "mystamp1": {
   "value": "zero",
@@ -163,6 +165,10 @@ Output: zero 1 two 3
 
 ####Magic Values:
 
+By default LiveStamps generates some magic values to help get you started. File meta, last modified timestamp and user info gets creted on refresh automatically.
+
+**More are planned in the future!**
+
 ```
 # The following stamps are auto generated:
 
@@ -176,23 +182,27 @@ Output: zero 1 two 3
 "parent_name"  : Gets name of parent folder
 "parent_path"  : Gets path of parent folder
 "file_extname" : Gets current filename with extension
+"modified"     : Current timestamp using "%c" flag, as preferred local time.
 
-# Personal data built from "user_info" key in LiveStamps.sublime-settings:
+# From "user_info" key in LiveStampsDefinitions.sublime-settings:
 
-"author"      : Your name here                                  
-"vendor"      : Your company here                                     
-"email"       : Your email here                              
-"website"     : Your website here                     
-"quote"       : A quote you like
+"author"      : "Your name here"                                  
+"vendor"      : "Your company here"                                     
+"email"       : "Your email here"                              
+"website"     : "Your website here"                     
+"quote"       : "A quote you like"
+"my_info_key" : Any custom info you would like to add i.e:
 
-More are planned in the future!
+"location"    : "Whitehorse, Yukon",
+"fav_color"   : "Green",
+"gender"      : "male",
 ```
 
-###"Super" Stamps
+###SuperStamps
 
-Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with definitions in the existing stamp dictionary and pull in the output. Use a leading _underscore in front of the name to get the raw value instead of the formatted output. This is great for signatures or other complex stamps!
+Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with definitions in the stamp dictionary, pulling in the output. Use a *leading _underscore* in front of the name to get the raw value instead of the formatted output. This is great for signatures or other complex stamps!
 
-**The leading _underscore grabs a stamp's value instead:**
+**"SuperStamp", using a stamp or its value in another stamp:**
 
 ```
 SOURCE:
@@ -227,7 +237,7 @@ USING THE SOURCE STAMP:
 Output -> Tic Tac Toe
 ```
 
-###Injection flags:
+###Injection Flags:
 
 Injection flags allow for POWERFUL formatting and complex stamp designs. If a "stamp" key is defined, each value gets mapped to the corresponding injection flag in the final output. 
 
@@ -238,7 +248,7 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
 'stamp': "{} {} {}"    // Implicit location (stamp values injected sequentially
 ```
 
-**Basic Injection: (all of the following provide the exact same output) **
+**Basic Injection Examples: (all provide the exact same output) **
 
 ```
 # No injection
@@ -270,14 +280,14 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
 
 Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
+
 ####Multiple Injection Flags:
 
-Stamps can easily accept multiple values/stamps. All values are generated recursively so you can build sub dependencies as deep as you wish.
+Stamps can easily accept multiple values/stamps and all values are generated recursively so you can build sub dependencies as deep as you wish.
 
 **Various outputs of "mystamp" using different injection flags:**
 
 ```
-
 SOURCE STAMP
 --------------
 
@@ -324,9 +334,9 @@ SOURCE STAMP
 
 ####Advanced Formatting With Injection Flags: 
 
-Because each value defined gets passed through the Python format() function it allows LiveStamps to expand your expression far beyond simple metadata. Code snippets and powerful conversions are quick and easy to implement. Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook").
+Because each value defined gets piped through the Python format() function it allows LiveStamps to expand your expression beyond simple metadata. Code snippets and powerful conversions are quick and easy to implement. Learn more about available flags at [Python String Format Cookbook](https://mkaz.com/2012/10/10/python-string-format/ "Python String Format Cookbook").
 
-**Refer to the built in format reference for help with building new stamps:**
+**Open the format() quick reference for help when building new stamps:**
 
 ```
 Right Click -> LiveStamps -> Help -> format() Reference
@@ -364,7 +374,7 @@ Binary   : 1010111
 
 Time is formatted according to the Python strftime() function and as such requires a special "tflag" key. Learn about available formatting flags at [www.strftime.org](http://strftime.org "Strftime")
 
-**Refer to the built-in strftime() reference for help with building new TimeStamps:**
+**Open the strftime() quick reference for help when building new stamps:**
 
 ```
 Right Click -> LiveStamps -> Help -> strftime() Reference
@@ -394,9 +404,9 @@ Output: @modified        Fri Mar  6 18:21:57 2015
 
 **Adding Time Offsets:**
 
-Time offsets allow creation of stamps with different timezones or delays/advances. You may enter a single offset as a raw string. When entering offsets as a string, the colon ":" or '=" sign must be used as the delimeter between unit and value. Fractional values are automatically handled and negative offsets are allowed.
+Time offsets allow creation of stamps with different timezones or delays/advances. You may enter a single offset as a raw string. When entering offsets as a string, the colon ":" or '=" sign must be used as the delimiter between unit and value. *Fractional values are automatically handled and negative offsets are allowed.*
 
-Here are the allowed offset units:
+Allowed offset units:
 
   * "microseconds"
   * "milliseconds"
@@ -424,30 +434,36 @@ Here are the allowed offset units:
 "value": {"months": -1.5, "seconds" :30},
 ```
 
-**Formatted Offset Examples With Regex:**
+**Formatted Offset Examples:**
 
 ```json
 "ahead_ten_hours": {
   "value": "hours: 10",
-  "strft": "%c",
+  "tflag": "%c",
 },
+
+Output: Wed Apr  1 22:29:05 2015
 
 "Maui time": {
   "value": "America/Honolulu",
-  "strft": "%c",
-  "regex": "Maui time is:.+ ",
+  "tflag": "%c",
   "stamp": "Maui time is: {0}",
 },
 
-Raw timestamp output.
+Output: Maui time is: Wed Apr  1 22:29:05 2015
+
+
+# For raw timestamp output no format flags are specified.
+
 "ten_minutes_thirty_seconds_ago": {
   "value": "[minutes=-10, seconds=-30]",
+  "tflag": ""
 },
 ```
 
 ###Regex Patterns
 
-In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern is supplied. 
+In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern is used. 
 
 **WARNING!**
 
@@ -458,11 +474,11 @@ Test your regex on a separate document before trying it on a master file! An exp
 Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
 
 
-#### The default Regex/stamp pattern
+#### The Default Regex/Stamp Pattern
 
 If you are making a stamp for use within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. In the following example, the default regex will inject stamp values to anything that appears after " * @mystamp "
 
-**After values are injected, anything is ERASED until the end of the line:** 
+**NOTE: After values are injected, anything is ERASED until the end of the line:** 
 
 ```
 # Auto defined stamp/value:
@@ -480,7 +496,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
  */
 ```
 
-**Actual values used after parsing:**
+**Actual values used after generation:**
 
 ```
   "mystamp": {
@@ -494,9 +510,9 @@ The default regex paradigm can be modified in the settings file by editing the f
 **Careful! Changes will have a big effect:**
 
 ```
-"autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}
-"autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
-"separator" : " ",            // Separator used when multiple values are defined
+"autoregex" : " \\* @{0}.+",  // Stamp name injected at flag {0}
+"autostamp" : " * @{0} {1}",  // Stamp name injected at flag {0}, values at {1}
+"separator" : " ",            // Separator used for "auto" multi value stamps
 ```
 
 Of course advanced users may use any regex pattern they desire, for instance date matching.
@@ -522,4 +538,3 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 ```
 "tflag": "(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\s|\s\s)(\d|\d\d)\s(\d\d:\d\d:\d\d)\s\d\d\d\d"
 ```
-

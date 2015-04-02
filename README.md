@@ -52,7 +52,9 @@
 
 ## USAGE:
 
-Each LiveStamp has a formatted output and a raw value which can be accessed in the following ways:
+Each LiveStamp has a formatted and raw value. A raw value is always a one-time static injection. If a regex is supplied with a stamp definition, the matching patterns will be updated automatically on save by default. For instance, the last modified stamp will update itself every single time the document is saved.
+
+Formatted and raw values can be accessed in the following ways:
 
 ####Keyboard Injection:
 
@@ -60,7 +62,7 @@ Each LiveStamp has a formatted output and a raw value which can be accessed in t
 # Generic Usage:
 
 super + alt + letter -> inject a LiveStamp
-ctrl  + alt + letter -> inject it's raw value
+ctrl  + alt + letter -> inject a raw value
 
 # Example: All Stamps
 
@@ -79,29 +81,30 @@ Right-click -> LiveStamps -> Insert Value -> type
 
 ####Menu Generation:
 
-By default LiveStamps has a right click context menu defined but the sidebar menu, tools menu and the command pallate can be easily generated if you prefer. This should also be done whenever you add new stamp definitions to avoid using excessive keyboard shortcuts:
+By default LiveStamps has a right click context menu defined. If you prefer, the sidebar, tools and command pallate menus can be easily generated. **Menu generation should also be refreshed** whenever you add new stamp definitions in order to avoid using excessive keyboard shortcuts:
 
 ```
-# To Generate a Menu:
-Right-click -> LiveStamps -> Menus -> Build -> menutype
 
-# To Refresh Existing Menus:
+# Refresh Existing Menus:
 Right-click -> LiveStamps -> Menus -> Refresh
 
-# Open an Existing Menu:
+# Generate a Menu:
+Right-click -> LiveStamps -> Menus -> Build -> menutype
+
+# Open Existing Menu To Manually Edit:
 Right-click -> LiveStamps -> Menus -> Open -> menutype
 ```
 
 ## Creating Custom Stamps:
 
+LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location. Defining new stamps is extremly simple, but advanced users can get quite complex once they get the hang of it. Let's get started!
+
   1. Open Sublime Text 3
   2. Right-click -> LiveStamps -> Definitions -> Open
-  3. Modify stamp definitions in the "stamps"
-  4. There are examples and instructions to get you started
+  3. Custom stamp definitions are defined within the  master "stamps" dictionary
+  4. There are a few examples and instructions to get you started here as well
 
 ###Anatomy of a LiveStamp:
-
-LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location.
 
 **A LiveStamp has the minimum following keys:**
 
@@ -116,18 +119,17 @@ Output: LiveStamps rule!
 ####Key Reference:
 
 ```
-
 #Required Keys:
 
-[name]   : Parent key with actual name of the stamp using snake_case
-[value]  : A string literal, or list of values to be used for injection.
+[name]   : The parent key containing the stamp name using snake_case
+[value]  : A string/int literal, or list of values to be used for injection.
 
 # Optional Keys:
 
-[stamp]  : Formatting string. Python format() flags. See injection flags below. 
-[tflag]  : Time Formatting string. Python strftime()format flags i.e. "%d-%m-%Y"
-[regex]  : Regex pattern. Set to auto for docblock. Exclude for static data.
 [menu]   : Groups a stamp under a submenu in the right-click context menu
+[regex]  : Regex pattern. Set to auto for docblock. Exclude for static data.
+[stamp]  : Formatting string. Python format() flags. See injection flags below. 
+[tflag]  : Time Formatting string. Python strftime() format flags i.e. "%d-%m-%Y"
 ```
 
 ####Stamp Values:
@@ -135,7 +137,6 @@ Output: LiveStamps rule!
 Values are the core meta for the stamp and can be defined as a single item, or list of values:
 
 ```json
-
 # A String Literal:
 
 "mystamp1": {
@@ -191,18 +192,18 @@ By default LiveStamps generates some magic values to help get you started. File 
 "email"       : "Your email here"                              
 "website"     : "Your website here"                     
 "quote"       : "A quote you like"
-"my_info_key" : Any custom info you would like to add i.e:
 
+# Custom info may be added to the "user_info" key if you wish:
 "location"    : "Whitehorse, Yukon",
 "fav_color"   : "Green",
-"gender"      : "male",
+"gender"      : "male"
 ```
 
 ###SuperStamps
 
-Simply set any "value" key as the name of another stamp and PRESTO! The plugin will match it with definitions in the stamp dictionary, pulling in the output. Use a *leading _underscore* in front of the name to get the raw value instead of the formatted output. This is great for signatures or other complex stamps!
+SuperStamps are stamps built from other stamps or values. Simply set any "value" key as the name of another stamp and *PRESTO* the plugin will match it with definitions in the stamp dictionary. Use a *leading _underscore* in front of the name to get the raw value instead of the formatted output. This is great for signatures or other complex stamps!
 
-**"SuperStamp", using a stamp or its value in another stamp:**
+**SuperStamp: Tic Tac Toe**
 
 ```
 SOURCE:
@@ -210,7 +211,7 @@ SOURCE:
 
 "tic_tac": {
   "value": "Tic",
-  "stamp": "{0} Tac",
+  "stamp": "{0} Tac",  // Don't worry about the {0}, it's covered next!
 },
 
 Output -> Tic Tac
@@ -248,7 +249,7 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
 'stamp': "{} {} {}"    // Implicit location (stamp values injected sequentially
 ```
 
-**Basic Injection Examples: (all provide the exact same output) **
+**Basic Injection: (all examples have the exact same output)**
 
 ```
 # No injection
@@ -283,7 +284,7 @@ Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
 
 ####Multiple Injection Flags:
 
-Stamps can easily accept multiple values/stamps and all values are generated recursively so you can build sub dependencies as deep as you wish.
+Stamps can easily accept multiple values/stamps and all values are generated recursively, allowing you to build sub dependencies as deep as you wish.
 
 **Various outputs of "mystamp" using different injection flags:**
 
@@ -399,7 +400,7 @@ Output: @date        08-03-2015
   "stamp": "@modified    {0}",
 },
 
-Output: @modified        Fri Mar  6 18:21:57 2015
+Output: @modified    Fri Mar  6 18:21:57 2015
 ```
 
 **Adding Time Offsets:**

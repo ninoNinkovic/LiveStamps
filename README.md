@@ -78,7 +78,7 @@ Inject all values: [ctrl]  + [alt] + a
 
 ####Menu Injection:
 
-```
+```python
 # Context Menu:
 
 Right-click -> LiveStamps -> Insert Stamp -> type
@@ -89,7 +89,7 @@ Right-click -> LiveStamps -> Insert Value -> type
 
 By default LiveStamps has a right click context menu defined. If you prefer, the sidebar, tools and command pallate menus can be easily generated. **Menu generation should also be refreshed** whenever you add new stamp definitions in order to avoid using excessive keyboard shortcuts:
 
-```
+```python
 # Refresh Existing Menus:
 Right-click -> LiveStamps -> Menus -> Refresh
 
@@ -102,7 +102,7 @@ Right-click -> LiveStamps -> Menus -> Open -> menutype
 
 ## Creating Custom Stamps:
 
-```
+```python
   1. Right-Click -> LiveStamps -> Definitions -> Open
   2. Custom stamp definitions are defined within the "stamps" key
   3. There are a few examples and instructions to get you started here as well
@@ -124,7 +124,7 @@ Output: LiveStamps rule!
 
 ####Key Reference:
 
-```
+```python
 # Stamp Keymap:
 
 "[name]": {

@@ -118,7 +118,7 @@ Right-click -> LiveStamps -> Menus -> Open -> menutype
 
 Livestamps supports a simple stamp versioning system that allows you to easily share or backup your custom stamp definitions.
 
-**Backup/Import/Export/Rename Definitions:**
+**Versioning Functions Available:**
 ```
  # Backup Existing Stamps & User Info:
  Right-Click -> LiveStamps -> Definitions -> Backup

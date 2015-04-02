@@ -128,11 +128,11 @@ Output: LiveStamps rule!
 # Stamp Keymap:
 
 "[name]": {
-  "[menu]"  : string,
-  "[value]" : int|string|list|, *dict can be used for time offsets*
-  "[regex]" : string,
-  "[stamp]" : string,
-  "[tflag]" : string,
+  "[menu]"  : [string],
+  "[value]" : [int|string|list], *dict can be used for time offsets*
+  "[regex]" : [string],
+  "[stamp]" : [string],
+  "[tflag]" : [string],
 },
 
 # Required Keys:

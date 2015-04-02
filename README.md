@@ -108,8 +108,9 @@ Right-click -> LiveStamps -> Menus -> Build -> menutype
 Right-click -> LiveStamps -> Menus -> Open -> menutype
 ```
 
-###Stamp Definition Import Export & backup:
-Livestamps supports a simple stamp versioning system that allows you to easily share or backup your custom stamp definitions, or switch between stamps depending on the document you are using.
+###Stamp Definition Import/Export & Backup:
+
+Livestamps supports a simple stamp versioning system that allows you to easily share or backup your custom stamp definitions. ANother great use is to switch between stamps defenitions depending on the document you are using. You could create definition files containing javascript, SASS, PHP snippets and so forth...
 
 **Backup/Import/Export/Rename Definitions:**
 ```

@@ -58,9 +58,9 @@ Right-Click -> LiveStamps -> Preferences -> Update On Save
 
 ## USAGE:
 
-Each LiveStamp has a formatted and raw value. A raw value is usally used as a one-time static injection, i.e. frequently used variables etc. However, when a regex is supplied with a stamp definition any matching patterns can be updated automatically. For instance, the last modified stamp will update itself every single time the document is saved.
+Each LiveStamp has a formatted and raw value. A raw value is usally used as a one-time static injection, i.e. frequently used variables. However, when a regex is added to a stamp definition, matching patterns are updated automatically. For instance, the @modified stamp will update itself whenever the document is saved.
 
-Formatted and raw values can be accessed in the following ways:
+Formatted and raw values are accessed in the following ways:
 
 ####Keyboard Injection:
 

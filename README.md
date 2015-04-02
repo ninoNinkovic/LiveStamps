@@ -35,6 +35,8 @@ Document type detection/auto menu generation is already implemented, it is for t
 
 **Assistance creating language specific definition files with code snippets would be very much appreciated!**
 
+--
+
 #### Installation: 
 
 ```

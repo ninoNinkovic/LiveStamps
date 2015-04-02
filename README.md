@@ -58,12 +58,9 @@ A great potential use for LiveStamps lies in the ability to easily/automatically
   1. Right-Click -> LiveStamps -> Definitions -> Open
   2. Fill in "user_info" key accordingly
   3. You may add custom keys here if you like
-```
-
-**Note, By default LiveStamps updates dynamic stamps on save, to disable for safety:**
-
-```
-Right-Click -> LiveStamps -> Preferences -> Update On Save
+  
+  # Note, By default LiveStamps updates dynamic stamps on save, to disable:
+  Right-Click -> LiveStamps -> Preferences -> Update On Save
 ```
 
 ## USAGE:

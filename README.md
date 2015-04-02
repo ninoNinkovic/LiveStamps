@@ -67,13 +67,13 @@ Formatted and raw values are accessed in the following ways:
 ```python
 # Generic Usage:
 
-[super] + [alt] + [letter] # Injects a formatted value
-[ctrl]  + [alt] + [letter] # Injects a raw value
+[super] + [alt] + [letter]               # Injects a formatted value
+[ctrl]  + [alt] + [letter]               # Injects a raw value
 
 # Example: All Stamps
 
-Inject all stamps: [super] + [alt] + a # Injects all formatted values   
-Inject all values: [ctrl]  + [alt] + a # Injects all raw values
+Inject all stamps: [super] + [alt] + a   # Injects all formatted values   
+Inject all values: [ctrl]  + [alt] + a   # Injects all raw values
 ```
 
 ####Menu Injection:

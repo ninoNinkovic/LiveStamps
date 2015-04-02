@@ -220,31 +220,31 @@ SOURCE:
 
 "tic_tac": {
   "value": "Tic",
-  "stamp": "{0} Tac",  // Don't worry about the {0}, it's covered next!
+  "stamp": "{0} Tac",  # Don't worry about the {0}, it's covered next!
 },
 
-Output -> Tic Tac
+# Output -> Tic Tac
 
 
 USING THE SOURCE VALUE:
 -----------------------
 
 "tic": {
-  "value": "_tic_tac",  // Leading underscore gets the "value" key of tic_tac
+  "value": "_tic_tac",  # Leading underscore gets the "value" key of tic_tac
 }
 
-Output -> Tic
+# Output -> Tic
 
 
 USING THE SOURCE STAMP:
 -----------------------
 
 "tic_tac_toe": {
-  "value": "tic_tac",   // No underscore gets the formattad "stamp" key of tic_tac
+  "value": "tic_tac",   # No underscore gets the formattad "stamp" key of tic_tac
   "stamp": "{0} Toe",
 }
 
-Output -> Tic Tac Toe
+# Output -> Tic Tac Toe
 ```
 
 ###Injection Flags:
@@ -254,34 +254,34 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
 **Injection flags are simple markers defined as so:**
 
 ```
-'stamp': "{0} {1} {2}" // Explicit location (stamp values injected by index)
-'stamp': "{} {} {}"    // Implicit location (stamp values injected sequentially
+'stamp': "{0} {1} {2}" # Explicit location (stamp values injected by index)
+'stamp': "{} {} {}"    # Implicit location (stamp values injected sequentially
 ```
 
 **Basic Injection: (all examples have the exact same output)**
 
-```
-# No injection
+```python
+# No injection:
 
   "mystamp": {
     "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
   },
 
-# Complete injection
+# Complete injection:
 
   "mystamp": {
     "value": "Have you heard? LiveStamps rule! Thanks TundraTech!",
     "stamp": "{0}",
   },
 
-# Partial injection (explicit)
+# Partial injection (explicit):
 
   "mystamp": {
     "value": "LiveStamps rule!",
     "stamp": "Have you heard? {0} Thanks TundraTech!",
   },
 
-# Partial injection (implicit)
+# Partial injection (implicit):
 
   "mystamp": {
     "value": "LiveStamps rule!",
@@ -297,7 +297,7 @@ Stamps can easily accept multiple values/stamps and all values are generated rec
 
 **Various outputs of "mystamp" using different injection flags:**
 
-```
+```python
 SOURCE STAMP
 --------------
 
@@ -360,12 +360,12 @@ Right Click -> LiveStamps -> Help -> format() Reference
   "stamp": "Base conversion: {0:d} - {0:x} - {0:o} - {0:b}",
 },
 		
-Output: Base conversion:  87 - 57 - 127 - 1010111
+# Output: Base conversion:  87 - 57 - 127 - 1010111
 ```
 
 **Getting even trickier: Getting nice alignment AND converting bases.**
 
-```
+```python
 "formatted_bases": {
   "value": [87, "\nDecimal","\nHex", "\nOctal", "\nBinary"],
   "stamp": "{1:<10}: {0:d} {2:<10}: {0:x} {3:<10}: {0:o} {4:<10}: {0:b}",
@@ -400,7 +400,7 @@ Right Click -> LiveStamps -> Help -> strftime() Reference
   "stamp": "@date        {0}",
 },
 
-Output: @date        08-03-2015
+# Output: @date        08-03-2015
 
 "time": {
   "value": "auto",
@@ -409,7 +409,7 @@ Output: @date        08-03-2015
   "stamp": "@modified    {0}",
 },
 
-Output: @modified    Fri Mar  6 18:21:57 2015
+# Output: @modified    Fri Mar  6 18:21:57 2015
 ```
 
 **Adding Time Offsets:**
@@ -430,7 +430,7 @@ Allowed offset units:
   
 **Offset Input Syntax is Highly Flexible!**
 
-```
+```python
 # String literal
 "value": "microseconds: -21709870.5",
 
@@ -452,7 +452,7 @@ Allowed offset units:
   "tflag": "%c",
 },
 
-Output: Wed Apr  1 22:29:05 2015
+# Output: Wed Apr  1 22:29:05 2015
 
 "Maui time": {
   "value": "America/Honolulu",
@@ -460,11 +460,12 @@ Output: Wed Apr  1 22:29:05 2015
   "stamp": "Maui time is: {0}",
 },
 
-Output: Maui time is: Wed Apr  1 22:29:05 2015
+# Output: Maui time is: Wed Apr  1 22:29:05 2015
+```
 
+**For raw timestamp output no format flags are specified:**
 
-# For raw timestamp output no format flags are specified.
-
+```
 "ten_minutes_thirty_seconds_ago": {
   "value": "[minutes=-10, seconds=-30]",
   "tflag": ""
@@ -490,7 +491,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
 
 **NOTE: After values are injected, anything is ERASED until the end of the line:** 
 
-```
+```python
 # Auto defined stamp/value:
 
 "mystamp": {
@@ -508,7 +509,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
 
 **Actual values used after generation:**
 
-```
+```python
   "mystamp": {
     "value": "Is really cool",
     "regex": "* @mystamp.+",
@@ -519,10 +520,10 @@ The default regex paradigm can be modified in the settings file by editing the f
 
 **Careful! Changes will have a big effect:**
 
-```
-"autoregex" : " \\* @{0}.+",  // Stamp name injected at flag {0}
-"autostamp" : " * @{0} {1}",  // Stamp name injected at flag {0}, values at {1}
-"separator" : " ",            // Separator used for "auto" multi value stamps
+```python
+"autoregex" : " \\* @{0}.+",  # Stamp name injected at flag {0}
+"autostamp" : " * @{0} {1}",  # Stamp name injected at flag {0}, values at {1}
+"separator" : " ",            # Separator used for "auto" multi value stamps
 ```
 
 Of course advanced users may use any regex pattern they desire, for instance date matching.
@@ -545,6 +546,6 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 
 **Custom Regex for "Sat Mar 28 21:11:31 2015"**
 
-```
+```python
 "tflag": "(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\s|\s\s)(\d|\d\d)\s(\d\d:\d\d:\d\d)\s\d\d\d\d"
 ```

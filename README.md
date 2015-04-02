@@ -510,7 +510,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
   },
 ```
 
-####Custom Regex Definitions
+###Custom Regex Definitions
 
 **WARNING!**
 

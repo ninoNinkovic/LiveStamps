@@ -517,7 +517,7 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
   },
 ```
 
-**Modifying The Default Regex Pattern.. CAUTION:
+**Modifying The Default Regex Pattern - CAUTION:**
 
 ```python
 Right-Click -> LiveStamps -> Preferences -> Settings - User

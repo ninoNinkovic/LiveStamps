@@ -9,7 +9,7 @@
   * **TimeStamps** - Timezone/DST aware stamps with custom formatting and manual offsets
   * **File metadata** - Automatically keep track of file info whenever it is moved/renamed
   * **Last Modified** - Track the exact moment the document was last updated
-  * **User Info** - Sharing a file will lets you know who did what and when.
+  * **User Info** - Sharing a file lets you know who did what and when.
   * **Checksum** - Add an md5 Hash to the file (sha also supported)
   * **Contact Info** - Auto update your projects with a new email address or URL when changed
   * **Custom Stamps** - Easy creation with powerful custom/auto regex matching

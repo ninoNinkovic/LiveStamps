@@ -18,7 +18,7 @@
 
 **Advanced Features:** 
 
-* Menu generator, define as many stamps as you want and they are only a right click away
+* Menu generator: define as many stamps as you want and they are only a right click away
 * Customize menu layout from the settings file, simply define a menu key to sort your stamps
 * Use multiple values or other stamps within larger stamps... Great for a siggy!
 * Go beyond simple metadata, perform conversions with powerful Python formatting

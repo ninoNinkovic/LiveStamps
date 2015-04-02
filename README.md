@@ -27,7 +27,7 @@
  
 **COMING SOON:**
 
-Language Specific Code Snippets and Definitions:
+Language Specific Code Snippets and Definitions
 
 A great potential use for LiveStamps exists in the ability to switch between stamp defenitions depending on the document you are working with. Definition files containing javascript, SASS, PHP snippets will be easily accessible through the menu.
 

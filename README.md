@@ -59,7 +59,7 @@ A great potential use for LiveStamps lies in the ability to easily/automatically
   2. Fill in "user_info" key accordingly
   3. You may add custom keys here if you like
   
-  # Note, By default LiveStamps updates stamps on save, to disable:
+  # Note, By default LiveStamps updates all stamps on save, to disable:
   
   Right-Click -> LiveStamps -> Preferences -> Update On Save
 ```

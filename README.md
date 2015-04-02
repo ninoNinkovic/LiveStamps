@@ -485,7 +485,7 @@ Test your regex on a separate document before trying it on a master file! An exp
 Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
 
 
-#### The Default Regex/Stamp Pattern
+#### The Default DocBlock Regex:
 
 If you are making a stamp for use within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. In the following example, the default regex will inject stamp values to anything that appears after " * @mystamp "
 

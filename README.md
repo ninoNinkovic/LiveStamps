@@ -516,11 +516,14 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
     "stamp": "* @mystamp {0}",
   },
 ```
-The default regex paradigm can be modified in the settings file by editing the following keys.
 
-**Careful! Changes will have a big effect:**
+**Modifying The Default Regex Pattern.. CAUTION:
 
 ```python
+Right-Click -> LiveStamps -> Preferences -> Settings - User
+
+# Careful! Changes here will have a big, potentially dangerous effect:
+
 "autoregex" : " \\* @{0}.+",  # Stamp name injected at flag {0}
 "autostamp" : " * @{0} {1}",  # Stamp name injected at flag {0}, values at {1}
 "separator" : " ",            # Separator used for "auto" multi value stamps

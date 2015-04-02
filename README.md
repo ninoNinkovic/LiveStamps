@@ -102,7 +102,7 @@ Right-click -> LiveStamps -> Menus -> Open -> menutype
 
 ## Creating Custom Stamps:
 
-```python
+```
   1. Right-Click -> LiveStamps -> Definitions -> Open
   2. Custom stamp definitions are defined within the "stamps" key
   3. There are a few examples and instructions to get you started here as well
@@ -119,7 +119,7 @@ LiveStamps are defined as small python dictionaries that contain stamp output, r
   "value": "LiveStamps rule!",
 },
 
-Output: LiveStamps rule!
+# Output: LiveStamps rule!
 ```
 
 ####Key Reference:
@@ -145,7 +145,7 @@ Output: LiveStamps rule!
 [menu]   : Groups a stamp under a submenu in the right-click context menu
 [regex]  : Regex pattern. Set to auto for docblock. Exclude for static data.
 [stamp]  : Formatting string. Python format() flags. See injection flags below. 
-[tflag]  : Time Formatting string. Python strftime() format flags i.e. "%d-%m-%Y"
+[tflag]  : Time Formatting string. Python strftime() flags i.e. "%d-%m-%Y"
 ```
 
 ####Stamp Values:
@@ -157,19 +157,19 @@ A value is the core meta for a stamp and can be defined as a single item, or lis
   "value": "zero",        # A String Literal
 },
 
-Output: zero
+# Output: zero
 
 "mystamp2": {
   "value": ["zero"],      # Single List Item
 },
 
-Output: zero
+# Output: zero
 
 "mystamp3": {
   "value": [1, "two", 3]  # Multiple Item Lis:
 },
 
-Output: 1 two 3
+# Output: 1 two 3
 ```
 
 ####Magic Values:
@@ -182,7 +182,7 @@ By default LiveStamps generates some magic values to help get you started. File 
 # The following stamps are auto generated:
 
 "user"         : Gets current user
-"checksum"     : Gets md5 hash of the current file (hash algorithm can be modified)
+"checksum"     : Gets checksum of the current file (algorithm can be modified)
 "extension"    : Gets current file extension
 "base_name"    : Gets current basename
 "file_size"    : Gets current filesize
@@ -190,8 +190,8 @@ By default LiveStamps generates some magic values to help get you started. File 
 "file_path"    : Gets current filepath
 "parent_name"  : Gets name of parent folder
 "parent_path"  : Gets path of parent folder
-"file_extname" : Gets current filename with extension
-"modified"     : Current timestamp using "%c" flag, as preferred local time.
+"file_extname" : Gets current filename.extension
+"modified"     : Current timestamp using "%c" flag, (preferred local time)
 
 # From "user_info" key in LiveStampsDefinitions.sublime-settings:
 
@@ -202,6 +202,7 @@ By default LiveStamps generates some magic values to help get you started. File 
 "quote"       : "A quote you like"
 
 # Custom info may be added to the "user_info" key if you wish:
+
 "location"    : "Whitehorse, Yukon",
 "fav_color"   : "Green",
 "gender"      : "male"
@@ -213,7 +214,7 @@ SuperStamps are stamps built from other stamps or values. Simply set any "value"
 
 **SuperStamp: Tic Tac Toe**
 
-```
+```python
 SOURCE:
 -------
 

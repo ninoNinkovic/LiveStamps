@@ -29,7 +29,7 @@
 
 Language Specific Code Snippets and Stamp Definitions
 
-A great potential use for LiveStamps lies in the ability to easily/automatically switch between stamp definitions depending on the document you are working with. Definition files containing javascript, SASS, PHP snippets could me made easily accessible through the menu.
+A great potential use for LiveStamps lies in the ability to easily/automatically switch between stamp definitions depending on the document you are working with. Definition files containing javascript, SASS, PHP snippets could be made easily accessible through the menu.
 
 Document type detection and menu generation are already implemented, it is for the most part a matter of simply writing the definition files:
 

@@ -1,28 +1,28 @@
 {
 
 //---------------------------------------------------------------------------------------
-// User Info:
+// Enter User Info:
 //---------------------------------------------------------------------------------------
 
   "user_info" : {
 
     "author"  : "DJ Sumanik",                                     // Your name here
     "vendor"  : "TundraTech",                                     // Your company here
-    "email"   : "dj@tundratech.ca",                               // Your email here
+    "email"   : "my@email.com",                                   // Your email here
     "website" : "http://www.tundratech.ca",                       // Your website here
     "quote"   : "\"I'm in the empire business.\" - Walter White", // A quote you like
 
   },
 
 //---------------------------------------------------------------------------------------
-// Stamp Defnitions
+// Default Stamp Defnitions:
 //---------------------------------------------------------------------------------------
 
 	"stamps" : {
 
-		//---------------------+
-		// User Defined Stamps |
-		//---------------------+
+		//-------------------------+
+		// Create Your Stamps Here |
+		//-------------------------+
 
 			//"tic_tac_toe": {
 			//  "menu" : "My Stamps",

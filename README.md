@@ -472,26 +472,15 @@ Allowed offset units:
 },
 ```
 
-###Regex Patterns
+###Regex Patterns: Default DocBlock Regex
 
 In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern can be used for convenience with one caveat: 
 
-*After a docblock stamp is injected any chars after are ERASED until a newline occurs.*
-
-**WARNING!**
-
-Regex patterns are powerful expressions!
-    
-Test your regex on a separate document before trying it on a master file! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss or hardlock...
-
-Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
-
-
-#### The Default DocBlock Regex:
+**Anything appearing after a docblock stamp is ERASED until a newline occurs**
 
 If you are making a stamp for use within docblock tags your best bet is to simply use the "auto" value for the regex and stamp keys respectively. In the following example, the default regex will inject stamp values to anything that appears after " * @mystamp "
 
-**NOTE: After values are injected, anything is ERASED until the end of the line:** 
+**Default Docblock Example:**
 
 ```python
 # Auto defined stamp/value:
@@ -505,11 +494,13 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
 # Which would work great in a docblock header:
 
 /**
- * @mystamp Is really cool   // But Anything here will always get erased on update
+ * # Anything here is safe
+ * @mystamp Is really cool   # Anything over here is always erased on update
+ * # Anything here is safe
  */
 ```
 
-**Actual values used after generation:**
+**Actual values used after generation: (for reference)**
 
 ```python
   "mystamp": {
@@ -518,6 +509,17 @@ If you are making a stamp for use within docblock tags your best bet is to simpl
     "stamp": "* @mystamp {0}",
   },
 ```
+
+####Custom Regex Definitions
+
+**WARNING!**
+
+Regex patterns are powerful expressions!
+    
+Test your regex on a separate document before trying it on a master file! An expression that accidentally matches valid code, will instantly replace it. Also, a mistyped pattern that is too "loose" could replace a huge amount of data in a large file, potentially causing data loss or hardlock...
+
+Test and learn more about REGEX patterns buy visiting [www.regexr.com](https://www.regexr.com "Regexr") or [www.regex101.com](https://regex101.com "Regex 101").
+
 
 **Modifying The Default Regex Pattern - CAUTION:**
 

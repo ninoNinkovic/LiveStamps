@@ -154,19 +154,19 @@ A value is the core meta for a stamp and can be defined as a single item, or lis
 
 ```python
 "mystamp1": {
-  "value": "zero",        // A String Literal
+  "value": "zero",        # A String Literal
 },
 
 Output: zero
 
 "mystamp2": {
-  "value": ["zero"],      // Single List Item
+  "value": ["zero"],      # Single List Item
 },
 
 Output: zero
 
 "mystamp3": {
-  "value": [1, "two", 3]  // Multiple Item Lis:
+  "value": [1, "two", 3]  # Multiple Item Lis:
 },
 
 Output: 1 two 3

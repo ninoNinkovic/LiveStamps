@@ -50,7 +50,7 @@
   3. You may add custom keys here if you like
 ```
 
-*By default LiveStamps updates dynamic stamps on save, to disable:*
+**By default LiveStamps updates dynamic stamps on save, to disable:**
 
 ```
 Rightclick -> LiveStamps -> Preferences -> Update On Save

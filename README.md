@@ -152,7 +152,7 @@ Output: LiveStamps rule!
 
 A value is the core meta for a stamp and can be defined as a single item, or list of values:
 
-```json
+```python
 "mystamp1": {
   "value": "zero",        // A String Literal
 },

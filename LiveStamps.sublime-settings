@@ -1,0 +1,59 @@
+{
+
+//***************************************************************************************
+// LiveStamps for Sublime Text 3                                                 v1.0.0 *
+//***************************************************************************************
+
+
+//---------------------------------------------------------------------------------------
+// Plugin Settings
+//---------------------------------------------------------------------------------------
+
+	"restore_defaults" : true,                 // Reset all Plugin defaults (first load)
+  "auto_update"      : true,                 // Update LiveStamps on save
+  "hash_mode"        : "md5",                // Checksum algorithm : md5, sha1, sha256...
+  "timezone"         : "America/Whitehorse", // Default timezone for time and date stamps
+
+  // Enable/Disable various notifications
+
+  "popup_events"     : true,                 // Popup dialogs
+  "console_events"   : true,                 // Modes: true, false, "clear"
+  "statusbar_events" : true,                 // Status bar notifications
+
+//---------------------------------------------------------------------------------------
+//  Highlighter Settings
+//---------------------------------------------------------------------------------------
+
+  "enabled"   : true,        // Enable/Disable LiveStamp highlighting
+  "timeout"   : 200,         // Delay before stamp regions are highlighted after typing
+  "maxsize"   : 1048576,     // Maximum filesize in bytes to parse with highlighter
+
+  "shading"   : false,       // Enable / Disable background shading
+  "outline"   : false,       // Enable / Disable Underlines
+  "markers"   : "bookmark",  // Modes: "dot", "circle", "bookmark", "cross", True, False
+  "underline" : true,        // Modes: "stippled", "squiggly", "solid", True, False
+
+	// Colors as syntax scopes: comment, string, variable..
+  "marker_color"    : "string",
+  "shading_color"   : "string",
+  "outline_color"   : "string",
+  "underline_color" : "string",
+
+//---------------------------------------------------------------------------------------
+// AutoStamp Settings - Careful these are powerful settings!
+//---------------------------------------------------------------------------------------
+
+  "autoregex" : " \\* @{0}.+",  // Stamp name is injected into regex pattern at flag {0}
+  "autostamp" : " * @{0} {1}",  // Stamp name is injected at flag {0}, values at {1}
+  "separator" : " ",            // Separator used when multiple values are defined
+  "doc_align" : 2,              // False to disable or integer to add docblock spacing
+
+//---------------------------------------------------------------------------------------
+// Default LiveStamp Definitions
+//---------------------------------------------------------------------------------------
+
+  "user_info"      : {},
+  "stamps"         : {},
+  "default_stamps" : {}
+
+}

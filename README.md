@@ -124,7 +124,7 @@ Output: LiveStamps rule!
 
 ####Key Reference:
 
-```
+```json
 # Stamp Keymap:
 
 "[name]": {
@@ -186,7 +186,7 @@ By default LiveStamps generates some magic values to help get you started. File 
 
 **More are planned in the future!**
 
-```
+```json
 # The following stamps are auto generated:
 
 "user"         : Gets current user

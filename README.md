@@ -104,10 +104,11 @@ Right-click -> LiveStamps -> Menus -> Open -> menutype
 
 LiveStamps are defined as small python dictionaries that contain stamp output, regex patterns, formatting flags and menu location. Defining new stamps is extremly simple, but advanced users can get quite complex once they get the hang of it. Let's get started!
 
-  1. Open Sublime Text 3
-  2. Right-click -> LiveStamps -> Definitions -> Open
-  3. Custom stamp definitions are defined within the  master "stamps" dictionary
-  4. There are a few examples and instructions to get you started here as well
+```
+  1. Right-Click -> LiveStamps -> Definitions -> Open
+  2. Custom stamp definitions are defined within the  master "stamps" dictionary
+  3. There are a few examples and instructions to get you started here as well
+```
 
 ###Anatomy of a LiveStamp:
 

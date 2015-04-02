@@ -50,9 +50,15 @@
   3. You may add custom keys here if you like
 ```
 
+*By default LiveStamps updates dynamic stamps on save, to disable:**
+
+```
+Rightclick -> LiveStamps -> Preferences -> Update On Save
+```
+
 ## USAGE:
 
-Each LiveStamp has a formatted and raw value. A raw value is always a one-time static injection. If a regex is supplied with a stamp definition, the matching patterns will be updated automatically on save by default. For instance, the last modified stamp will update itself every single time the document is saved.
+Each LiveStamp has a formatted and raw value. A raw value is usally used as a one-time static injection, i.e. frequently used variables etc. However, when a regex is supplied with a stamp definition any matching patterns can be updated automatically. For instance, the last modified stamp will update itself every single time the document is saved.
 
 Formatted and raw values can be accessed in the following ways:
 
@@ -84,7 +90,6 @@ Right-click -> LiveStamps -> Insert Value -> type
 By default LiveStamps has a right click context menu defined. If you prefer, the sidebar, tools and command pallate menus can be easily generated. **Menu generation should also be refreshed** whenever you add new stamp definitions in order to avoid using excessive keyboard shortcuts:
 
 ```
-
 # Refresh Existing Menus:
 Right-click -> LiveStamps -> Menus -> Refresh
 

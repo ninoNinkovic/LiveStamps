@@ -174,7 +174,7 @@ A value is the core meta for a stamp and can be defined as a single item, or lis
 
 ####Magic Values:
 
-By default LiveStamps generates some magic values to help get you started. File meta, last modified timestamp and user info gets creted on refresh automatically.
+LiveStamps will generate some magic values to help get you started. File meta, last modified timestamp and user info gets creted on refresh automatically.
 
 **More are planned in the future!**
 

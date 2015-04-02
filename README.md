@@ -45,7 +45,7 @@
 
 #### Setup User Info:
 ```
-  1. Right-click -> LiveStamps -> Definitions -> Open
+  1. Right-Click -> LiveStamps -> Definitions -> Open
   2. Fill in "user_info" key accordingly
   3. You may add custom keys here if you like
 ```
@@ -53,7 +53,7 @@
 **Note, By default LiveStamps updates dynamic stamps on save, to disable for safety:**
 
 ```
-Rightclick -> LiveStamps -> Preferences -> Update On Save
+Right-Click -> LiveStamps -> Preferences -> Update On Save
 ```
 
 ## USAGE:

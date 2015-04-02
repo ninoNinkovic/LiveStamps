@@ -6,7 +6,7 @@
 
   * Insert self updating tags into docblock headers
   * Background highlighting, outlining, and guttermarking of livestamps. (each one is optional)
-  * Timezone/DST aware timestamps with custom formatting
+  * Timezone/DST aware TimeStamps with custom formatting
   * Track file metadata no matter where it is moved/renamed
   * Track date the document was last modified
   * Track user or person who last modified the file.

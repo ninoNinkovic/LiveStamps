@@ -4,17 +4,17 @@
 
 **Features:**
 
-  * Insert self updating tags into docblock headers
-  * Background highlighting, outlining, and guttermarking of livestamps. (each one is optional)
-  * Timezone/DST aware TimeStamps with custom formatting
-  * Track file metadata no matter where it is moved/renamed
-  * Track date the document was last modified
-  * Track user or person who last modified the file.
-  * Add a checksum to the file
-  * Update all your projects with a new email address or URL when it changes
-  * Easy static/dynamic custom stamp creation with powerful custom/automatic regex matching
-  * Inject stamps via keyboard, command palette, or menus
-  * Toggle plugin settings directly from the UI with a keyboard shortcut or context menu
+  * **Metadata** - Insert self updating tags into docblock headers
+  * **Highlighting** - Background, outlining, and/or guttermarking.
+  * **TimeStamps** - Timezone/DST aware stamps with custom formatting and manual offsets
+  * **File metadata** - Automatically keep track of file info whenever it is moved/renamed
+  * **Last Modified** - Track the exact moment the document was last updated
+  * **User Info** - Sharing a file will lets you know who did what and when.
+  * **Checksum** - Add an md5 Hash to the file (sha also supported)
+  * **Contact Info** - Auto update your projects with a new email address or URL when changed
+  * **Custom Stamps** - Easy creation with powerful custom/auto regex matching
+  * **Flexible Input** - Inject stamps via keyboard, command palette, or menus
+  * **Easy Configuration** - Toggle most plugin settings directly from the UI
 
 **Advanced Features:** 
 

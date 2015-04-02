@@ -64,7 +64,7 @@ Formatted and raw values are accessed in the following ways:
 
 ####Keyboard Injection:
 
-```json
+```python
 # Generic Usage:
 
 super + alt + letter -> inject a LiveStamp
@@ -114,7 +114,7 @@ LiveStamps are defined as small python dictionaries that contain stamp output, r
 
 **A LiveStamp has the minimum following keys:**
 
-```json
+```python
 "mystamp": {
   "value": "LiveStamps rule!",
 },
@@ -178,7 +178,7 @@ By default LiveStamps generates some magic values to help get you started. File 
 
 **More are planned in the future!**
 
-```json
+```python
 # The following stamps are auto generated:
 
 "user"         : Gets current user
@@ -353,7 +353,7 @@ Right Click -> LiveStamps -> Help -> format() Reference
 
 **Example: Convert number 87 to different bases in decimal, hex, octal, binary:**
 
-```json
+```python
 "bases": {
   "value": 87,
   "stamp": "Base conversion: {0:d} - {0:x} - {0:o} - {0:b}",
@@ -391,7 +391,7 @@ Right Click -> LiveStamps -> Help -> strftime() Reference
 
 **Note the "auto" value, which grabs the current local time as defined in settings**
 
-```json
+```python
 "date": {
   "value": "auto",
   "tflag": "%d-%m-%Y",
@@ -445,7 +445,7 @@ Allowed offset units:
 
 **Formatted Offset Examples:**
 
-```json
+```python
 "ahead_ten_hours": {
   "value": "hours: 10",
   "tflag": "%c",
@@ -528,9 +528,9 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 
 **Custom Regex for dd-mm-yyyy:**
 
-```json
+```python
 
-# Note the escaped backslashes because input is in JSON.
+# Note the escaped backslashes because input is in python.
 
   "date": {
     "value": "Date is: ",

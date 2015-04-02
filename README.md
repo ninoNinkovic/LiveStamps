@@ -19,11 +19,11 @@
 **Advanced Features:** 
 
 * Menu generator: define as many stamps as you want and they are only a right click away
-* Customize menu layout from the settings file, simply define a menu key to sort your stamps
-* Use multiple values or other stamps within larger stamps... Great for a siggy!
-* Go beyond simple metadata, perform conversions with powerful Python formatting
+* Customize menu layout: Simply define a menu key to sort your stamps
+* SuperStamps: Use multiple values or other stamps within larger stamps... Great for a siggy!
+* Go beyond simple metadata: perform conversions with powerful Python formatting
 * Built-in help: Python format() & srtftime() live reference and data dump to test new designs
-* Use powerful custom regexes or define global "auto" regex definitions, its up to you!
+* Powerful custom regexes or define a global "auto" regex pattern, its up to you!
  
 #### Installation: 
 

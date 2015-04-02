@@ -474,7 +474,9 @@ Allowed offset units:
 
 ###Regex Patterns
 
-In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern is used. 
+In order to make a stamp 'live' so that is updated whenever the document is modified, a regex pattern must be supplied. For docblock tags a built-in pattern can be used for convenience with one caveat: 
+
+*After a docblock stamp is injected any chars after are ERASED until a newline occurs.*
 
 **WARNING!**
 

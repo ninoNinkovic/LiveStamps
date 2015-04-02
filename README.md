@@ -150,34 +150,26 @@ Output: LiveStamps rule!
 
 ####Stamp Values:
 
-Values are the core meta for the stamp and can be defined as a single item, or list of values:
+A value is the core meta for a stamp and can be defined as a single item, or list of values:
 
 ```json
-# A String Literal:
-
 "mystamp1": {
-  "value": "zero",
+  "value": "zero",        // A String Literal
 },
 
 Output: zero
-
-
-# Single List Item:
 
 "mystamp2": {
-  "value": ["zero"],
+  "value": ["zero"],      // Single List Item
 },
 
 Output: zero
 
-
-# Multiple List Items:
-
 "mystamp3": {
-  "value": ["zero", 1, "two", 3],
+  "value": [1, "two", 3]  // Multiple Item Lis:
 },
 
-Output: zero 1 two 3
+Output: 1 two 3
 ```
 
 ####Magic Values:

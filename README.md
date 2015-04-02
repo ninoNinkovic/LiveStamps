@@ -88,7 +88,7 @@ Right-click -> LiveStamps -> Insert Value -> type
 ####Command Pallate:
 
 ```python
-1. Right-click -> LiveStamps -> Menu -> Build -> Command
+1. Right-click -> LiveStamps -> Menu -> Build -> Command (only first time)
 2. Command + shift + p
 3. Type LiveStamps to see list of available commands, enter to execute.
 ```

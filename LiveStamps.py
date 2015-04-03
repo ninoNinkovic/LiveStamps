@@ -63,6 +63,7 @@ class LiveStampsWriteFileCommand(sublime_plugin.TextCommand):
     msg = "LiveStamps: Writing file " + fname
     self.view.run_command( "live_stamps_notify", { "message" : msg, "modes" : "console status" } )
 
+
 class LiveStampsInjectCommand(sublime_plugin.TextCommand):
 
 
@@ -1629,6 +1630,30 @@ class LiveStampsRefreshCommand(sublime_plugin.TextCommand):
     if filepath == None:
       return "unknown"
 
+    # Get all possible meta in a dictionary
+    elif prop == "meta":
+
+      # Get all available file meta
+      filemeta = [
+        "checksum",
+        "extension",
+        "base_name",
+        "file_size",
+        "file_name",
+        "file_path",
+        "parent_name",
+        "parent_path",
+        "file_extname"
+      ]
+
+      result = {}
+
+      for meta in filemeta:
+        result[meta] = self.get_file(meta, filepath)
+
+      return result
+
+
     # Something was passed, so try to get the basename and extension
     else:
       (basename, ext) = os.path.splitext(filepath)
@@ -1704,18 +1729,17 @@ class LiveStampsRefreshCommand(sublime_plugin.TextCommand):
     userinfo             = s.get("user_info")
     userinfo["username"] = getpass.getuser()
 
-    # Get available magic values
-    magic_values = {
-      "checksum"     : self.checksum(),
-      "extension"    : self.get_file("extension", self.path),
-      "base_name"    : self.get_file("base_name", self.path),
-      "file_size"    : self.get_file("file_size", self.path),
-      "file_name"    : self.get_file("file_name", self.path),
-      "file_path"    : self.get_file("file_path", self.path),
-      "parent_name"  : self.get_file("parent_name", self.path),
-      "parent_path"  : self.get_file("parent_path", self.path),
-      "file_extname" : self.get_file("file_extname", self.path),
-    }
+
+    magic_values = {}
+
+    if self.path != None and os.path.exists(self.path):
+
+      magic_values = self.get_file("meta", self.path)
+
+    magic_values["checksum"] = self.checksum()
+
+
+
 
     # experminetal time regex matching not used yet
     #for letter in map(chr, range(97, 123)):

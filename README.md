@@ -95,7 +95,7 @@ Right-click -> LiveStamps -> Insert Value -> [type]
 
 ```python
 1. Right-click -> LiveStamps -> Menu -> Build -> Command      # Only needed first time
-2. Command + shift + p
+2. [cmd/ctrl] + [shift] + [p]
 3. Type LiveStamps to see list of commands, enter to execute.
 ```
 

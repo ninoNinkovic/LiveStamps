@@ -87,8 +87,8 @@ Formatted and raw values are accessed in the following ways:
 ####Menu Injection:
 
 ```python
-Right-click -> LiveStamps -> Insert Stamp -> type
-Right-click -> LiveStamps -> Insert Value -> type
+Right-click -> LiveStamps -> Insert Stamp -> [type]
+Right-click -> LiveStamps -> Insert Value -> [type]
 ```
 
 ####Command Pallate:

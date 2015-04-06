@@ -108,10 +108,10 @@ The default LiveStamps config uses the right-click context menu only. If you pre
 Right-click -> LiveStamps -> Menus -> Refresh
 
 # Generate a Menu:
-Right-click -> LiveStamps -> Menus -> Build -> menutype
+Right-click -> LiveStamps -> Menus -> Build -> [menutype]
 
 # Open Existing Menu To Manually Edit:
-Right-click -> LiveStamps -> Menus -> Open -> menutype
+Right-click -> LiveStamps -> Menus -> Open -> [menutype]
 ```
 
 ###Stamp Definition Import/Export & Backup:
@@ -119,7 +119,8 @@ Right-click -> LiveStamps -> Menus -> Open -> menutype
 Livestamps supports a simple stamp versioning system that allows you to easily share or backup your custom stamp definitions.
 
 **Versioning Functions Available:**
-```
+
+```python
  # Backup Existing Stamps & User Info:
  Right-Click -> LiveStamps -> Definitions -> Backup
 

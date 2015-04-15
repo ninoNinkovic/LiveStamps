@@ -294,9 +294,12 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
 'stamp': "{} {} {}"    # Implicit location (stamp values injected sequentially
 ```
 
-**Basic Injection: (all examples have the exact same output)**
+**Basic Injection:**
 
 ```python
+# All of the following  examples have the exact same output:
+# Have you heard? LiveStamps rule! Thanks TundraTech!
+
 # No injection:
 
   "mystamp": {
@@ -323,8 +326,6 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
     "value": "LiveStamps rule!",
     "stamp": "Have you heard? {} Thanks TundraTech!",
   },
-
-# Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
 
 ####Multiple Injection Flags:

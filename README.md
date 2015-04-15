@@ -324,7 +324,7 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
     "stamp": "Have you heard? {} Thanks TundraTech!",
   },
 
-Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
+# Output ->  Have you heard? LiveStamps rule! Thanks TundraTech!
 ```
 
 ####Multiple Injection Flags:
@@ -593,5 +593,5 @@ Of course advanced users may use any regex pattern they desire, for instance dat
 
 # Matches "%c" format flag
 
-"tflag": "(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\s|\s\s)(\d|\d\d)\s(\d\d:\d\d:\d\d)\s\d\d\d\d"
+"regex": "(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(\s|\s\s)(\d|\d\d)\s(\d\d:\d\d:\d\d)\s\d\d\d\d"
 ```

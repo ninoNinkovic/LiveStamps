@@ -297,8 +297,7 @@ Injection flags allow for POWERFUL formatting and complex stamp designs. If a "s
 **Basic Injection:**
 
 ```python
-# All of the following  examples have the exact same output:
-# Have you heard? LiveStamps rule! Thanks TundraTech!
+# All these will output: Have you heard? LiveStamps rule! Thanks TundraTech!
 
 # No injection:
 
